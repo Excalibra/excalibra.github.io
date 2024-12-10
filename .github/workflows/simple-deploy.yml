@@ -22,8 +22,8 @@ jobs:
     - name: Simple deploy with git
       uses: rdarida/simple-github-pages-deploy-action@v1
       with: # optional
-        git-user: 'hoochanlon'
-        git-email: 'hoochanlon@outlook.com'
+        git-user: 'Excalibra'
+        git-email: 'x.calibra@outlook.com'
         git-base-folder: '_site'
         commit-message: 'deploy'
         branch: 'gh-pages'
