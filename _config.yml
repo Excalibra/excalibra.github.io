@@ -226,7 +226,7 @@ font:
   #LinkLabel: Link
 
 social:
-  GitHub: https://github.com/hoochanlon
+  GitHub: https://github.com/Excalibra
   Wechat: /assets/qr/wx.png
 
 # Social Links Icons
@@ -450,9 +450,9 @@ changyan:
 #   enable: true
 #   clientID: 429e75672380074b88a5
 #   clientSecret: 9568303c3a0d93762002a14f5b522891e8a89ac0
-#   repo: hoochanlon.github.io # colingpt.github.io
-#   owner: hoochanlon # colingpt
-#   admin: hoochanlon # colingpt
+#   repo: Excalibra.github.io # colingpt.github.io
+#   owner: Excalibra # colingpt
+#   admin: Excalibra # colingpt
 
 # Baidu Share
 # Available value:
