@@ -1,4 +1,4 @@
 title: Your Site Title
 description: A short description of your site
-theme: theme
+theme: jekyll-theme-primer
 markdown: kramdown
