@@ -1,0 +1,5 @@
+{% comment %} Highly discussed trending article {% endcomment %}
+{% if site.duoshuo_hotartical and page.title %}
+  <p>Trending article</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+{% endif %}
