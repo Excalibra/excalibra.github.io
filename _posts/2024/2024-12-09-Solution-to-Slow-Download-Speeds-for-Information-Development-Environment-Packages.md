@@ -1,11 +1,10 @@
 ---
-title: Solution to Slow Download Speeds for Information Development Environment Packages
+title: "Solution to Slow Download Speeds for Information Development Environment Packages"
+date: 2024-12-09 01:01:43 +0800
 author: Excalibra
-categories: [2024.]
+category: [2024.]
 tags: [chip]
-math: true
-mermaid: true
-date: 2024-12-09 01:01:43
+permalink: /:year/:month-:day/01
 ---
 
 Before proceeding, you may need to read [《This Book Will Help You Connect to the Internet》](https://github.com/Excalibra/network-tunneling) as background knowledge.
