@@ -1,11 +1,10 @@
 ---
 title: "Comprehensive Analysis of GitHub RST and Git SSL_ERR_SYSCALL"
+date: 2024-12-09 19:58:00 +0800
 author: Excalibra
-categories: [2024.]
+category: [2024.]
 tags: [chip]
-math: true
-mermaid: true
-date: 2024-12-09 00:53:01
+permalink: /:year/:month-:day/01
 ---
 
 * Eliminate subjective emotional factors
