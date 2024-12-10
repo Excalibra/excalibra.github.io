@@ -2,7 +2,7 @@
 <script>
 function show_date_time(){
     window.setTimeout("show_date_time()", 1000);
-    BirthDay = new Date("02/11/2024 15:13:14");
+    BirthDay = new Date("11/01/2024 00:00:00");  // Updated start date
     today = new Date();
     timeold = (today.getTime() - BirthDay.getTime());
     sectimeold = timeold / 1000;
@@ -15,7 +15,7 @@ function show_date_time(){
     e_minsold = (e_hrsold - hrsold) * 60;
     minsold = setzero(Math.floor((e_hrsold - hrsold) * 60));
     seconds = setzero(Math.floor((e_minsold - minsold) * 60));
-    document.getElementById('days').innerHTML = "Running for " + daysold + " days " + hrsold + " hours " + minsold + " minutes " + seconds + " seconds";
+    document.getElementById('days').innerHTML = "Работает уже " + daysold + " дней " + hrsold + " часов " + minsold + " минут " + seconds + " секунд";
 }
 
 function setzero(i) {
