@@ -1,5 +1,5 @@
 ---
-title: Comprehensive Analysis of GitHub RST and Git SSL_ERR_SYSCALL
+title: "Comprehensive Analysis of GitHub RST and Git SSL_ERR_SYSCALL"
 author: Excalibra
 categories: [2024.]
 tags: [chip]
