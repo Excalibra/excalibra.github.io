@@ -53,12 +53,12 @@ body {
   background-size: cover;
   background-position: 50% 50%;
   /* Mouse style */
-  cursor: url(https://cdn.jsdelivr.net/gh/hoochanlon/w3-goto-world/W3UnitTest/Arrow.cur), auto;
+  cursor: url(https://cdn.jsdelivr.net/gh/Excalibra/ChiseiKoya@main/W3UnitTest/Arrow.cur), auto;
 }
 
 a:hover {
   /* Link mouse style */
-  cursor: url(https://cdn.jsdelivr.net/gh/hoochanlon/w3-goto-world/W3UnitTest/Hand.cur), pointer;
+  cursor: url(https://cdn.jsdelivr.net/gh/Excalibra/ChiseiKoya@main/W3UnitTest/Hand.cur), pointer;
 }
 
 /* Layout of article content block */
