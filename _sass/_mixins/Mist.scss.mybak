@@ -22,7 +22,7 @@
 .site-subtitle {
   margin-top: 10px;
   font-size: 13px;
-  color: #555555;
+  color: #ddd;
   /* color: #ffdf58;*/
 }
 
