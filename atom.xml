@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/atom.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-12-11T14:03:05+00:00</updated><id>/atom.xml</id><title type="html">Excalibra’s blog</title><subtitle>Description</subtitle><author><name>Excalibra</name></author><entry><title type="html">Comprehensive Analysis of GitHub RST and Git SSL_ERR_SYSCALL</title><link href="/2024/12-09/01" rel="alternate" type="text/html" title="Comprehensive Analysis of GitHub RST and Git SSL_ERR_SYSCALL" /><published>2024-12-09T11:58:00+00:00</published><updated>2024-12-09T11:58:00+00:00</updated><id>/2024/12-09/Comprehensive-Analysis-of-GitHub-RST-and-Git-SSL-ERR-SYSCALL</id><content type="html" xml:base="/2024/12-09/01"><![CDATA[<ul>
+  <li>Eliminate subjective emotional factors</li>
+  <li>Consider multiple possible causes</li>
+  <li>Identify and establish connections between issues (commonalities)</li>
+</ul>
+
+<p>Subjective emotional factors compromise objective analytical judgment and must be eliminated to ensure accurate analysis.</p>
+
+<!-- more -->
+
+<h3 id="rst">RST</h3>
+
+<p>Network reset due to blocking or issues with hosts IP-DNS mapping.</p>
+
+<h3 id="ssl_err_syscall">SSL_ERR_SYSCALL</h3>
+
+<p>An issue where a manually configured proxy socket for the transport layer causes inaccessibility. It could stem from proxy configuration errors or issues with the URL, which may involve improper hosts mapping settings.</p>
+
+<h3 id="anecdote">Anecdote</h3>
+
+<p>A ping test for GitHub revealed that although it couldn’t be pinged, the website was still accessible. For security considerations, the website likely disabled ICMP responses or enabled ICMP filtering.</p>
+
+<h3 id="why-are-some-websites-unreachable-via-ping-but-still-accessible">Why Are Some Websites Unreachable via PING but Still Accessible?</h3>
+
+<p>When you try to ping a website, it shows <code class="language-plaintext highlighter-rouge">Request timed out </code>. Four packets are sent, but none are returned, resulting in a 100% packet loss. If it’s unreachable via PING, why is it still accessible?</p>
+
+<p>The likely reason is that the website has disabled ICMP responses or enabled ICMP filtering. If ICMP filtering is set, devices not on the whitelist will not receive a response.</p>
+
+<p>Disabling ICMP could be based on the following considerations:</p>
+
+<ol>
+  <li>ICMP Protocol and Network Security
+    <ul>
+      <li>The ICMP protocol is critically important for network security. However, its characteristics make it susceptible to being used for attacks on routers and hosts within the network.</li>
+    </ul>
+  </li>
+  <li>ICMP Flood Attacks
+    <ul>
+      <li>Continuously sending large amounts of ICMP packets to a target host can overwhelm its system, eventually leading to a crash. Excessive ICMP packets can create an “ICMP storm,” consuming significant CPU resources on the target host to process them.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>By disabling ICMP responses, websites can protect themselves against such vulnerabilities and attacks.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl -v www.github.com
+*   Trying 13.250.177.223:80...
+* Connected to www.github.com (13.250.177.223) port 80 (#0)
+&gt; GET / HTTP/1.1
+&gt; Host: www.github.com
+&gt; User-Agent: curl/7.70.0
+&gt; Accept: */*
+&gt;
+* Recv failure: Connection was reset
+* Closing connection 0
+curl: (56) Recv failure: Connection was reset
+</code></pre></div></div>
+
+<h3 id="summary">Summary</h3>
+
+<p>RST and SSL_ERR_SYSCALL share a common problem: hosts IP-DNS mapping.</p>
+
+<p>The application-layer hosts file resolves domain names to specific IP addresses. A proxy merely forwards client requests for these addresses without transforming the IP path. If either the IP or DNS in the hosts file doesn’t exist, access will fail, even with a configured proxy.</p>
+
+<p>Since hosts files have higher precedence over remote DNS, the system queries the hosts file for DNS mapping first. If no mapping exists in hosts, it queries remote DNS servers. Although a VPN creates a tunnel for external server access, the DNS mapping sent by the host to external servers remains incorrect, leading to inaccessibility.</p>
+
+<p>Even with hosts redirection, temporary access to sites may work due to factors like <code class="language-plaintext highlighter-rouge">keep-alive</code>, browser, or system DNS caching.</p>]]></content><author><name>Excalibra</name></author><category term="[&quot;2024.&quot;]" /><category term="chip" /><summary type="html"><![CDATA[Eliminate subjective emotional factors Consider multiple possible causes Identify and establish connections between issues (commonalities) Subjective emotional factors compromise objective analytical judgment and must be eliminated to ensure accurate analysis.]]></summary></entry><entry><title type="html">Solution to Slow Download Speeds for Information Development Environment Packages</title><link href="/2024/12-08/01" rel="alternate" type="text/html" title="Solution to Slow Download Speeds for Information Development Environment Packages" /><published>2024-12-08T17:01:43+00:00</published><updated>2024-12-08T17:01:43+00:00</updated><id>/2024/12-08/Solution-to-Slow-Download-Speeds-for-Information-Development-Environment-Packages</id><content type="html" xml:base="/2024/12-08/01"><![CDATA[<p>Before proceeding, you may need to read <a href="https://github.com/Excalibra/network-tunneling">《This Book Will Help You Connect to the Internet》</a> as background knowledge.</p>
+
+<!-- more -->
+
+<h2 id="github-downloads">GitHub Downloads</h2>
+
+<p>Copy the following hosts into <code class="language-plaintext highlighter-rouge">C:\Windows\System32\drivers\etc\hosts</code>, and then run the command <code class="language-plaintext highlighter-rouge">ipconfig /flushdns</code> to refresh the DNS cache. This host is used to bypass the GFW’s restrictions on GitHub (asw, ssh) downloads and cloning. (Note: This does not eliminate possible server throughput or geographical fiber optic limitations.)</p>
+
+<p><strong>If the IP or domain of a host changes and is not updated in time, it may cause connection errors and reset the site’s pointing, making it inaccessible.</strong> See <a href="#">GitHub RST and Git SSL_ERR_SYSCALL Comprehensive Analysis</a> for more details.</p>
+
+<p>For releases, these may come in compressed formats like zip, 7z, etc., or as software programs like exe or msi.</p>
+
+<ol>
+  <li>
+    <p>Visit <a href="https://www.ipaddress.com/">www.ipaddress.com</a> and look up the DNS resolution for the following links:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> github.com
+ assets-cdn.github.com
+ github.global.ssl.fastly.net
+
+ # Actual download link for raw.githubusercontent.com
+ codeload.github.com
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Record the IP addresses found and add them to the <code class="language-plaintext highlighter-rouge">C:\Windows\System32\drivers\etc\Hosts</code> file.</p>
+  </li>
+  <li>
+    <p>Add the AWS host:</p>
+  </li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 219.76.4.4 s3.amazonaws.com
+ 219.76.4.4 github-cloud.s3.amazonaws.com
+</code></pre></div></div>
+<ol>
+  <li>Run <code class="language-plaintext highlighter-rouge">cmd</code> and input <code class="language-plaintext highlighter-rouge">ipconfig /flushdns</code> to refresh the system DNS.</li>
+</ol>
+
+<p>We can also use <a href="https://www.jsdelivr.com">jsDelivr</a> CDN to speed up file downloads, or use it to set up an image hosting service with faster access speeds.</p>
+
+<p>For a stronger solution, use the Chrome extension “GitHub Acceleration” combined with IDM/FDM.</p>
+
+<h2 id="githubio-parsing">GitHub.io Parsing</h2>
+
+<h3 id="rawavatarsgithubusercontentcom-cannot-resolve">raw/avatars.githubusercontent.com Cannot Resolve</h3>
+
+<p>Besides using hosts, you can also configure popular domestic DNS servers for resolution. Since 1.1.1.1 might not always work, domestic DNS servers are preferred.</p>
+
+<ul>
+  <li>Yandex.DNS: 77.88.8.8 or 77.88.8.1</li>
+  <li>Rostelecom DNS: 77.37.179.189 (Moscow) or 77.37.209.86</li>
+  <li>Beeline DNS (VimpelCom): 195.239.39.250 or 213.87.84.237</li>
+</ul>
+
+<h3 id="neterr_cert_authority_invalid">NET::ERR_CERT_AUTHORITY_INVALID</h3>
+
+<p>Browsers may show a warning: “An attacker might be trying to steal your information from xxx.github.io.” This could be caused by misconfigured certificates or an attacker intercepting your connection. After continuing, you might encounter a 403 error.</p>
+
+<p>Solution: Change the DNS to Yandex, Rostelecom, or Beeline DNS as mentioned above, then run <code class="language-plaintext highlighter-rouge">ipconfig /flushdns</code> to refresh the cache. The issue arises because the ISP’s DNS might provide incorrect root certificates, so switching to a third-party DNS with the correct certificates resolves it.</p>
+
+<h2 id="git-clone-slow-speed-issue">Git Clone Slow Speed Issue</h2>
+
+<h3 id="git-or-terminal-proxy-solutions">Git or Terminal Proxy Solutions</h3>
+
+<p><strong><em>git</em></strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Set up proxy
+git config --global http.proxy 'socks5://127.0.0.1:1080'
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+# Remove proxy
+git config --global --unset https.proxy 'socks5://127.0.0.1:1080'
+git config --global --unset http.proxy 'socks5://127.0.0.1:1080'
+
+</code></pre></div></div>
+
+<p><strong><em>mac</em></strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+# mac terminal settings
+
+export http_proxy="socks5://127.0.0.1:1080"
+export https_proxy="socks5://127.0.0.1:1080"
+
+## Set in .bashrc or .zshrc
+alias setproxy="export ALL_PROXY=socks5://127.0.0.1:1080"
+alias unsetproxy="unset ALL_PROXY"
+</code></pre></div></div>
+
+<p><strong><em>openssh</em></strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+# GitHub SSH Configuration
+## https://help.github.com/articles/using-ssh-over-the-https-port/
+
+# HTTP Proxy
+ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=8848
+
+# Socks5 Proxy
+ ProxyCommand nc -v -x 127.0.0.1:1080 %h %p
+</code></pre></div></div>
+
+<p>For reverse proxy acceleration, you can use Static CDN to load images and content:</p>
+
+<ul>
+  <li>raw.githubusercontent.com can be replaced by raw.staticdn.net.</li>
+</ul>
+
+<h2 id="environment-package-acceleration">Environment Package Acceleration</h2>
+
+<h3 id="pip">pip</h3>
+
+<p>Since some projects require Python, you can use the following pip download acceleration method: <code class="language-plaintext highlighter-rouge">pip install &lt;package_name&gt; -i &lt;mirror_source_address&gt;</code>.</p>
+
+<p>For example, to install Jupyter: <code class="language-plaintext highlighter-rouge">pip install jupyter - i http://mirrors.aliyun.com/pypi/simple/</code></p>
+
+<p>Common PyPI mirrors in Russia:</p>
+
+<ul>
+  <li>Yandex: https://mirror.yandex.ru/mirrors/pypi/simple/</li>
+  <li>Moscow State University: http://pypi.mirror.msu.ru/simple/</li>
+  <li>Rostelecom: Available through regional services but not widely publicized.</li>
+</ul>
+
+<p>To set the default mirror permanently:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install --upgrade pip
+pip config set global.index-url https://mirror.yandex.ru/mirrors/pypi/simple/
+
+</code></pre></div></div>
+
+<h3 id="gem">gem</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem sources --remove https://rubygems.org/  # Remove the default source
+gem sources -a https://mirror.yandex.ru/rubygems/  # Add the Yandex mirror
+</code></pre></div></div>
+
+<h3 id="npm">npm</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm config set registry https://mirror.yandex.ru/npm/  # Set Yandex as the npm registry
+npm config get registry  # Verify the current registry setting
+</code></pre></div></div>
+
+<h2 id="summary">Summary</h2>
+
+<p>The main issues with downloading environment packages are:</p>
+
+<ul>
+  <li>Mirror sources</li>
+  <li>Proxy &amp; VPN, and hosts</li>
+  <li>Matching versions of packages and libraries</li>
+</ul>]]></content><author><name>Excalibra</name></author><category term="[&quot;2024.&quot;]" /><category term="chip" /><summary type="html"><![CDATA[Before proceeding, you may need to read 《This Book Will Help You Connect to the Internet》 as background knowledge.]]></summary></entry></feed>
