@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3" # Use the desired Jekyll version
-gem "jekyll-seo-tag", "~> 2.7" # Example plugin
-gem "jekyll-paginate-v2", "~> 3.0" # Example plugin
-gem "jemoji"
+gem "jekyll", "~> 4.3"
+gem "jekyll-seo-tag", "~> 2.7"
+gem "jekyll-paginate-v2", "~> 3.0"
+gem "jemoji"  # Add this line if it's not already in your Gemfile
