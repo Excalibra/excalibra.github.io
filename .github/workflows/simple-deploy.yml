@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Replace 'main' with your default branch name, e.g., 'master'
+      - main  # Replace 'main' with your default branch if needed
 
 jobs:
   deploy:
@@ -25,6 +25,12 @@ jobs:
       - name: Build site
         run: |
           bundle exec jekyll build
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: github-pages
+          path: ./_site
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
