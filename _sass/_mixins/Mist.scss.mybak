@@ -40,7 +40,7 @@
   padding: 0 10px;
   clear: both;
   border-top-style: none;
-  /* border-top: 1px solid #ddd; */
+  /* border-top: 1px solid #55555; */
 }
 
 body {
