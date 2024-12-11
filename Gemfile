@@ -1,4 +1,5 @@
-source 'https://rubygems.org'
-gem 'github-pages', group: :jekyll_plugins
-gem 'jekyll-spaceship', group: :jekyll_plugins
-#gem 'jekyll-admin', group: :jekyll_plugins
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.3" # Use the desired Jekyll version
+gem "jekyll-seo-tag", "~> 2.7" # Example plugin
+gem "jekyll-paginate-v2", "~> 3.0" # Example plugin
