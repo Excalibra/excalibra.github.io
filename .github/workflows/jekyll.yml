@@ -3,20 +3,20 @@ name: Build and Deploy Jekyll
 on:
   push:
     branches:
-      - main  # Replace with your default branch name
+      - main  
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.1 # Specify the Ruby version you want to use
+        ruby-version: 3.1 # Adjust to your required Ruby version
 
     - name: Install dependencies
       run: |
