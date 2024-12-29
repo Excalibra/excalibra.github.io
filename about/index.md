@@ -4,8 +4,8 @@ type: about
 ---
 
 <center>
-<p>Riding the tides of change, navigating the edge of transformation.</p>
-<p>Big picture, focused view, detailed insight.</p>
-<p>Facing challenges, adapting to a shifting world.</p>
-<p>Standing up, refusing to settle, striving to succeed.</p>
+<p>In the face of societal upheaval, many individuals find themselves on the fringes.</p>
+<p>We need to analyze this from broad, community, and individual perspectives.</p>
+<p>As some people fall from grace, societal structures become more rigid.</p>
+<p>They attempt to rise again, but the pressure to conform is overwhelming, and the competition feels insurmountable.</p>
 </center>
