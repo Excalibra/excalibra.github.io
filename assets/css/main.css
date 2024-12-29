@@ -403,7 +403,7 @@ pre .k, pre .kd, pre .kn, pre .kp, pre .kr, pre .kt, pre .javascript .function {
 .menu .menu-item a:hover, .menu-item-active a { border-bottom-color: #222; }
 .menu .menu-item .fa { margin-right: 5px; }
 
-.use-motion .menu-item { opacity: 0; }
+.use-motion .menu-item { opacity: 1; }
 
 .post-body { font-family: "Lato", "PingFang SC", "Microsoft YaHei", sans-serif; }
 @media (max-width: 767px) { .post-body { word-break: break-word; } }
@@ -560,7 +560,7 @@ img:hover { /* Pause the profile image animation on hover */ -webkit-animation-p
 .links-of-author { margin-top: 20px; }
 
 .links-of-author a { display: inline-block; vertical-align: middle; margin-right: 10px; margin-bottom: 10px; border-bottom-color: #555; font-size: 13px; }
-.links-of-author a:before { display: inline-block; vertical-align: middle; margin-right: 3px; content: " "; width: 4px; height: 4px; border-radius: 50%; background: #e600ff; }
+.links-of-author a:before { display: inline-block; vertical-align: middle; margin-right: 3px; content: " "; width: 4px; height: 4px; border-radius: 50%; background: #4fffc9; }
 
 .links-of-blogroll { font-size: 13px; }
 
