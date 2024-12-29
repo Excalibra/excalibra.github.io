@@ -560,7 +560,7 @@ img:hover { /* Pause the profile image animation on hover */ -webkit-animation-p
 .links-of-author { margin-top: 20px; }
 
 .links-of-author a { display: inline-block; vertical-align: middle; margin-right: 10px; margin-bottom: 10px; border-bottom-color: #555; font-size: 13px; }
-.links-of-author a:before { display: inline-block; vertical-align: middle; margin-right: 3px; content: " "; width: 4px; height: 4px; border-radius: 50%; background: #00ffb8; }
+.links-of-author a:before { display: inline-block; vertical-align: middle; margin-right: 3px; content: " "; width: 4px; height: 4px; border-radius: 50%; background: #4aff00; }
 
 .links-of-blogroll { font-size: 13px; }
 
@@ -734,7 +734,7 @@ img:hover { /* Pause the profile image animation on hover */ -webkit-animation-p
 
 .comments-button { background-color: #b7b7b7; background-image: url(/assets/images/button/fa-pencil-square-o.png); /* 16px x 16px */ background-repeat: no-repeat; /* make the background image appear only once */ background-position: 5% 50%; /* first value is horizontal; second is vertical */ border: none; border-radius: .313em; color: white; /* color of text */ text-align: center; padding-left: 25px; /* space between text and left-border; here taken the icon into account*/ margin: auto; margin-top: 30px; /* space to the top element */ }
 
-.use-motion .post { opacity: 0; }
+.use-motion .post { opacity: 1; }
 
 .page-archive .archive-page-counter { position: relative; top: 3px; left: 20px; }
 @media (max-width: 767px) { .page-archive .archive-page-counter { top: 5px; } }
