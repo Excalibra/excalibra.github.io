@@ -62,7 +62,7 @@ $(document).ready(function () {
     el: '.sidebar-toggle-line-middle',
     status: {
       arrow: {width: '90%'},
-      close: {opacity: 0}
+      close: {opacity: 1}
     }
   });
   var sidebarToggleLine3rd = new SidebarToggleLine({
