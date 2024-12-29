@@ -103,11 +103,11 @@ $(document).ready(function () {
           .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
           .addClass(activePanelClassName);
       }) :
-      currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+      currentTarget.animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
         currentTarget.hide();
         target
           .stop()
-          .css({'opacity': 0, 'display': 'block'})
+          .css({'opacity': 1, 'display': 'block'})
           .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
             currentTarget.removeClass(activePanelClassName);
             target.addClass(activePanelClassName);
