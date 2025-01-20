@@ -109,6 +109,8 @@ For Windows systems where Hibernate is not displayed, follow these steps:
 ### How to Disable Hibernate
 To remove the Hibernate option, use the command `powercfg.exe /hibernate off` (or `powercfg -h off`) in Step 1. No further action is needed.
 
+![image](https://github.com/user-attachments/assets/b614ed7d-4bdb-4c3b-8a65-f21a7c16748f)
+
 ---
 
 ### Visual Guide
