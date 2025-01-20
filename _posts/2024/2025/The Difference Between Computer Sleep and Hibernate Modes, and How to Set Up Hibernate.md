@@ -88,6 +88,8 @@ For Windows systems where Hibernate is not displayed, follow these steps:
 #### Step 1: Run the Command
 1. Press **Win + R**, type `powercfg.exe /hibernate on` (or `powercfg -h on`), and press Enter.
 
+![image](https://github.com/user-attachments/assets/e6e76129-e794-4dbf-b614-fb2dd991ffa5)
+
 #### Step 2: Adjust System Settings
 - **Windows 7**:
   1. Press **Win + R**, type `control`, and open the Control Panel.
