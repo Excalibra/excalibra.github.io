@@ -1,3 +1,12 @@
+---
+title: "The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate"
+date: 2025-01-20 07:25:00 +0800
+author: Excalibra
+category: [2025.]
+tags: [windows]
+permalink: /:year/:month-:day/01
+---
+
 # The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate
 
 ## 1. Reasons to Choose Sleep or Hibernate
