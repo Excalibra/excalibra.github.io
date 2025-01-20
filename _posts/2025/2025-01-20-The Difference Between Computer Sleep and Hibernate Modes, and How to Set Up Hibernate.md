@@ -15,6 +15,8 @@ Imagine you're writing a paper, your browser has multiple research tabs open, an
 
 Thankfully, your computer offers two handy options: **Sleep** and **Hibernate**.  
 
+<!-- more -->
+
 By choosing either Sleep or Hibernate, you can resume your work exactly where you left off, ensuring all your data is preserved.
 
 But what is the difference between Sleep and Hibernate?
