@@ -69,7 +69,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="chip,">
+  <meta name="keywords" content="">
 
 
 
@@ -97,17 +97,20 @@
 
 
 
-<meta name="description" content="Before proceeding, you may need to read 《This Book Will Help You Connect to the Internet》 as background knowledge.">
-<meta name="keywords" content="chip">
+<meta name="description" content='The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate 1. Reasons to Choose Sleep or Hibernate Imagine you’re writing a paper, your browser has multiple research tabs open, and you’re working on an unfinished coding project. The day’s work isn’t complete, but you need a break and want to continue tomorrow. If you shut down your computer now, all your progress will be lost. What should you do? Thankfully, your computer offers two handy options: Sleep and Hibernate. By choosing either Sleep or Hibernate, you can resume your work exactly where you left off, ensuring all your data is preserved. But what is the difference between Sleep and Hibernate? 2. Key Differences Between Sleep and Hibernate 2.1 Data Storage Location Sleep: Data is stored in the computer’s RAM (memory). The RAM remains powered, while other components are turned off. This means Sleep mode still consumes a small amount of power. If the power source is disconnected, any unsaved data will be lost. Hibernate: Data is saved to the hard drive, and all components, including the RAM, are powered down. When the system is turned on again, data is restored from the hard drive. Hibernate consumes no power, similar to shutting down the computer. 2.2 Wake-Up Method Sleep: To wake the computer from Sleep, simply move the mouse or press a key on the keyboard. Hibernate: To wake the computer from Hibernate, you must press the power button. 2.3 Wake-Up Speed Sleep mode resumes faster since data is restored directly from RAM. Hibernate mode takes longer to resume because data is loaded from the hard drive. 3. How to Enable Hibernate in Windows Newly installed Windows systems, whether Windows 7 or Windows 10, come with Sleep enabled by default. However, Hibernate is often disabled. To enable Hibernate, two steps are required: Run the command to enable Hibernate. Configure the settings in the operating system interface. To disable Hibernate, simply reverse either of the steps above. Commands to Enable or Disable Hibernate Enable Hibernate: powercfg.exe /hibernate on Disable Hibernate: powercfg.exe /hibernate off Enabling Hibernate on Windows Systems For a Windows operating system where the Hibernate feature is not displayed, the steps to enable Hibernate are as follows (in C++ pseudocode): 1. Press Win+R and enter "powercfg.exe /hibernate on"; // Note: There is a space between "exe" and "/". if (OperationSystem == "Windows 7") { 2. Press Win+R and enter "control"; // This opens the Control Panel. 3. Navigate to "Hardware and Sound". 4. Under "Power Options", select "Change power-saving settings". 5. Choose "Change plan settings". 6. Click on "Change advanced power settings". 7. Expand "Sleep". 8. Set "Allow hybrid sleep" to "Off". 9. Click "OK". } if (OperationSystem == "Windows 10") { 2. Press Win+R and enter "control"; // This opens the Control Panel. 3. Navigate to "Hardware and Sound". 4. Under "Power Options", select "Change what the power button does". 5. Click "Change settings that are currently unavailable". 6. Under "Shutdown settings", check the box for "Hibernate". 7. Click "Save changes". } For Windows systems where Hibernate is not displayed, follow these steps: Step 1: Run the Command Press Win + R, type powercfg.exe /hibernate on (or powercfg -h on), and press Enter. Step 2: Adjust System Settings Windows 7: Press Win + R, type control, and open the Control Panel. Go to Hardware and Sound &amp;gt; Power Options &amp;gt; Change Plan Settings &amp;gt; Change Advanced Power Settings. Navigate to Sleep &amp;gt; Allow Hybrid Sleep and set it to Off. Click OK to save changes. Windows 10: Press Win + R, type control, and open the Control Panel. Go to Hardware and Sound &amp;gt; Power Options &amp;gt; Choose what the power button does. Click Change settings that are currently unavailable. Under Shutdown settings, check the box for Hibernate. Click Save Changes. How to Disable Hibernate To remove the Hibernate option, use the command powercfg.exe /hibernate off (or powercfg -h off) in Step 1. No further action is needed. Visual Guide Below are visual steps for enabling Hibernate: Open the Run dialog with Win + R and enter the command powercfg.exe /hibernate on. Follow the respective settings adjustments for your operating system (Windows 7 or Windows 10) as outlined above. References “What to Do When the Hibernate Button is Missing in Windows 7” “The Difference Between Sleep and Hibernate on Computers” “Sleep vs Hibernate in Windows Systems”'>
+<meta name="keywords" content="Jekyll, NexT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to Slow Download Speeds for Information Development Environment Packages">
-<meta property="og:url" content="/2024/12-08/01">
+<meta property="og:title" content="The difference between computer sleep and hibernate modes, and how to set up hibernate">
+<meta property="og:url" content="/2025/01-20/">
 <meta property="og:site_name" content="Excalibra's blog">
-<meta property="og:description" content="Before proceeding, you may need to read 《This Book Will Help You Connect to the Internet》 as background knowledge.">
+<meta property="og:description" content='The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate 1. Reasons to Choose Sleep or Hibernate Imagine you’re writing a paper, your browser has multiple research tabs open, and you’re working on an unfinished coding project. The day’s work isn’t complete, but you need a break and want to continue tomorrow. If you shut down your computer now, all your progress will be lost. What should you do? Thankfully, your computer offers two handy options: Sleep and Hibernate. By choosing either Sleep or Hibernate, you can resume your work exactly where you left off, ensuring all your data is preserved. But what is the difference between Sleep and Hibernate? 2. Key Differences Between Sleep and Hibernate 2.1 Data Storage Location Sleep: Data is stored in the computer’s RAM (memory). The RAM remains powered, while other components are turned off. This means Sleep mode still consumes a small amount of power. If the power source is disconnected, any unsaved data will be lost. Hibernate: Data is saved to the hard drive, and all components, including the RAM, are powered down. When the system is turned on again, data is restored from the hard drive. Hibernate consumes no power, similar to shutting down the computer. 2.2 Wake-Up Method Sleep: To wake the computer from Sleep, simply move the mouse or press a key on the keyboard. Hibernate: To wake the computer from Hibernate, you must press the power button. 2.3 Wake-Up Speed Sleep mode resumes faster since data is restored directly from RAM. Hibernate mode takes longer to resume because data is loaded from the hard drive. 3. How to Enable Hibernate in Windows Newly installed Windows systems, whether Windows 7 or Windows 10, come with Sleep enabled by default. However, Hibernate is often disabled. To enable Hibernate, two steps are required: Run the command to enable Hibernate. Configure the settings in the operating system interface. To disable Hibernate, simply reverse either of the steps above. Commands to Enable or Disable Hibernate Enable Hibernate: powercfg.exe /hibernate on Disable Hibernate: powercfg.exe /hibernate off Enabling Hibernate on Windows Systems For a Windows operating system where the Hibernate feature is not displayed, the steps to enable Hibernate are as follows (in C++ pseudocode): 1. Press Win+R and enter "powercfg.exe /hibernate on"; // Note: There is a space between "exe" and "/". if (OperationSystem == "Windows 7") { 2. Press Win+R and enter "control"; // This opens the Control Panel. 3. Navigate to "Hardware and Sound". 4. Under "Power Options", select "Change power-saving settings". 5. Choose "Change plan settings". 6. Click on "Change advanced power settings". 7. Expand "Sleep". 8. Set "Allow hybrid sleep" to "Off". 9. Click "OK". } if (OperationSystem == "Windows 10") { 2. Press Win+R and enter "control"; // This opens the Control Panel. 3. Navigate to "Hardware and Sound". 4. Under "Power Options", select "Change what the power button does". 5. Click "Change settings that are currently unavailable". 6. Under "Shutdown settings", check the box for "Hibernate". 7. Click "Save changes". } For Windows systems where Hibernate is not displayed, follow these steps: Step 1: Run the Command Press Win + R, type powercfg.exe /hibernate on (or powercfg -h on), and press Enter. Step 2: Adjust System Settings Windows 7: Press Win + R, type control, and open the Control Panel. Go to Hardware and Sound &amp;gt; Power Options &amp;gt; Change Plan Settings &amp;gt; Change Advanced Power Settings. Navigate to Sleep &amp;gt; Allow Hybrid Sleep and set it to Off. Click OK to save changes. Windows 10: Press Win + R, type control, and open the Control Panel. Go to Hardware and Sound &amp;gt; Power Options &amp;gt; Choose what the power button does. Click Change settings that are currently unavailable. Under Shutdown settings, check the box for Hibernate. Click Save Changes. How to Disable Hibernate To remove the Hibernate option, use the command powercfg.exe /hibernate off (or powercfg -h off) in Step 1. No further action is needed. Visual Guide Below are visual steps for enabling Hibernate: Open the Run dialog with Win + R and enter the command powercfg.exe /hibernate on. Follow the respective settings adjustments for your operating system (Windows 7 or Windows 10) as outlined above. References “What to Do When the Hibernate Button is Missing in Windows 7” “The Difference Between Sleep and Hibernate on Computers” “Sleep vs Hibernate in Windows Systems”'>
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://github.com/user-attachments/assets/e6e76129-e794-4dbf-b614-fb2dd991ffa5">
+<meta property="og:image" content="https://github.com/user-attachments/assets/b614ed7d-4bdb-4c3b-8a65-f21a7c16748f">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to Slow Download Speeds for Information Development Environment Packages">
-<meta name="twitter:description" content="Before proceeding, you may need to read 《This Book Will Help You Connect to the Internet》 as background knowledge.">
+<meta name="twitter:title" content="The difference between computer sleep and hibernate modes, and how to set up hibernate">
+<meta name="twitter:description" content='The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate 1. Reasons to Choose Sleep or Hibernate Imagine you’re writing a paper, your browser has multiple research tabs open, and you’re working on an unfinished coding project. The day’s work isn’t complete, but you need a break and want to continue tomorrow. If you shut down your computer now, all your progress will be lost. What should you do? Thankfully, your computer offers two handy options: Sleep and Hibernate. By choosing either Sleep or Hibernate, you can resume your work exactly where you left off, ensuring all your data is preserved. But what is the difference between Sleep and Hibernate? 2. Key Differences Between Sleep and Hibernate 2.1 Data Storage Location Sleep: Data is stored in the computer’s RAM (memory). The RAM remains powered, while other components are turned off. This means Sleep mode still consumes a small amount of power. If the power source is disconnected, any unsaved data will be lost. Hibernate: Data is saved to the hard drive, and all components, including the RAM, are powered down. When the system is turned on again, data is restored from the hard drive. Hibernate consumes no power, similar to shutting down the computer. 2.2 Wake-Up Method Sleep: To wake the computer from Sleep, simply move the mouse or press a key on the keyboard. Hibernate: To wake the computer from Hibernate, you must press the power button. 2.3 Wake-Up Speed Sleep mode resumes faster since data is restored directly from RAM. Hibernate mode takes longer to resume because data is loaded from the hard drive. 3. How to Enable Hibernate in Windows Newly installed Windows systems, whether Windows 7 or Windows 10, come with Sleep enabled by default. However, Hibernate is often disabled. To enable Hibernate, two steps are required: Run the command to enable Hibernate. Configure the settings in the operating system interface. To disable Hibernate, simply reverse either of the steps above. Commands to Enable or Disable Hibernate Enable Hibernate: powercfg.exe /hibernate on Disable Hibernate: powercfg.exe /hibernate off Enabling Hibernate on Windows Systems For a Windows operating system where the Hibernate feature is not displayed, the steps to enable Hibernate are as follows (in C++ pseudocode): 1. Press Win+R and enter "powercfg.exe /hibernate on"; // Note: There is a space between "exe" and "/". if (OperationSystem == "Windows 7") { 2. Press Win+R and enter "control"; // This opens the Control Panel. 3. Navigate to "Hardware and Sound". 4. Under "Power Options", select "Change power-saving settings". 5. Choose "Change plan settings". 6. Click on "Change advanced power settings". 7. Expand "Sleep". 8. Set "Allow hybrid sleep" to "Off". 9. Click "OK". } if (OperationSystem == "Windows 10") { 2. Press Win+R and enter "control"; // This opens the Control Panel. 3. Navigate to "Hardware and Sound". 4. Under "Power Options", select "Change what the power button does". 5. Click "Change settings that are currently unavailable". 6. Under "Shutdown settings", check the box for "Hibernate". 7. Click "Save changes". } For Windows systems where Hibernate is not displayed, follow these steps: Step 1: Run the Command Press Win + R, type powercfg.exe /hibernate on (or powercfg -h on), and press Enter. Step 2: Adjust System Settings Windows 7: Press Win + R, type control, and open the Control Panel. Go to Hardware and Sound &amp;gt; Power Options &amp;gt; Change Plan Settings &amp;gt; Change Advanced Power Settings. Navigate to Sleep &amp;gt; Allow Hybrid Sleep and set it to Off. Click OK to save changes. Windows 10: Press Win + R, type control, and open the Control Panel. Go to Hardware and Sound &amp;gt; Power Options &amp;gt; Choose what the power button does. Click Change settings that are currently unavailable. Under Shutdown settings, check the box for Hibernate. Click Save Changes. How to Disable Hibernate To remove the Hibernate option, use the command powercfg.exe /hibernate off (or powercfg -h off) in Step 1. No further action is needed. Visual Guide Below are visual steps for enabling Hibernate: Open the Run dialog with Win + R and enter the command powercfg.exe /hibernate on. Follow the respective settings adjustments for your operating system (Windows 7 or Windows 10) as outlined above. References “What to Do When the Hibernate Button is Missing in Windows 7” “The Difference Between Sleep and Hibernate on Computers” “Sleep vs Hibernate in Windows Systems”'>
+<meta name="twitter:image" content="https://github.com/user-attachments/assets/e6e76129-e794-4dbf-b614-fb2dd991ffa5">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -140,7 +143,7 @@
 
 
 
-  <title>Solution to Slow Download Speeds for Information Development Environment Packages | Excalibra's blog</title>
+  <title>The difference between computer sleep and hibernate modes, and how to set up hibernate | Excalibra's blog</title>
   
 
 
@@ -318,7 +321,7 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="/2024/12-08/01">
+    <link itemprop="mainEntityOfPage" href="/2025/01-20/">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Excalibra">
       <meta itemprop="description" content="">
@@ -337,7 +340,7 @@
           <h2 class="post-title" itemprop="name headline">
           
           
-            Solution to Slow Download Speeds for Information Development Environment Packages
+            The difference between computer sleep and hibernate modes, and how to set up hibernate
           
         </h2>
         
@@ -351,8 +354,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-12-08T17:01:43+00:00">
-                2024-12-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2025-01-20T00:00:00+00:00">
+                2025-01-20
               </time>
             
 
@@ -361,29 +364,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/2024." itemprop="url" rel="index">
-                    <span itemprop="name">2024.</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -437,7 +417,7 @@
                   <span class="post-meta-item-text">Words count in article</span>
                 
                 <span title="Words count in article">
-                  753
+                  761
                 </span>
               
 
@@ -481,182 +461,172 @@
 
 
 
-  <p>Before proceeding, you may need to read <a href="https://github.com/Excalibra/network-tunneling">《This Book Will Help You Connect to the Internet》</a> as background knowledge.</p>
+  <h1 id="the-difference-between-sleep-and-hibernate-on-computers-and-how-to-enable-hibernate">The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate</h1>
 
-<!-- more -->
+<h2 id="1-reasons-to-choose-sleep-or-hibernate">1. Reasons to Choose Sleep or Hibernate</h2>
 
-<h2 id="github-downloads">GitHub Downloads</h2>
+<p>Imagine you’re writing a paper, your browser has multiple research tabs open, and you’re working on an unfinished coding project. The day’s work isn’t complete, but you need a break and want to continue tomorrow. If you shut down your computer now, all your progress will be lost. What should you do?</p>
 
-<p>Copy the following hosts into <code class="language-plaintext highlighter-rouge">C:\Windows\System32\drivers\etc\hosts</code>, and then run the command <code class="language-plaintext highlighter-rouge">ipconfig /flushdns</code> to refresh the DNS cache. This host is used to bypass the GFW’s restrictions on GitHub (asw, ssh) downloads and cloning. (Note: This does not eliminate possible server throughput or geographical fiber optic limitations.)</p>
+<p>Thankfully, your computer offers two handy options: <strong>Sleep</strong> and <strong>Hibernate</strong>.</p>
 
-<p><strong>If the IP or domain of a host changes and is not updated in time, it may cause connection errors and reset the site’s pointing, making it inaccessible.</strong> See <a href="#">GitHub RST and Git SSL_ERR_SYSCALL Comprehensive Analysis</a> for more details.</p>
+<p>By choosing either Sleep or Hibernate, you can resume your work exactly where you left off, ensuring all your data is preserved.</p>
 
-<p>For releases, these may come in compressed formats like zip, 7z, etc., or as software programs like exe or msi.</p>
+<p>But what is the difference between Sleep and Hibernate?</p>
+
+<hr>
+
+<h2 id="2-key-differences-between-sleep-and-hibernate">2. Key Differences Between Sleep and Hibernate</h2>
+
+<h3 id="21-data-storage-location">2.1 Data Storage Location</h3>
+
+<ul>
+  <li>
+    <p><strong>Sleep</strong>: Data is stored in the computer’s <strong>RAM (memory)</strong>. The RAM remains powered, while other components are turned off. This means Sleep mode still consumes a small amount of power. If the power source is disconnected, any unsaved data will be lost.</p>
+  </li>
+  <li>
+    <p><strong>Hibernate</strong>: Data is saved to the <strong>hard drive</strong>, and all components, including the RAM, are powered down. When the system is turned on again, data is restored from the hard drive. Hibernate consumes no power, similar to shutting down the computer.</p>
+  </li>
+</ul>
+
+<hr>
+
+<h3 id="22-wake-up-method">2.2 Wake-Up Method</h3>
+
+<ul>
+  <li>
+    <p><strong>Sleep</strong>: To wake the computer from Sleep, simply move the mouse or press a key on the keyboard.</p>
+  </li>
+  <li>
+    <p><strong>Hibernate</strong>: To wake the computer from Hibernate, you must press the power button.</p>
+  </li>
+</ul>
+
+<hr>
+
+<h3 id="23-wake-up-speed">2.3 Wake-Up Speed</h3>
+
+<ul>
+  <li>Sleep mode resumes faster since data is restored directly from RAM.</li>
+  <li>Hibernate mode takes longer to resume because data is loaded from the hard drive.</li>
+</ul>
+
+<hr>
+
+<h2 id="3-how-to-enable-hibernate-in-windows">3. How to Enable Hibernate in Windows</h2>
+
+<p>Newly installed Windows systems, whether Windows 7 or Windows 10, come with Sleep enabled by default. However, Hibernate is often disabled. To enable Hibernate, two steps are required:</p>
 
 <ol>
-  <li>
-    <p>Visit <a href="https://www.ipaddress.com/">www.ipaddress.com</a> and look up the DNS resolution for the following links:</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6</pre></td>
-<td class="code"><pre class="highlight"><code> github.com
- assets-cdn.github.com
- github.global.ssl.fastly.net
-
- # Actual download link for raw.githubusercontent.com
- codeload.github.com
-</code></pre></td>
-</tr></tbody></table></div>    </div>
-  </li>
-  <li>
-    <p>Record the IP addresses found and add them to the <code class="language-plaintext highlighter-rouge">C:\Windows\System32\drivers\etc\Hosts</code> file.</p>
-  </li>
-  <li>
-    <p>Add the AWS host:</p>
-  </li>
+  <li>Run the command to enable Hibernate.</li>
+  <li>Configure the settings in the operating system interface.</li>
 </ol>
 
+<p>To disable Hibernate, simply reverse either of the steps above.</p>
+
+<h3 id="commands-to-enable-or-disable-hibernate">Commands to Enable or Disable Hibernate</h3>
+
+<ul>
+  <li>
+<strong>Enable Hibernate</strong>: <code class="language-plaintext highlighter-rouge">powercfg.exe /hibernate on</code>
+</li>
+  <li>
+<strong>Disable Hibernate</strong>: <code class="language-plaintext highlighter-rouge">powercfg.exe /hibernate off</code>
+</li>
+</ul>
+
+<hr>
+
+<h3 id="enabling-hibernate-on-windows-systems">Enabling Hibernate on Windows Systems</h3>
+
+<p>For a Windows operating system where the Hibernate feature is not displayed, the steps to enable Hibernate are as follows (in C++ pseudocode):</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2</pre></td>
-<td class="code"><pre class="highlight"><code> 219.76.4.4 s3.amazonaws.com
- 219.76.4.4 github-cloud.s3.amazonaws.com
+<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23</pre></td>
+<td class="code"><pre class="highlight"><code>1. Press Win+R and enter "powercfg.exe /hibernate on"; // Note: There is a space between "exe" and "/".
+
+if (OperationSystem == "Windows 7")
+{
+    2. Press Win+R and enter "control"; // This opens the Control Panel.
+    3. Navigate to "Hardware and Sound".
+    4. Under "Power Options", select "Change power-saving settings".
+    5. Choose "Change plan settings".
+    6. Click on "Change advanced power settings".
+    7. Expand "Sleep".
+    8. Set "Allow hybrid sleep" to "Off".
+    9. Click "OK".
+}
+
+if (OperationSystem == "Windows 10")
+{
+    2. Press Win+R and enter "control"; // This opens the Control Panel.
+    3. Navigate to "Hardware and Sound".
+    4. Under "Power Options", select "Change what the power button does".
+    5. Click "Change settings that are currently unavailable".
+    6. Under "Shutdown settings", check the box for "Hibernate".
+    7. Click "Save changes".
+}
 </code></pre></td>
 </tr></tbody></table></div></div>
+
+<p>For Windows systems where Hibernate is not displayed, follow these steps:</p>
+
+<h4 id="step-1-run-the-command">Step 1: Run the Command</h4>
 <ol>
-  <li>Run <code class="language-plaintext highlighter-rouge">cmd</code> and input <code class="language-plaintext highlighter-rouge">ipconfig /flushdns</code> to refresh the system DNS.</li>
+  <li>Press <strong>Win + R</strong>, type <code class="language-plaintext highlighter-rouge">powercfg.exe /hibernate on</code> (or <code class="language-plaintext highlighter-rouge">powercfg -h on</code>), and press Enter.</li>
 </ol>
 
-<p>We can also use <a href="https://www.jsdelivr.com">jsDelivr</a> CDN to speed up file downloads, or use it to set up an image hosting service with faster access speeds.</p>
+<p><img src="https://github.com/user-attachments/assets/e6e76129-e794-4dbf-b614-fb2dd991ffa5" alt="image"></p>
 
-<p>For a stronger solution, use the Chrome extension “GitHub Acceleration” combined with IDM/FDM.</p>
-
-<h2 id="githubio-parsing">GitHub.io Parsing</h2>
-
-<h3 id="rawavatarsgithubusercontentcom-cannot-resolve">raw/avatars.githubusercontent.com Cannot Resolve</h3>
-
-<p>Besides using hosts, you can also configure popular domestic DNS servers for resolution. Since 1.1.1.1 might not always work, domestic DNS servers are preferred.</p>
-
+<h4 id="step-2-adjust-system-settings">Step 2: Adjust System Settings</h4>
 <ul>
-  <li>Yandex.DNS: 77.88.8.8 or 77.88.8.1</li>
-  <li>Rostelecom DNS: 77.37.179.189 (Moscow) or 77.37.209.86</li>
-  <li>Beeline DNS (VimpelCom): 195.239.39.250 or 213.87.84.237</li>
+  <li>
+<strong>Windows 7</strong>:
+    <ol>
+      <li>Press <strong>Win + R</strong>, type <code class="language-plaintext highlighter-rouge">control</code>, and open the Control Panel.</li>
+      <li>Go to <strong>Hardware and Sound</strong> &gt; <strong>Power Options</strong> &gt; <strong>Change Plan Settings</strong> &gt; <strong>Change Advanced Power Settings</strong>.</li>
+      <li>Navigate to <strong>Sleep</strong> &gt; <strong>Allow Hybrid Sleep</strong> and set it to <strong>Off</strong>.</li>
+      <li>Click <strong>OK</strong> to save changes.</li>
+    </ol>
+  </li>
+  <li>
+<strong>Windows 10</strong>:
+    <ol>
+      <li>Press <strong>Win + R</strong>, type <code class="language-plaintext highlighter-rouge">control</code>, and open the Control Panel.</li>
+      <li>Go to <strong>Hardware and Sound</strong> &gt; <strong>Power Options</strong> &gt; <strong>Choose what the power button does</strong>.</li>
+      <li>Click <strong>Change settings that are currently unavailable</strong>.</li>
+      <li>Under <strong>Shutdown settings</strong>, check the box for <strong>Hibernate</strong>.</li>
+      <li>Click <strong>Save Changes</strong>.</li>
+    </ol>
+  </li>
 </ul>
 
-<h3 id="neterr_cert_authority_invalid">NET::ERR_CERT_AUTHORITY_INVALID</h3>
+<hr>
 
-<p>Browsers may show a warning: “An attacker might be trying to steal your information from xxx.github.io.” This could be caused by misconfigured certificates or an attacker intercepting your connection. After continuing, you might encounter a 403 error.</p>
+<h3 id="how-to-disable-hibernate">How to Disable Hibernate</h3>
+<p>To remove the Hibernate option, use the command <code class="language-plaintext highlighter-rouge">powercfg.exe /hibernate off</code> (or <code class="language-plaintext highlighter-rouge">powercfg -h off</code>) in Step 1. No further action is needed.</p>
 
-<p>Solution: Change the DNS to Yandex, Rostelecom, or Beeline DNS as mentioned above, then run <code class="language-plaintext highlighter-rouge">ipconfig /flushdns</code> to refresh the cache. The issue arises because the ISP’s DNS might provide incorrect root certificates, so switching to a third-party DNS with the correct certificates resolves it.</p>
+<p><img src="https://github.com/user-attachments/assets/b614ed7d-4bdb-4c3b-8a65-f21a7c16748f" alt="image"></p>
 
-<h2 id="git-clone-slow-speed-issue">Git Clone Slow Speed Issue</h2>
+<hr>
 
-<h3 id="git-or-terminal-proxy-solutions">Git or Terminal Proxy Solutions</h3>
+<h3 id="visual-guide">Visual Guide</h3>
+<p>Below are visual steps for enabling Hibernate:</p>
 
-<p><strong><em>git</em></strong></p>
+<ol>
+  <li>Open the Run dialog with <strong>Win + R</strong> and enter the command <code class="language-plaintext highlighter-rouge">powercfg.exe /hibernate on</code>.</li>
+  <li>Follow the respective settings adjustments for your operating system (Windows 7 or Windows 10) as outlined above.</li>
+</ol>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7</pre></td>
-<td class="code"><pre class="highlight"><code># Set up proxy
-git config --global http.proxy 'socks5://127.0.0.1:1080'
-git config --global https.proxy 'socks5://127.0.0.1:1080'
-# Remove proxy
-git config --global --unset https.proxy 'socks5://127.0.0.1:1080'
-git config --global --unset http.proxy 'socks5://127.0.0.1:1080'
+<hr>
 
-</code></pre></td>
-</tr></tbody></table></div></div>
+<h2 id="references">References</h2>
 
-<p><strong><em>mac</em></strong></p>
+<ol>
+  <li>“What to Do When the Hibernate Button is Missing in Windows 7”</li>
+  <li>“The Difference Between Sleep and Hibernate on Computers”</li>
+  <li>“Sleep vs Hibernate in Windows Systems”</li>
+</ol>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</pre></td>
-<td class="code"><pre class="highlight"><code>
-# mac terminal settings
-
-export http_proxy="socks5://127.0.0.1:1080"
-export https_proxy="socks5://127.0.0.1:1080"
-
-## Set in .bashrc or .zshrc
-alias setproxy="export ALL_PROXY=socks5://127.0.0.1:1080"
-alias unsetproxy="unset ALL_PROXY"
-</code></pre></td>
-</tr></tbody></table></div></div>
-
-<p><strong><em>openssh</em></strong></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</pre></td>
-<td class="code"><pre class="highlight"><code>
-# GitHub SSH Configuration
-## https://help.github.com/articles/using-ssh-over-the-https-port/
-
-# HTTP Proxy
-ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=8848
-
-# Socks5 Proxy
- ProxyCommand nc -v -x 127.0.0.1:1080 %h %p
-</code></pre></td>
-</tr></tbody></table></div></div>
-
-<p>For reverse proxy acceleration, you can use Static CDN to load images and content:</p>
-
-<ul>
-  <li>raw.githubusercontent.com can be replaced by raw.staticdn.net.</li>
-</ul>
-
-<h2 id="environment-package-acceleration">Environment Package Acceleration</h2>
-
-<h3 id="pip">pip</h3>
-
-<p>Since some projects require Python, you can use the following pip download acceleration method: <code class="language-plaintext highlighter-rouge">pip install &lt;package_name&gt; -i &lt;mirror_source_address&gt;</code>.</p>
-
-<p>For example, to install Jupyter: <code class="language-plaintext highlighter-rouge">pip install jupyter - i http://mirrors.aliyun.com/pypi/simple/</code></p>
-
-<p>Common PyPI mirrors in Russia:</p>
-
-<ul>
-  <li>Yandex: https://mirror.yandex.ru/mirrors/pypi/simple/</li>
-  <li>Moscow State University: http://pypi.mirror.msu.ru/simple/</li>
-  <li>Rostelecom: Available through regional services but not widely publicized.</li>
-</ul>
-
-<p>To set the default mirror permanently:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2<br>3</pre></td>
-<td class="code"><pre class="highlight"><code>pip install --upgrade pip
-pip config set global.index-url https://mirror.yandex.ru/mirrors/pypi/simple/
-
-</code></pre></td>
-</tr></tbody></table></div></div>
-
-<h3 id="gem">gem</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2</pre></td>
-<td class="code"><pre class="highlight"><code>gem sources --remove https://rubygems.org/  # Remove the default source
-gem sources -a https://mirror.yandex.ru/rubygems/  # Add the Yandex mirror
-</code></pre></td>
-</tr></tbody></table></div></div>
-
-<h3 id="npm">npm</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr>
-<td class="gutter"><pre>1<br>2</pre></td>
-<td class="code"><pre class="highlight"><code>npm config set registry https://mirror.yandex.ru/npm/  # Set Yandex as the npm registry
-npm config get registry  # Verify the current registry setting
-</code></pre></td>
-</tr></tbody></table></div></div>
-
-<h2 id="summary">Summary</h2>
-
-<p>The main issues with downloading environment packages are:</p>
-
-<ul>
-  <li>Mirror sources</li>
-  <li>Proxy &amp; VPN, and hosts</li>
-  <li>Matching versions of packages and libraries</li>
-</ul>
 
 
 
@@ -714,13 +684,6 @@ npm config get registry  # Verify the current registry setting
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            
-            <a href="/tag/#/chip" rel="tag"><i class="fa fa-tag"></i> chip</a>
-          
-        </div>
-      
 
       
       
@@ -733,15 +696,15 @@ npm config get registry  # Verify the current registry setting
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2024/12-09/01" rel="next" title="Comprehensive Analysis of GitHub RST and Git SSL_ERR_SYSCALL">
-                <i class="fa fa-chevron-left"></i> Comprehensive Analysis of GitHub RST and Git SSL_ERR_SYSCALL
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2024/12-09/01" rel="prev" title="Comprehensive Analysis of GitHub RST and Git SSL_ERR_SYSCALL">
+                Comprehensive Analysis of GitHub RST and Git SSL_ERR_SYSCALL <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -949,7 +912,7 @@ show_date_time();
             
               <div class="post-toc-content">
     <ol class="nav">
-      <li class="nav-item nav-level-2"> <a class="nav-link" href="#github-downloads"> <span class="nav-number">1</span> <span class="nav-text">GitHub Downloads</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#githubio-parsing"> <span class="nav-number">2</span> <span class="nav-text">GitHub.io Parsing</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#rawavatarsgithubusercontentcom-cannot-resolve"> <span class="nav-number">2.1</span> <span class="nav-text">raw/avatars.githubusercontent.com Cannot Resolve</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#neterr_cert_authority_invalid"> <span class="nav-number">2.2</span> <span class="nav-text">NET::ERR_CERT_AUTHORITY_INVALID</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#git-clone-slow-speed-issue"> <span class="nav-number">3</span> <span class="nav-text">Git Clone Slow Speed Issue</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#git-or-terminal-proxy-solutions"> <span class="nav-number">3.1</span> <span class="nav-text">Git or Terminal Proxy Solutions</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#environment-package-acceleration"> <span class="nav-number">4</span> <span class="nav-text">Environment Package Acceleration</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#pip"> <span class="nav-number">4.1</span> <span class="nav-text">pip</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#gem"> <span class="nav-number">4.2</span> <span class="nav-text">gem</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#npm"> <span class="nav-number">4.3</span> <span class="nav-text">npm</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#summary"> <span class="nav-number">5</span> <span class="nav-text">Summary</span> </a> </li>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#the-difference-between-sleep-and-hibernate-on-computers-and-how-to-enable-hibernate"> <span class="nav-number">1</span> <span class="nav-text">The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#1-reasons-to-choose-sleep-or-hibernate"> <span class="nav-number">1.1</span> <span class="nav-text">1. Reasons to Choose Sleep or Hibernate</span> </a> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#2-key-differences-between-sleep-and-hibernate"> <span class="nav-number">1.2</span> <span class="nav-text">2. Key Differences Between Sleep and Hibernate</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#21-data-storage-location"> <span class="nav-number">1.2.1</span> <span class="nav-text">2.1 Data Storage Location</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#22-wake-up-method"> <span class="nav-number">1.2.2</span> <span class="nav-text">2.2 Wake-Up Method</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#23-wake-up-speed"> <span class="nav-number">1.2.3</span> <span class="nav-text">2.3 Wake-Up Speed</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#3-how-to-enable-hibernate-in-windows"> <span class="nav-number">1.3</span> <span class="nav-text">3. How to Enable Hibernate in Windows</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#commands-to-enable-or-disable-hibernate"> <span class="nav-number">1.3.1</span> <span class="nav-text">Commands to Enable or Disable Hibernate</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#enabling-hibernate-on-windows-systems"> <span class="nav-number">1.3.2</span> <span class="nav-text">Enabling Hibernate on Windows Systems</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#step-1-run-the-command"> <span class="nav-number">1.3.2.1</span> <span class="nav-text">Step 1: Run the Command</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#step-2-adjust-system-settings"> <span class="nav-number">1.3.2.2</span> <span class="nav-text">Step 2: Adjust System Settings</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#how-to-disable-hibernate"> <span class="nav-number">1.3.3</span> <span class="nav-text">How to Disable Hibernate</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#visual-guide"> <span class="nav-number">1.3.4</span> <span class="nav-text">Visual Guide</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#references"> <span class="nav-number">1.4</span> <span class="nav-text">References</span> </a> </li> </ol> </li>
     </ol>
   </div>
             
