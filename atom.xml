@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/atom.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-01-21T02:22:01+00:00</updated><id>/atom.xml</id><title type="html">Excalibra’s blog</title><subtitle>Description</subtitle><author><name>Excalibra</name></author><entry><title type="html">The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate</title><link href="/2025/01-19/01" rel="alternate" type="text/html" title="The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate" /><published>2025-01-19T23:25:00+00:00</published><updated>2025-01-19T23:25:00+00:00</updated><id>/2025/01-19/The%20Difference%20Between%20Computer%20Sleep%20and%20Hibernate%20Modes,%20and%20How%20to%20Set%20Up%20Hibernate</id><content type="html" xml:base="/2025/01-19/01"><![CDATA[<h1 id="the-difference-between-sleep-and-hibernate-on-computers-and-how-to-enable-hibernate">The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/atom.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-01-21T02:30:48+00:00</updated><id>/atom.xml</id><title type="html">Excalibra’s blog</title><subtitle>Description</subtitle><author><name>Excalibra</name></author><entry><title type="html">The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate</title><link href="/2025/01-19/01" rel="alternate" type="text/html" title="The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate" /><published>2025-01-19T23:25:00+00:00</published><updated>2025-01-19T23:25:00+00:00</updated><id>/2025/01-19/The%20Difference%20Between%20Computer%20Sleep%20and%20Hibernate%20Modes,%20and%20How%20to%20Set%20Up%20Hibernate</id><content type="html" xml:base="/2025/01-19/01"><![CDATA[<h1 id="the-difference-between-sleep-and-hibernate-on-computers-and-how-to-enable-hibernate">The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate</h1>
 
 <h2 id="1-reasons-to-choose-sleep-or-hibernate">1. Reasons to Choose Sleep or Hibernate</h2>
 
@@ -75,13 +75,6 @@
 
 <p>For a Windows operating system where the Hibernate feature is not displayed, the steps to enable Hibernate are as follows (in C++ pseudocode):</p>
 
-<p>For Windows systems where Hibernate is not displayed, follow these steps:</p>
-
-<h4 id="step-1-run-the-command">Step 1: Run the Command</h4>
-<ol>
-  <li>Press <strong>Win + R</strong>, type <code class="language-plaintext highlighter-rouge">powercfg.exe /hibernate on</code> (or <code class="language-plaintext highlighter-rouge">powercfg -h on</code>), and press Enter.</li>
-</ol>
-
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Press Win+R and enter "powercfg.exe /hibernate on"; // Note: There is a space between "exe" and "/".
 
 if (OperationSystem == "Windows 7")
@@ -106,6 +99,13 @@ if (OperationSystem == "Windows 10")
     7. Click "Save changes".
 }
 </code></pre></div></div>
+
+<p>The accompanying image for the operating system front-end settings is as follows:</p>
+
+<h4 id="step-1-run-the-command">Step 1: Run the Command</h4>
+<ol>
+  <li>Press <strong>Win + R</strong>, type <code class="language-plaintext highlighter-rouge">powercfg.exe /hibernate on</code> (or <code class="language-plaintext highlighter-rouge">powercfg -h on</code>), and press Enter.</li>
+</ol>
 
 <h4 id="step-2-adjust-system-settings">Step 2: Adjust System Settings</h4>
 <ul>
