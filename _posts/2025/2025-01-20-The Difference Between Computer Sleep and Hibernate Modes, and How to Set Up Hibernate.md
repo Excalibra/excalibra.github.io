@@ -116,8 +116,12 @@ For Windows systems where Hibernate is not displayed, follow these steps:
   ![image](https://github.com/user-attachments/assets/b11e3a71-c4ec-4786-a2a7-e424bf68ff21)
 
   4. Click **Change settings that are currently unavailable**.
+  ![image](https://github.com/user-attachments/assets/b47a786e-3425-4a04-ba79-2902dff15ec2)
+
   5. Under **Shutdown settings**, check the box for **Hibernate**.
-  6. Click **Save Changes**.
+  ![image](https://github.com/user-attachments/assets/963eabd0-23d6-4098-8e15-a9462af32215)
+
+  7. Click **Save Changes**.
 
 ---
 
