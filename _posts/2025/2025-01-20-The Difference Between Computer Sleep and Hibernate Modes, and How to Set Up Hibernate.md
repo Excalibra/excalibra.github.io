@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/fa16a70a-1dd2-43ab-94bd-dfc2b27d7852)---
+---
 title: "The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate"
 date: 2025-01-20 07:25:00 +0800
 author: Excalibra
