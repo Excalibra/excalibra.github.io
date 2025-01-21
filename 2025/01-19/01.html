@@ -105,16 +105,16 @@
 <meta property="og:site_name" content="Excalibra's blog">
 <meta property="og:description" content="The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate 1. Reasons to Choose Sleep or Hibernate Imagine you’re writing a paper, your browser has multiple research tabs open, and you’re working on an unfinished coding project. The day’s work isn’t complete, but you need a break and want to continue tomorrow. If you shut down your computer now, all your progress will be lost. What should you do? Thankfully, your computer offers two handy options: Sleep and Hibernate.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://github.com/user-attachments/assets/e6e76129-e794-4dbf-b614-fb2dd991ffa5">
 <meta property="og:image" content="https://github.com/user-attachments/assets/eeaaed6f-ec20-42a9-b93f-5518d90b1b37">
 <meta property="og:image" content="https://github.com/user-attachments/assets/b11e3a71-c4ec-4786-a2a7-e424bf68ff21">
 <meta property="og:image" content="https://github.com/user-attachments/assets/b47a786e-3425-4a04-ba79-2902dff15ec2">
 <meta property="og:image" content="https://github.com/user-attachments/assets/963eabd0-23d6-4098-8e15-a9462af32215">
 <meta property="og:image" content="https://github.com/user-attachments/assets/b614ed7d-4bdb-4c3b-8a65-f21a7c16748f">
+<meta property="og:image" content="https://github.com/user-attachments/assets/e6e76129-e794-4dbf-b614-fb2dd991ffa5">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate">
 <meta name="twitter:description" content="The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate 1. Reasons to Choose Sleep or Hibernate Imagine you’re writing a paper, your browser has multiple research tabs open, and you’re working on an unfinished coding project. The day’s work isn’t complete, but you need a break and want to continue tomorrow. If you shut down your computer now, all your progress will be lost. What should you do? Thankfully, your computer offers two handy options: Sleep and Hibernate.">
-<meta name="twitter:image" content="https://github.com/user-attachments/assets/e6e76129-e794-4dbf-b614-fb2dd991ffa5">
+<meta name="twitter:image" content="https://github.com/user-attachments/assets/eeaaed6f-ec20-42a9-b93f-5518d90b1b37">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -444,7 +444,7 @@
                   <span class="post-meta-item-text">Words count in article</span>
                 
                 <span title="Words count in article">
-                  761
+                  762
                 </span>
               
 
@@ -569,6 +569,13 @@
 
 <p>For a Windows operating system where the Hibernate feature is not displayed, the steps to enable Hibernate are as follows (in C++ pseudocode):</p>
 
+<p>For Windows systems where Hibernate is not displayed, follow these steps:</p>
+
+<h4 id="step-1-run-the-command">Step 1: Run the Command</h4>
+<ol>
+  <li>Press <strong>Win + R</strong>, type <code class="language-plaintext highlighter-rouge">powercfg.exe /hibernate on</code> (or <code class="language-plaintext highlighter-rouge">powercfg -h on</code>), and press Enter.</li>
+</ol>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr>
 <td class="gutter"><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23</pre></td>
 <td class="code"><pre class="highlight"><code>1. Press Win+R and enter "powercfg.exe /hibernate on"; // Note: There is a space between "exe" and "/".
@@ -596,15 +603,6 @@ if (OperationSystem == "Windows 10")
 }
 </code></pre></td>
 </tr></tbody></table></div></div>
-
-<p>For Windows systems where Hibernate is not displayed, follow these steps:</p>
-
-<h4 id="step-1-run-the-command">Step 1: Run the Command</h4>
-<ol>
-  <li>Press <strong>Win + R</strong>, type <code class="language-plaintext highlighter-rouge">powercfg.exe /hibernate on</code> (or <code class="language-plaintext highlighter-rouge">powercfg -h on</code>), and press Enter.</li>
-</ol>
-
-<p><img src="https://github.com/user-attachments/assets/e6e76129-e794-4dbf-b614-fb2dd991ffa5" alt="image"></p>
 
 <h4 id="step-2-adjust-system-settings">Step 2: Adjust System Settings</h4>
 <ul>
@@ -656,8 +654,13 @@ if (OperationSystem == "Windows 10")
 <p>Below are visual steps for enabling Hibernate:</p>
 
 <ol>
-  <li>Open the Run dialog with <strong>Win + R</strong> and enter the command <code class="language-plaintext highlighter-rouge">powercfg.exe /hibernate on</code>.</li>
-  <li>Follow the respective settings adjustments for your operating system (Windows 7 or Windows 10) as outlined above.</li>
+  <li>
+    <p>Open the Run dialog with <strong>Win + R</strong> and enter the command <code class="language-plaintext highlighter-rouge">powercfg.exe /hibernate on</code>.
+<img src="https://github.com/user-attachments/assets/e6e76129-e794-4dbf-b614-fb2dd991ffa5" alt="image"></p>
+  </li>
+  <li>
+    <p>Follow the respective settings adjustments for your operating system (Windows 7 or Windows 10) as outlined above.</p>
+  </li>
 </ol>
 
 <hr>
