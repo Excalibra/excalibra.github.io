@@ -115,9 +115,9 @@ For Windows systems where Hibernate is not displayed, follow these steps:
   3. Go to **Hardware and Sound** > **Power Options** > **Choose what the power button does**.
   ![image](https://github.com/user-attachments/assets/b11e3a71-c4ec-4786-a2a7-e424bf68ff21)
 
-  5. Click **Change settings that are currently unavailable**.
-  6. Under **Shutdown settings**, check the box for **Hibernate**.
-  7. Click **Save Changes**.
+  4. Click **Change settings that are currently unavailable**.
+  5. Under **Shutdown settings**, check the box for **Hibernate**.
+  6. Click **Save Changes**.
 
 ---
 
