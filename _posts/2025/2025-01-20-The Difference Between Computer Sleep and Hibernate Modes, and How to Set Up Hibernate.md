@@ -139,10 +139,3 @@ Below are visual steps for enabling Hibernate:
 3. Follow the respective settings adjustments for your operating system (Windows 7 or Windows 10) as outlined above.  
 
 ---
-
-## References
-
-1. "What to Do When the Hibernate Button is Missing in Windows 7"  
-2. "The Difference Between Sleep and Hibernate on Computers"  
-3. "Sleep vs Hibernate in Windows Systems"
-
