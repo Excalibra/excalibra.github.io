@@ -1,4 +1,4 @@
----
+![image](https://github.com/user-attachments/assets/fa16a70a-1dd2-43ab-94bd-dfc2b27d7852)---
 title: "The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate"
 date: 2025-01-20 07:25:00 +0800
 author: Excalibra
@@ -110,10 +110,12 @@ For Windows systems where Hibernate is not displayed, follow these steps:
 
 - **Windows 10**:
   1. Press **Win + R**, type `control`, and open the Control Panel.
-  2. Go to **Hardware and Sound** > **Power Options** > **Choose what the power button does**.
-  3. Click **Change settings that are currently unavailable**.
-  4. Under **Shutdown settings**, check the box for **Hibernate**.
-  5. Click **Save Changes**.
+  ![image](https://github.com/user-attachments/assets/eeaaed6f-ec20-42a9-b93f-5518d90b1b37)
+
+  3. Go to **Hardware and Sound** > **Power Options** > **Choose what the power button does**.
+  4. Click **Change settings that are currently unavailable**.
+  5. Under **Shutdown settings**, check the box for **Hibernate**.
+  6. Click **Save Changes**.
 
 ---
 
