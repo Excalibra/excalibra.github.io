@@ -94,7 +94,7 @@ if (OperationSystem == "Windows 10")
 }
 ```
 
-The accompanying image for the operating system front-end settings is as follows:
+### The accompanying image for the operating system front-end settings is as follows:
 
 #### Step 1: Run the Command
 1. Press **Win + R**, type `powercfg.exe /hibernate on` (or `powercfg -h on`), and press Enter.
