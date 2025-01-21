@@ -68,11 +68,6 @@ To disable Hibernate, simply reverse either of the steps above.
 
 For a Windows operating system where the Hibernate feature is not displayed, the steps to enable Hibernate are as follows (in C++ pseudocode):
 
-For Windows systems where Hibernate is not displayed, follow these steps:
-
-#### Step 1: Run the Command
-1. Press **Win + R**, type `powercfg.exe /hibernate on` (or `powercfg -h on`), and press Enter.
-
 ```
 1. Press Win+R and enter "powercfg.exe /hibernate on"; // Note: There is a space between "exe" and "/".
 
@@ -98,6 +93,11 @@ if (OperationSystem == "Windows 10")
     7. Click "Save changes".
 }
 ```
+
+The accompanying image for the operating system front-end settings is as follows:
+
+#### Step 1: Run the Command
+1. Press **Win + R**, type `powercfg.exe /hibernate on` (or `powercfg -h on`), and press Enter.
 
 #### Step 2: Adjust System Settings
 - **Windows 7**:
