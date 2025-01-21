@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/atom.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-01-21T02:06:10+00:00</updated><id>/atom.xml</id><title type="html">Excalibra’s blog</title><subtitle>Description</subtitle><author><name>Excalibra</name></author><entry><title type="html">The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate</title><link href="/2025/01-19/01" rel="alternate" type="text/html" title="The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate" /><published>2025-01-19T23:25:00+00:00</published><updated>2025-01-19T23:25:00+00:00</updated><id>/2025/01-19/The%20Difference%20Between%20Computer%20Sleep%20and%20Hibernate%20Modes,%20and%20How%20to%20Set%20Up%20Hibernate</id><content type="html" xml:base="/2025/01-19/01"><![CDATA[<h1 id="the-difference-between-sleep-and-hibernate-on-computers-and-how-to-enable-hibernate">The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/atom.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-01-21T02:18:58+00:00</updated><id>/atom.xml</id><title type="html">Excalibra’s blog</title><subtitle>Description</subtitle><author><name>Excalibra</name></author><entry><title type="html">The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate</title><link href="/2025/01-19/01" rel="alternate" type="text/html" title="The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate" /><published>2025-01-19T23:25:00+00:00</published><updated>2025-01-19T23:25:00+00:00</updated><id>/2025/01-19/The%20Difference%20Between%20Computer%20Sleep%20and%20Hibernate%20Modes,%20and%20How%20to%20Set%20Up%20Hibernate</id><content type="html" xml:base="/2025/01-19/01"><![CDATA[<h1 id="the-difference-between-sleep-and-hibernate-on-computers-and-how-to-enable-hibernate">The Difference Between Sleep and Hibernate on Computers, and How to Enable Hibernate</h1>
 
 <h2 id="1-reasons-to-choose-sleep-or-hibernate">1. Reasons to Choose Sleep or Hibernate</h2>
 
@@ -129,9 +129,17 @@ if (OperationSystem == "Windows 10")
         <p>Go to <strong>Hardware and Sound</strong> &gt; <strong>Power Options</strong> &gt; <strong>Choose what the power button does</strong>.
 <img src="https://github.com/user-attachments/assets/b11e3a71-c4ec-4786-a2a7-e424bf68ff21" alt="image" /></p>
       </li>
-      <li>Click <strong>Change settings that are currently unavailable</strong>.</li>
-      <li>Under <strong>Shutdown settings</strong>, check the box for <strong>Hibernate</strong>.</li>
-      <li>Click <strong>Save Changes</strong>.</li>
+      <li>
+        <p>Click <strong>Change settings that are currently unavailable</strong>.
+<img src="https://github.com/user-attachments/assets/b47a786e-3425-4a04-ba79-2902dff15ec2" alt="image" /></p>
+      </li>
+      <li>
+        <p>Under <strong>Shutdown settings</strong>, check the box for <strong>Hibernate</strong>.
+<img src="https://github.com/user-attachments/assets/963eabd0-23d6-4098-8e15-a9462af32215" alt="image" /></p>
+      </li>
+      <li>
+        <p>Click <strong>Save Changes</strong>.</p>
+      </li>
     </ol>
   </li>
 </ul>
