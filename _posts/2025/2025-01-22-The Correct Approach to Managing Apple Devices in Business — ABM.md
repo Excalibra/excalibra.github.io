@@ -41,6 +41,7 @@ Here is a demonstration video of an iPad being automatically deployed under ABM 
 In addition to supporting Apple devices, Workspace ONE also supports Android, Windows 10, Chrome OS, and other types of devices, known as Unified Endpoint Management (UEM). Through Workspace ONE, businesses can manage all their endpoint devices on one platform, which is a key advantage over other vendors.
 
 References:
+
 [vmware - ABM](https://blogs.vmware.com/china/2019/10/08/%E4%BC%81%E4%B8%9A%E9%87%87%E8%B4%AD%E8%8B%B9%E6%9E%9C%E8%AE%BE%E5%A4%87%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF-abm/)
 
 ---
