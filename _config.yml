@@ -225,7 +225,6 @@ font:
 
 social:
   GitHub: https://github.com/Excalibra
-  Wechat: /assets/qr/wx.png
 
 # Social Links Icons
 # Icon Mapping:
@@ -237,7 +236,6 @@ social_icons:
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
-  Wechat: wechat
 
 
 # Sidebar Avatar
