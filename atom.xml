@@ -1,4 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/atom.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-01-22T15:23:26+00:00</updated><id>/atom.xml</id><title type="html">Excalibra’s blog</title><subtitle>Description</subtitle><author><name>Excalibra</name></author><entry><title type="html">The Right Approach to Managing Apple Devices in Enterprises — ABM</title><link href="/2025/01-22/01" rel="alternate" type="text/html" title="The Right Approach to Managing Apple Devices in Enterprises — ABM" /><published>2025-01-22T10:06:00+00:00</published><updated>2025-01-22T10:06:00+00:00</updated><id>/2025/01-22/The%20Right%20Approach%20to%20Managing%20Apple%20Devices%20in%20Enterprises%20%E2%80%94%20ABM</id><content type="html" xml:base="/2025/01-22/01"><![CDATA[<p>With the development of mobile internet technology, more and more businesses are adopting mobile devices for their operations. Among the many choices available on the market, Apple’s iPhone, iPad, and MacBook have gained popularity due to their high-quality user experience and premium image. Do you know how to correctly procure Apple devices for business use? Most users don’t see this as an issue, as Apple devices are sold through physical stores or online shops. However, products sold through these retail channels are aimed at regular consumers. Apple also has a separate business sales channel, and the biggest difference between Apple devices for businesses and those for regular consumers is the enterprise management function called ABM (Apple Business Manager).</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="/atom.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-01-22T15:40:14+00:00</updated><id>/atom.xml</id><title type="html">Excalibra’s blog</title><subtitle>Description</subtitle><author><name>Excalibra</name></author><entry><title type="html">Three Ways to Manage Macs in a Business Environment</title><link href="/2025/01-22/01" rel="alternate" type="text/html" title="Three Ways to Manage Macs in a Business Environment" /><published>2025-01-22T10:39:00+00:00</published><updated>2025-01-22T10:39:00+00:00</updated><id>/2025/01-22/Three%20Ways%20to%20Manage%20Macs%20in%20a%20Business%20Environment</id><content type="html" xml:base="/2025/01-22/01"><![CDATA[<p>While Macs are less common than Windows PCs, they have successfully entered the IT landscape of many enterprises. IT teams need to find solutions that integrate Macs with existing Windows Active Directory (AD) domains and determine the necessary tools or systems. Deciding how to integrate Macs into a Windows infrastructure is no simple task. Organisations need to clarify the number of Macs requiring support and the type of access required for existing tools and systems.</p>
+
+<p>Compared to Windows PCs, many employees prefer Macs. With the influx of iOS devices into businesses and Apple’s promise of seamless integration, the reality can often lead to unexpected challenges. Despite this, Macs maintain a place in predominantly Windows environments. Balancing support for Macs with protecting corporate assets and maintaining resource control, IT teams can achieve integration through three main approaches:</p>
+
+<ol>
+  <li>Integrating Macs into the AD domain using existing tools.</li>
+  <li>Using dedicated tools to manage Macs within the AD domain.</li>
+  <li>Managing Macs as standalone mobile devices.</li>
+</ol>
+
+<hr />
+
+<h1 id="three-ways-to-manage-macs-in-a-business-environment">Three Ways to Manage Macs in a Business Environment</h1>
+
+<h2 id="integrating-macs-into-the-ad-domain">Integrating Macs into the AD Domain</h2>
+
+<p>Many IT administrators prefer seamlessly adding Macs to the AD environment alongside Windows desktops. To some extent, macOS supports this method, as Mac desktops and laptops include the necessary client components and standard directory services to join an AD domain.</p>
+
+<p>The process of binding a Mac to the domain is relatively straightforward, provided users have the required computer access and domain credentials. When a Mac joins the domain, Windows Server automatically creates a computer object in AD (unless one already exists), just like a Windows desktop.</p>
+
+<p>The latest versions of macOS make Apple devices easier to integrate, as macOS supports Microsoft System Center Configuration Manager (SCCM) and Exchange ActiveSync. SCCM now supports macOS 10.10 (Yosemite) and newer versions. However, Macs are not Windows desktops, and most management products are designed for Windows PCs. This can lead to compatibility issues. One way to mitigate these issues is by extending the AD schema to better accommodate Macs. However, this requires development resources and technical expertise, which can be challenging for organisations with limited Mac users.</p>
+
+<p>Fortunately, administrators can enhance existing tools by leveraging macOS commands. These commands allow IT teams to configure idle screen lock times, language settings, and disable autocorrection, among other functions.</p>
+
+<!-- more -->
+<hr />
+
+<h2 id="using-ad-with-third-party-tools">Using AD with Third-Party Tools</h2>
+
+<p>Although AD and macOS commands simplify integration, many administrators find it easier to use additional tools for management. For example:</p>
+
+<ul>
+  <li>Macs can be joined to an AD domain, while Apple Remote Desktop is used to send commands to Mac clients.</li>
+  <li>Alternatively, organisations can deploy macOS Server to manage Macs using Apple’s Profile Manager. This approach requires setting up an Open Directory domain alongside AD, allowing remote management. AD retains control over Windows and Open Directory/OS X servers, facilitating seamless communication between the two environments for shared files and printing services.</li>
+</ul>
+
+<p>If this approach proves challenging, consider third-party solutions like <strong>Centrify User Suite</strong> (Mac edition). Centrify allows IT teams to manage Macs using AD authentication infrastructure for centralised management, policy enforcement, and single sign-on.</p>
+
+<p>Another popular option is <strong>JAMF Software’s Casper Suite</strong>, a comprehensive endpoint management product that integrates with AD and Open Directory. Casper Suite supports every stage of the Mac management lifecycle, including device enrolment, software distribution, asset inventory, updates, and security settings.</p>
+
+<p>Using Microsoft tools to integrate Macs with AD is not the only option. Often, the most effective way to manage Macs is to treat them as Unix systems rather than Windows desktops. Outside of integration with existing infrastructure, Macs can be treated as a standalone device type.</p>
+
+<hr />
+
+<h2 id="managing-macs-as-mobile-devices">Managing Macs as Mobile Devices</h2>
+
+<p>Since macOS 7, Apple has adopted a Mobile Device Management (MDM) model, replacing traditional directory services. This allows administrators to manage Macs, iOS, and Android devices using the same tools.</p>
+
+<p>For example, macOS enables administrators to query a Mac’s iTunes account to check if the associated Apple ID has changed—similar to iOS device management. This ensures resources such as apps and books purchased through Apple’s Volume Purchasing Program are assigned to the correct user.</p>
+
+<p>Apple’s modern MDM framework also allows administrators to:</p>
+
+<ul>
+  <li>Initiate AirPlay sessions on managed devices.</li>
+  <li>Push enterprise apps and eBooks to Macs.</li>
+  <li>Take advantage of macOS Server’s enhanced platform capabilities for MDM.</li>
+</ul>
+
+<p>Users can register their Macs, and vendors can use an expanding array of application programming interfaces (APIs) to support third-party security and management solutions.</p>
+
+<p>By leveraging MDM, organisations can effectively manage Macs alongside other devices while maintaining security and operational efficiency.</p>
+
+<hr />]]></content><author><name>Excalibra</name></author><category term="[&quot;2025.&quot;]" /><category term="Apple" /><summary type="html"><![CDATA[While Macs are less common than Windows PCs, they have successfully entered the IT landscape of many enterprises. IT teams need to find solutions that integrate Macs with existing Windows Active Directory (AD) domains and determine the necessary tools or systems. Deciding how to integrate Macs into a Windows infrastructure is no simple task. Organisations need to clarify the number of Macs requiring support and the type of access required for existing tools and systems. Compared to Windows PCs, many employees prefer Macs. With the influx of iOS devices into businesses and Apple’s promise of seamless integration, the reality can often lead to unexpected challenges. Despite this, Macs maintain a place in predominantly Windows environments. Balancing support for Macs with protecting corporate assets and maintaining resource control, IT teams can achieve integration through three main approaches: Integrating Macs into the AD domain using existing tools. Using dedicated tools to manage Macs within the AD domain. Managing Macs as standalone mobile devices. Three Ways to Manage Macs in a Business Environment Integrating Macs into the AD Domain Many IT administrators prefer seamlessly adding Macs to the AD environment alongside Windows desktops. To some extent, macOS supports this method, as Mac desktops and laptops include the necessary client components and standard directory services to join an AD domain. The process of binding a Mac to the domain is relatively straightforward, provided users have the required computer access and domain credentials. When a Mac joins the domain, Windows Server automatically creates a computer object in AD (unless one already exists), just like a Windows desktop. The latest versions of macOS make Apple devices easier to integrate, as macOS supports Microsoft System Center Configuration Manager (SCCM) and Exchange ActiveSync. SCCM now supports macOS 10.10 (Yosemite) and newer versions. However, Macs are not Windows desktops, and most management products are designed for Windows PCs. This can lead to compatibility issues. One way to mitigate these issues is by extending the AD schema to better accommodate Macs. However, this requires development resources and technical expertise, which can be challenging for organisations with limited Mac users. Fortunately, administrators can enhance existing tools by leveraging macOS commands. These commands allow IT teams to configure idle screen lock times, language settings, and disable autocorrection, among other functions.]]></summary></entry><entry><title type="html">The Right Approach to Managing Apple Devices in Enterprises — ABM</title><link href="/2025/01-22/01" rel="alternate" type="text/html" title="The Right Approach to Managing Apple Devices in Enterprises — ABM" /><published>2025-01-22T10:06:00+00:00</published><updated>2025-01-22T10:06:00+00:00</updated><id>/2025/01-22/The%20Right%20Approach%20to%20Managing%20Apple%20Devices%20in%20Enterprises%20%E2%80%94%20ABM</id><content type="html" xml:base="/2025/01-22/01"><![CDATA[<p>With the development of mobile internet technology, more and more businesses are adopting mobile devices for their operations. Among the many choices available on the market, Apple’s iPhone, iPad, and MacBook have gained popularity due to their high-quality user experience and premium image. Do you know how to correctly procure Apple devices for business use? Most users don’t see this as an issue, as Apple devices are sold through physical stores or online shops. However, products sold through these retail channels are aimed at regular consumers. Apple also has a separate business sales channel, and the biggest difference between Apple devices for businesses and those for regular consumers is the enterprise management function called ABM (Apple Business Manager).</p>
 
 <!-- more -->
 
