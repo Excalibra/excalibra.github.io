@@ -1,3 +1,11 @@
+---
+title: "EDR/XDR Bypass and Detection Evasion Techniques: An Investigation of Advanced Evasion Strategies from a Red Team Perspective"
+date: 2026-03-30 21:49:00 +0800
+author: Excalibra
+category: [2026.]
+tags: [EDR]
+permalink: /:year/:month-:day/01
+---
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6i42h69pier8pm4ox3w3.jpg)
 
