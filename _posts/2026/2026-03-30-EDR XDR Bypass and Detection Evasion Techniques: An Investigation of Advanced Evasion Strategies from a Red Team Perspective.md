@@ -13,6 +13,9 @@ permalink: /:year/:month-:day/01
 This document provides an in-depth analysis of EDR/XDR evasion techniques from a red team perspective, covering core strategies such as API unhooking, BOF-based in-memory execution, indirect system calls, and bypassing ETW and kernel callbacks. It elaborates on the underlying mechanisms, practical case studies, and the respective advantages and limitations of each technique. The article also highlights the constraints of traditional attack methods within modern, closed-loop defense systems. Furthermore, it emphasizes that all technical research must strictly adhere to legal authorization and compliance frameworks, with the objective of validating defensive effectiveness through adversarial exercises and promoting iterative improvements in security products.
 <br>
 <br>
+
+<!-- more -->
+
 ## 1. Introduction: Red Team Challenges in EDR/XDR Environments
 
 With the iterative advancement of cybersecurity defense architectures, Endpoint Detection and Response (EDR) and Extended Detection and Response (XDR) technologies have become central pillars of enterprise security frameworks. For red team operations, traditional attack techniques are now facing an unprecedented risk of failure when confronted with modern, closed-loop defensive systems. This chapter aims to provide an in-depth analysis of the current technical state of EDR/XDR, their core detection mechanisms, and the constraints they impose on the cyber kill chain. At the same time, it seeks to clearly delineate the legal and compliance boundaries of relevant technical research, ensuring that all analysis and practice are oriented toward enhancing defensive capabilities and supporting authorized testing scenarios.
