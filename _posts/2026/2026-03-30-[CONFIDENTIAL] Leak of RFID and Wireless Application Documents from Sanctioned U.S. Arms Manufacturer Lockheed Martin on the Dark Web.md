@@ -1,0 +1,39 @@
+---
+title: "[CONFIDENTIAL] Leak of RFID and Wireless Application Documents from Sanctioned U.S. Arms Manufacturer Lockheed Martin on the Dark Web"
+date: 2026-03-30 22:31:00 +0800
+author: Excalibra
+category: [2026.]
+tags: [Dark Web]
+permalink: /:year/:month-:day/01
+---
+
+
+## [CONFIDENTIAL] Leak of RFID and Wireless Application Documents from Sanctioned U.S. Arms Manufacturer Lockheed Martin on the Dark Web
+
+A threat actor has claimed to be selling a document belonging to U.S. defense industry contractor Lockheed Martin. The file is a confidential technical and project report supplied by GlobeRanger to Lockheed Martin. Its core content revolves around the RFID edge software solution and deployment outcomes developed by GlobeRanger for the U.S. Department of Defense. The document covers the technical architecture of the iMotion platform, system integration schemes, detailed interfacing with existing Department of Defense systems, as well as undisclosed project performance metrics including Department of Defense warehouse operational data, cost-saving statistics, equipment deployment quantities, and related information.
+
+<!-- more -->
+
+**Specific Leaked Content (Partial Samples):**  
+The following are example samples of the partially leaked data:
+ 
+1.1. Sample Data  
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vf3ake9mk4yayp0zvdmp.png)
+
+1.2. Sample Data  
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bi8rnftu85lmdtciavyx.png)
+
+1.3. Sample Data  
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/hofyw019ycunjn5kvfsy.png)
+
+1.4. Sample Data
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3bfzbpzq7cpzg0ylwxbc.png)
+
+---
+
+**Disclaimer:**  
+The programs, technical methods, and content contained herein are intended solely for lawful and compliant security research and educational scenarios, with the explicit objective of enhancing cybersecurity defense capabilities and possessing clear attributes of technical research.
+
+Any entity or individual who, without authorization, utilizes the content of this article for attacks, sabotage, or other illegal purposes shall bear full legal liability, civil compensation, and joint-and-several liability independently. This site assumes no vicarious liability whatsoever.
+
+All content on this site is published for the purposes of technical exchange and knowledge sharing.
