@@ -1,0 +1,25 @@
+name: Delete old workflow runs
+on:
+  workflow_dispatch:
+
+jobs:
+  del_runs:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - name: Set Moscow Timezone (UTC+3)
+        run: |
+          export TZ="Europe/Moscow"
+          current_date=$(date +"%Y-%m-%d")
+          echo "Current Date (Moscow Time): $current_date"
+          echo "current_date=$current_date" >> $GITHUB_ENV
+
+      - name: Delete workflow runs for remote repo
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: 'Excalibra/excalibra.github.io'
+          retain_days: 0
+          keep_minimum_runs: 3
