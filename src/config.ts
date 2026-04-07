@@ -1,0 +1,23 @@
+export const SITE = {
+  website: "https://excalibra.github.io", 
+  author: "Excalibra",
+  profile: "https://excalibra.github.io",
+  desc: "A personal blog built with GitHub Actions for writing and recording.",
+  title: "Excalibra",
+  ogImage: "og.jpg",
+  lightAndDarkMode: true,
+  postPerIndex: 5, 
+  postPerPage: 5,
+  scheduledPostMargin: 15 * 60 * 1000,
+  showArchives: true,
+  showBackButton: true,
+  editPost: {
+    enabled: true,
+    text: "Edit page",
+    url: "https://github.dev/excalibra/excalibra.github.io/edit/main/",
+  },
+  dynamicOgImage: false,
+  dir: "ltr",
+  lang: "en",
+  timezone: "America/New_York",
+} as const;
