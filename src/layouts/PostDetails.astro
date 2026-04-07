@@ -1,0 +1,626 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Tag from "@/components/Tag.astro";
+import Datetime from "@/components/Datetime.astro";
+import EditPost from "@/components/EditPost.astro";
+import ShareLinks from "@/components/ShareLinks.astro";
+import BackButton from "@/components/BackButton.astro";
+import BackToTopButton from "@/components/BackToTopButton.astro";
+import { getPath } from "@/utils/getPath";
+import { slugifyStr } from "@/utils/slugify";
+import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
+import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
+import { SITE } from "@/config";
+import Comments from "@/components/Comments";
+import PasswordWrapper from "@/components/PasswordWrapper.astro";
+import "@/styles/image-loading.css";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+  posts: CollectionEntry<"blog">[];
+}
+
+const { post, posts } = Astro.props;
+
+const {
+  title,
+  author,
+  description,
+  ogImage: initOgImage,
+  canonicalURL,
+  pubDatetime,
+  modDatetime,
+  timezone,
+  tags,
+  hideEditPost,
+  password,
+  passwordSubtitle,
+} = post.data;
+
+const { Content } = await render(post);
+
+let ogImageUrl: string | undefined;
+
+// Determine OG image source
+if (typeof initOgImage === "string") {
+  ogImageUrl = initOgImage; // Remote OG image (absolute URL)
+} else if (initOgImage?.src) {
+  ogImageUrl = initOgImage.src; // Local asset
+}
+
+// Use dynamic OG image if enabled and no remote|local ogImage
+if (!ogImageUrl && SITE.dynamicOgImage) {
+  ogImageUrl = `${getPath(post.id, post.filePath)}/index.png`;
+}
+
+// Resolve OG image URL (or fallback to SITE.ogImage / default `og.png`)
+const ogImage = ogImageUrl
+  ? new URL(ogImageUrl, Astro.url.origin).href
+  : undefined;
+
+const layoutProps = {
+  title: `${title} | ${SITE.title}`,
+  author,
+  description,
+  pubDatetime,
+  modDatetime,
+  canonicalURL,
+  ogImage,
+  scrollSmooth: true,
+};
+
+/* ========== Prev/Next Posts ========== */
+
+const allPosts = posts.map(({ data: { title }, id, filePath }) => ({
+  id,
+  title,
+  filePath,
+}));
+
+const currentPostIndex = allPosts.findIndex(a => a.id === post.id);
+
+const prevPost = currentPostIndex !== 0 ? allPosts[currentPostIndex - 1] : null;
+const nextPost =
+  currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null;
+---
+
+<Layout {...layoutProps}>
+  <Header />
+  <BackButton />
+  <main
+    id="main-content"
+    class:list={[
+      "mx-auto w-full max-w-app px-4 pb-12",
+      { "mt-8": !SITE.showBackButton },
+    ]}
+    data-pagefind-body
+  >
+    <h1
+      transition:name={slugifyStr(title)}
+      class="inline-block text-2xl font-bold text-accent sm:text-3xl"
+    >
+      {title}
+    </h1>
+    <div class="my-2 flex items-center gap-2">
+      <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
+      <span
+        aria-hidden="true"
+        class:list={[
+          "max-sm:hidden",
+          { hidden: !SITE.editPost.enabled || hideEditPost },
+        ]}
+      >|</span>
+      <EditPost {hideEditPost} {post} class="max-sm:hidden" />
+    </div>
+    <div id="encryption">
+      <PasswordWrapper password={password} passwordSubtitle={passwordSubtitle}>
+        <article
+          id="article"
+          class="app-prose mx-auto mt-8 max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"
+        >
+          <Content />
+        </article>
+
+        <hr class="my-8 border-dashed" />
+
+        <EditPost class="sm:hidden" {hideEditPost} {post} />
+
+        <ul class="mt-4 mb-8 sm:my-8">
+          {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} />)}
+        </ul>
+
+        <BackToTopButton />
+
+        <ShareLinks />
+       
+
+        <hr class="my-6 border-dashed" />
+
+        <!-- Previous/Next Post Buttons -->
+        <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {prevPost && (
+            <a
+              href={getPath(prevPost.id, prevPost.filePath)}
+              class="flex w-full gap-1 hover:opacity-75"
+            >
+              <IconChevronLeft class="inline-block flex-none rtl:rotate-180" />
+              <div>
+                <span>Previous Post</span>
+                <div class="text-sm text-accent/85">{prevPost.title}</div>
+              </div>
+            </a>
+          )}
+          {nextPost && (
+            <a
+              href={getPath(nextPost.id, nextPost.filePath)}
+              class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"
+            >
+              <div>
+                <span>Next Post</span>
+                <div class="text-sm text-accent/85">{nextPost.title}</div>
+              </div>
+              <IconChevronRight class="inline-block flex-none rtl:rotate-180" />
+            </a>
+          )}
+        
+      </div>
+      <Comments client:only="react" />
+
+      </PasswordWrapper>
+    </div>
+  </main>
+</Layout>
+<Footer />
+
+<script is:inline data-astro-rerun>
+  // Use IIFE to avoid variable redeclaration
+  (function() {
+    // Only run script on post detail pages
+    const isPostPage = document.querySelector("article#article") !== null;
+    
+    if (!isPostPage) return;
+    /** Create a progress indicator
+     *  at the top */
+    function createProgressBar() {
+      // Check if progress bar already exists
+      if (document.getElementById("myBar")) return;
+      
+      // Create the main container div
+      const progressContainer = document.createElement("div");
+      progressContainer.className =
+        "progress-container fixed top-0 z-10 h-1 w-full bg-background";
+
+      // Create the progress bar div
+      const progressBar = document.createElement("div");
+      progressBar.className = "progress-bar h-1 w-0 bg-accent";
+      progressBar.id = "myBar";
+
+      // Append the progress bar to the progress container
+      progressContainer.appendChild(progressBar);
+
+      // Append the progress container to the document body or any other desired parent element
+      document.body.appendChild(progressContainer);
+    }
+    
+    // Delay progress bar creation to avoid blocking rendering (using requestIdleCallback)
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(createProgressBar, { timeout: 1000 });
+    } else {
+      setTimeout(createProgressBar, 100);
+    }
+    /** Update the progress bar
+     *  when user scrolls */
+    function updateScrollProgress() {
+      const myBar = document.getElementById("myBar");
+      if (!myBar) return;
+      
+      // Throttle scroll event for performance
+      let ticking = false;
+      document.addEventListener("scroll", () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const winScroll =
+              document.body.scrollTop || document.documentElement.scrollTop;
+            const height =
+              document.documentElement.scrollHeight -
+              document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            myBar.style.width = scrolled + "%";
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    }
+    // Delay scroll progress bar initialization to avoid blocking page load
+    setTimeout(updateScrollProgress, 200);
+
+    /** Attaches links to headings in the document,
+     *  allowing sharing of sections easily */
+    function addHeadingLinks() {
+    // Only run on post detail pages (check if article tag exists)
+    const article = document.querySelector("article#article");
+    if (!article) return; // If not a post detail page, exit
+
+    const headings = Array.from(
+      article.querySelectorAll("h2, h3, h4, h5, h6")
+    );
+    
+    // Check if links have already been added to avoid duplication
+    for (const heading of headings) {
+      // Skip headings inside password container
+      if (heading.closest(".password-container")) {
+        continue;
+      }
+      // Skip if link already exists
+      if (heading.querySelector(".heading-link")) {
+        continue;
+      }
+      
+      heading.classList.add("group");
+      const link = document.createElement("a");
+      link.className =
+        "heading-link ms-2 no-underline opacity-75 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100";
+      link.href = "#" + heading.id;
+
+      const span = document.createElement("span");
+      span.ariaHidden = "true";
+      span.innerText = "#";
+      link.appendChild(span);
+      heading.appendChild(link);
+    }
+    }
+
+    /** Attaches copy buttons to code blocks in the document,
+     * allowing users to copy code easily. */
+    function attachCopyButtons() {
+      // Only run on post detail pages
+    const article = document.querySelector("article#article");
+    if (!article) return; // If not a post detail page, exit
+
+    const copyButtonLabel = "Copy";
+    const codeBlocks = Array.from(article.querySelectorAll("pre"));
+
+    for (const codeBlock of codeBlocks) {
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      // Check if --file-name-offset custom property exists
+      const computedStyle = getComputedStyle(codeBlock);
+      const hasFileNameOffset =
+        computedStyle.getPropertyValue("--file-name-offset").trim() !== "";
+
+      // Determine the top positioning class
+      const topClass = hasFileNameOffset
+        ? "top-(--file-name-offset)"
+        : "-top-3";
+
+      const copyButton = document.createElement("button");
+      copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted border border-muted px-2 py-1 text-xs leading-4 text-foreground font-medium`;
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      // wrap codebock with relative parent element
+      codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      const code = block.querySelector("code");
+      const text = code?.innerText;
+
+      await navigator.clipboard.writeText(text ?? "");
+
+      // visual feedback that task is completed
+      button.innerText = "Copied";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+    }
+
+    // Defer non-critical UI enhancements to avoid blocking rendering
+    function initUIEnhancements() {
+      addHeadingLinks();
+      attachCopyButtons();
+    }
+
+    // Delay UI enhancements initialization, use requestIdleCallback to avoid blocking
+    function scheduleUIEnhancements() {
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(initUIEnhancements, { timeout: 1000 });
+      } else {
+        setTimeout(initUIEnhancements, 100);
+      }
+    }
+
+    // Initialize after page load
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", scheduleUIEnhancements, { once: true });
+    } else {
+      scheduleUIEnhancements();
+    }
+
+    // Reinitialize on Astro page swap, delay to avoid blocking swap
+    document.addEventListener("astro:after-swap", () => {
+      // Check if still on a post detail page
+      if (document.querySelector("article#article")) {
+        // Use requestIdleCallback to delay execution, avoid blocking page swap
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(initUIEnhancements, { timeout: 500 });
+        } else {
+          setTimeout(initUIEnhancements, 50);
+        }
+      }
+    }, { passive: true });
+
+    /* Optimize page transitions for faster navigation */
+    // Prepare before page swap to reduce delay - use async to avoid blocking
+    document.addEventListener("astro:before-preparation", () => {
+      // Clean up asynchronously without blocking page swap
+      requestAnimationFrame(() => {
+        // Clean up old preload links to avoid duplication
+        const oldPreloads = document.querySelectorAll('link[rel="preload"][as="image"]');
+        oldPreloads.forEach(link => {
+          const href = link.getAttribute("href");
+          const currentPageImages = Array.from(document.querySelectorAll("figure img"))
+            .map(img => img.getAttribute("src"));
+          if (!currentPageImages.includes(href)) {
+            link.remove();
+          }
+        });
+      });
+    }, { passive: true });
+
+    // Before page swap, minimize blocking operations
+    document.addEventListener("astro:before-swap", () => {
+      // Don't execute any blocking operations to allow fast page swaps
+    }, { passive: true });
+
+    // Optimize link click performance - prepare page swap in advance
+    document.addEventListener("click", (e) => {
+      const link = e.target.closest("a[href]");
+      if (link && link.href.startsWith(window.location.origin)) {
+        // If internal link, prepare in advance to reduce delay
+        // Use requestIdleCallback to not block click event
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(() => {
+            // Clean up in advance to prepare for page swap
+          }, { timeout: 10 });
+        }
+      }
+    }, { passive: true, capture: true });
+
+    /* Go to page start after page swap - use requestAnimationFrame to avoid blocking */
+    document.addEventListener("astro:after-swap", () => {
+      // Use requestAnimationFrame to ensure no blocking of page rendering
+      requestAnimationFrame(() => {
+        window.scrollTo({ left: 0, top: 0, behavior: "instant" });
+      });
+    }, { passive: true });
+
+    /** Add loading animation to images */
+    function addImageLoadingAnimation() {
+      // Only run on post detail pages
+      const article = document.querySelector("article#article");
+      if (!article) return;
+
+      const images = Array.from(article.querySelectorAll("img"));
+      
+      images.forEach((img) => {
+        // Skip images that already have a wrapper
+        if (img.closest(".image-loading-wrapper")) return;
+        
+        const src = img.getAttribute("src");
+        if (!src) return;
+        
+        // Create wrapper
+        const wrapper = document.createElement("div");
+        wrapper.className = "image-loading-wrapper";
+        
+        // Create loading placeholder
+        const placeholder = document.createElement("div");
+        placeholder.className = "image-loading-placeholder";
+        const loadingImg = document.createElement("img");
+        loadingImg.src = "/loading.gif";
+        loadingImg.alt = "Loading...";
+        placeholder.appendChild(loadingImg);
+        
+        // Wrap image
+        img.parentNode?.insertBefore(wrapper, img);
+        wrapper.appendChild(placeholder);
+        wrapper.appendChild(img);
+        
+        // Image load completion event
+        if (img.complete && img.naturalHeight !== 0) {
+          // Image already loaded
+          img.classList.add("loaded");
+          setTimeout(() => {
+            placeholder.style.display = "none";
+          }, 100);
+        } else {
+          // Listen for load event
+          img.addEventListener("load", () => {
+            img.classList.add("loaded");
+            setTimeout(() => {
+              placeholder.style.display = "none";
+            }, 300);
+          }, { once: true });
+          
+          // Listen for error event
+          img.addEventListener("error", () => {
+            placeholder.style.display = "none";
+            img.style.opacity = "1";
+            img.classList.add("loaded");
+          }, { once: true });
+        }
+        
+        // Add click-to-enlarge functionality
+        wrapper.addEventListener("click", () => {
+          openImageModal(img.src, img.alt || "");
+        });
+      });
+    }
+
+    /** Image lightbox/enlargement functionality */
+    function initImageModal() {
+      // Create modal if it doesn't exist
+      let modal = document.getElementById("image-modal");
+      if (!modal) {
+        modal = document.createElement("div");
+        modal.id = "image-modal";
+        modal.className = "image-modal";
+        
+        const modalContent = document.createElement("div");
+        modalContent.className = "image-modal-content";
+        
+        const modalImg = document.createElement("img");
+        modalImg.id = "image-modal-img";
+        modalImg.alt = "";
+        
+        const closeBtn = document.createElement("span");
+        closeBtn.className = "image-modal-close";
+        closeBtn.setAttribute("aria-label", "Close");
+        
+        modalContent.appendChild(modalImg);
+        modal.appendChild(modalContent);
+        modal.appendChild(closeBtn);
+        document.body.appendChild(modal);
+        
+        // Close button event
+        closeBtn.addEventListener("click", closeImageModal);
+        
+        // Click background to close
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            closeImageModal();
+          }
+        });
+        
+        // ESC key to close
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && modal.classList.contains("active")) {
+            closeImageModal();
+          }
+        });
+      }
+    }
+
+    function openImageModal(src, alt) {
+      const modal = document.getElementById("image-modal");
+      const modalImg = document.getElementById("image-modal-img");
+      if (modal && modalImg) {
+        modalImg.src = src;
+        modalImg.alt = alt;
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden"; // Prevent background scrolling
+      }
+    }
+
+    function closeImageModal() {
+      const modal = document.getElementById("image-modal");
+      if (modal) {
+        modal.classList.remove("active");
+        document.body.style.overflow = ""; // Restore scrolling
+      }
+    }
+
+    /** Optimize image loading for seamless user experience
+     *  Only preload images inside <figure> tags, others use lazy loading
+     */
+    function optimizeImageLoading() {
+      // Only run on post detail pages
+      const article = document.querySelector("article#article");
+      if (!article) return;
+
+      // Add loading animation first
+      addImageLoadingAnimation();
+
+      // Find images inside <figure> tags for preloading
+      const figureImages = Array.from(article.querySelectorAll("figure img"));
+      // Other images use lazy loading
+      const otherImages = Array.from(article.querySelectorAll("img")).filter(
+        img => !img.closest("figure")
+      );
+      
+      // Immediately preload images inside <figure> (critical content)
+      if (figureImages.length > 0) {
+        figureImages.forEach((img) => {
+          const src = img.getAttribute("src");
+          if (src) {
+            // Set image attributes for immediate loading
+            img.setAttribute("loading", "eager");
+            img.setAttribute("fetchpriority", "high");
+            
+            // Use link preload for images (only when image is visible)
+            const rect = img.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight + 500 && rect.bottom > -500;
+            
+            if (isVisible) {
+              // Check if already preloaded
+              const existingPreload = document.querySelector(`link[rel="preload"][href="${src}"]`);
+              if (!existingPreload) {
+                const link = document.createElement("link");
+                link.rel = "preload";
+                link.as = "image";
+                link.href = src;
+                link.setAttribute("fetchpriority", "high");
+                document.head.appendChild(link);
+              }
+            }
+          }
+        });
+      }
+      
+      // Other images use lazy loading
+      if (otherImages.length > 0) {
+        otherImages.forEach((img) => {
+          // If loading attribute not set, set to lazy
+          if (!img.getAttribute("loading")) {
+            img.setAttribute("loading", "lazy");
+          }
+        });
+      }
+    }
+
+    // Run optimization on page load - prioritize <figure> images
+    function runOptimization() {
+      // Initialize image modal
+      initImageModal();
+      // Immediately process <figure> images (critical content)
+      optimizeImageLoading();
+    }
+
+    // Immediately optimize images on page load (especially those inside <figure>)
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", runOptimization, { once: true });
+    } else {
+      // If DOM already loaded, execute immediately
+      runOptimization();
+    }
+
+    // Also immediately optimize images on Astro page swap - use requestAnimationFrame to avoid blocking
+    document.addEventListener("astro:after-swap", () => {
+      // Use requestAnimationFrame to ensure no blocking of page rendering
+      requestAnimationFrame(() => {
+        // Check if still on a post detail page
+        if (document.querySelector("article#article")) {
+          // Immediately optimize images after page swap to ensure fast loading of <figure> images
+          // Delay slightly to ensure DOM is fully updated
+          setTimeout(() => {
+            runOptimization();
+          }, 0);
+        }
+      });
+    }, { passive: true });
+  })(); // End of IIFE
+</script>
