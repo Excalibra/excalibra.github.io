@@ -90,6 +90,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
     <Hr />
 
+    <!-- DEBUG: Show featured posts count -->
+    <p class="text-red-500 font-bold text-center my-4">DEBUG: Featured posts found: {featuredPosts.length}</p>
+
     {
       featuredPosts.length > 0 && (
         <>
