@@ -10,8 +10,8 @@
     --font-cn: 'LXGW WenKai GB', 'Microsoft YaHei', 'PingFang SC', 'WenQuanYi Micro Hei', sans-serif;
 }
 
-h1,h2,h3,h4,h5,h6,span,figcaption,div,b {
-    font-family: 'PingFang SC', sans-serif;
+h1, h2, h3, h4, h5, h6, span, figcaption, div, b {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 h3 {
