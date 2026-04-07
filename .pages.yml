@@ -1,0 +1,122 @@
+media:
+  - name: hero-images
+    label: Hero Images
+    input: public/assets/hero-images
+    output: /assets/hero-images
+    categories: [ image ]
+    extensions: [ png, jpg, jpeg, webp, svg ]
+    path: /assets/hero-images
+  - name: assets
+    label: Other Assets
+    input: public/assets
+    output: /assets
+    path: /assets
+
+content:
+  - name: posts
+    label: Blog Posts
+    type: collection
+    path: src/data/blog
+    format: yaml-frontmatter
+    subfolders: true
+    filename: "{slug}.mdx"
+    exclude:
+      - index.md
+      - index.mdx
+      - README.md
+    view:
+      fields:
+        - title
+        - description
+        - pubDatetime
+        - modDatetime
+        - featured
+        - tags
+        - password
+      primary: title
+      sort:
+        - pubDatetime
+        - modDatetime
+        - title
+      defaultSort:
+        field: pubDatetime
+        order: desc
+      search:
+        - title
+        - description
+        - tags
+    fields:
+      # Title - Required field
+      - name: title
+        label: Title
+        type: string
+        required: true
+        description: Article title
+
+      # Slug - Custom URL path
+      - name: slug
+        label: Custom Path
+        type: string
+        required: true
+        description: Article URL path identifier (required)
+        pattern:
+          regex: "^[a-zA-Z0-9_-]+$"
+          message: "Path can only contain letters, numbers, underscores, and hyphens"
+
+      # Publish date and time
+      - name: pubDatetime
+        label: Publish Date
+        type: date
+        required: true
+        options:
+          time: true
+        description: Article publication date and time
+
+      # Last updated date and time
+      - name: modDatetime
+        label: Last Updated
+        type: date
+        options:
+          time: true
+        description: Article last updated date and time
+
+      # Description
+      - name: description
+        label: Description
+        type: text
+        description: Short article description for SEO and preview
+
+      # Tags - Supports multiple tags
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+        description: Article tags, can add multiple
+
+      # Featured article
+      - name: featured
+        label: Featured Article
+        type: boolean
+        default: false
+        description: Whether to mark as featured article
+
+      # Password protection
+      - name: password
+        label: Password
+        type: string
+        description: Article password (optional, article will be password protected if set)
+        pattern:
+          regex: "^[a-zA-Z0-9!@#$%^&*()_+-=]{1,50}$"
+          message: "Password can only contain letters, numbers, and common special characters, maximum 50 characters"
+
+      # Body content
+      - name: body
+        label: Body Content
+        type: rich-text
+        description: Article body content (Markdown format)
+
+
+
+settings:
+  content:
+    merge: true
