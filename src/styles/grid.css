@@ -1,0 +1,45 @@
+/* Grid background style, independent file for easy maintenance */
+
+/* Grid size and color variables */
+:root {
+  --grid-size: 24px;
+  --grid-line-light: #e5efff;
+  --grid-line-dark: rgba(255, 255, 255, 0.06);
+}
+
+/* Grid line color for default and light theme */
+html[data-theme="light"],
+html:not([data-theme]) {
+  --grid-line-color: var(--grid-line-light);
+}
+
+/* Grid line color for dark theme */
+html[data-theme="dark"] {
+  --grid-line-color: var(--grid-line-dark);
+}
+
+/* Apply grid background to entire page (applied to html so navigation area also shows it) */
+html {
+  background-color: var(--background);
+  background-image:
+    linear-gradient(var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: 0 0;
+}
+
+/* Make body transparent to avoid covering html grid background */
+body {
+  background-color: transparent !important;
+}
+
+/* Make top navigation container transparent to avoid blocking the grid */
+#top-nav-wrap {
+  background-color: transparent !important;
+}
+
+/* Make separator lines (Hr) slightly darker in light mode for better visibility */
+html[data-theme="light"] hr.border-border,
+html:not([data-theme]) hr.border-border {
+  border-color: #cbd5e1; /* Close to Tailwind slate-300, slightly darker than current border */
+}
