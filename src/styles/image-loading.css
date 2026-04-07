@@ -1,0 +1,259 @@
+/* Image loading container */
+.image-loading-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  background-color: var(--muted);
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 200px; /* Minimum height to avoid layout shift */
+  margin-top: 0 !important; /* Remove top margin */
+  margin-bottom: 0 !important; /* Remove bottom margin */
+  padding-top: 0 !important; /* Remove top padding */
+  padding-bottom: 0 !important; /* Remove bottom padding */
+  cursor: pointer; /* Add pointer style to indicate clickability */
+  /* Add gallery-style border by default (will be overridden for figure tags) */
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Loading animation placeholder */
+.image-loading-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--muted);
+  z-index: 1;
+  transition: opacity 0.3s ease;
+  border: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+}
+
+.image-loading-placeholder img {
+  width: 48px;
+  height: 48px;
+  opacity: 0.6;
+}
+
+/* Image element */
+.image-loading-wrapper > img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  border: none !important; /* Remove image borders */
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  outline: none !important; /* Remove image outline */
+  box-shadow: none !important; /* Remove any shadow borders */
+}
+
+/* After image loads */
+.image-loading-wrapper > img.loaded {
+  opacity: 1;
+}
+
+.image-loading-wrapper > img.loaded ~ .image-loading-placeholder {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Images inside figure tags - keep borderless */
+figure .image-loading-wrapper {
+  width: 100%;
+  border: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+  border: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove borders from figure tags themselves (if any) */
+figure {
+  border: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Images inside articles - add border by default (will be overridden for figure) */
+article img:not(figure img) {
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06) !important;
+  border-radius: 8px;
+  outline: none !important;
+}
+
+/* Remove border from loading.gif in placeholder */
+.image-loading-placeholder img {
+  border: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Override image borders in prose styles */
+.app-prose img:not(figure img),
+.prose img:not(figure img),
+article img:not(figure img) {
+  outline: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Image containers not inside figure tags - add gallery-style border */
+article .image-loading-wrapper:not(figure .image-loading-wrapper) {
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Images inside figure tags - keep borderless */
+article figure img,
+article figure .image-loading-wrapper {
+  border: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Image lightbox/modal */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+
+.image-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  margin: auto;
+  animation: zoomIn 0.3s ease;
+}
+
+.image-modal-content img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  border: none !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.image-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.image-modal-close:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.image-modal-close::before {
+  content: "×";
+  line-height: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
