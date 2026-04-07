@@ -88,26 +88,32 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
     </section>
 
-    <Hr />
+<Hr />
 
-    <!-- DEBUG: Show featured posts count -->
-    <p class="text-red-500 font-bold text-center my-4">DEBUG: Featured posts found: {featuredPosts.length}</p>
+<!-- DEBUG: Show featured section visibility -->
+{
+  featuredPosts.length > 0 && (
+    <div class="bg-green-500 text-white text-center p-2 mb-4">
+      DEBUG: Featured section should be visible! Found {featuredPosts.length} featured post(s).
+    </div>
+  )
+}
 
-    {
-      featuredPosts.length > 0 && (
-        <>
-          <section id="featured" class="pt-12 pb-6">
-            <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
-            <ul>
-              {featuredPosts.map(data => (
-                <Card variant="h3" {...data} />
-              ))}
-            </ul>
-          </section>
-          {recentPosts.length > 0 && <Hr />}
-        </>
-      )
-    }
+{
+  featuredPosts.length > 0 && (
+    <>
+      <section id="featured" class="pt-12 pb-6">
+        <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
+        <ul>
+          {featuredPosts.map(data => (
+            <Card variant="h3" {...data} />
+          ))}
+        </ul>
+      </section>
+      {recentPosts.length > 0 && <Hr />}
+    </>
+  )
+}
 
     {
       recentPosts.length > 0 && (
