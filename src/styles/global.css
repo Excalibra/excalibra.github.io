@@ -70,7 +70,7 @@ html[data-theme="dark"] {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply flex min-h-svh flex-col font-mono text-foreground selection:bg-accent/75 selection:text-background;
+  @apply flex min-h-svh flex-col font-sans text-foreground selection:bg-accent/75 selection:text-background;
   }
   a,
   button {
