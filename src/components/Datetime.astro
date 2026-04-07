@@ -29,7 +29,7 @@ const {
 const isModified = modDatetime && modDatetime > pubDatetime;
 
 const pubDate = dayjs(pubDatetime).tz(postTimezone || SITE.timezone);
-const pubDateFormatted = pubDate.format("YYYY-MM-DD");
+const pubDateFormatted = pubDate.format("DD MMM YYYY");
 
 const modDate = isModified ? dayjs(modDatetime).tz(postTimezone || SITE.timezone) : null;
 const modDateFormatted = modDate ? modDate.format("YYYY-MM-DD") : null;
