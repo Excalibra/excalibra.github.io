@@ -1,0 +1,66 @@
+---
+title: "North Korea-Linked Hackers Use GitHub as C2 Infrastructure to Attack South Korea"
+categories: Threat Intelligence
+tags: ['kimsuky', 'north-korea', 'dprk', 'github-c2', 'lolbins', 'lnk', 'powershell', 'xeno-rat', 'rok-rat', 'apt', 'cyber-espionage']
+pubDatetime: 2026-04-08
+slug: "20260408190100"
+description: "FortiGuard Labs has uncovered a new campaign by the North Korea-linked Kimsuky group using GitHub as Command-and-Control infrastructure. The multi-stage attack begins with phishing LNK files, employs heavy anti-VM and anti-analysis techniques, establishes persistence via scheduled tasks, and exfiltrates data to attacker-controlled GitHub repositories."
+---
+
+
+### Executive Summary
+FortiGuard Labs has identified a sophisticated multi-stage attack campaign attributed to the North Korea-linked threat actor **Kimsuky**. The group is abusing **GitHub** as a living-off-the-land Command and Control (C2) infrastructure to target South Korean organizations.  
+
+The attack chain starts with obfuscated Windows Shortcut (**LNK**) files delivered via phishing emails. These LNK files deploy decoy PDF documents while silently executing PowerShell scripts in the background. The scripts perform anti-analysis checks, establish persistence through scheduled tasks, and exfiltrate collected data to GitHub repositories using hardcoded access tokens. Additional modules and commands are also retrieved from the same GitHub repositories.
+
+This campaign highlights the increasing trend of state-sponsored actors abusing legitimate cloud platforms and native Windows tools (LOLBins) to lower detection rates and maintain long-term access.
+
+### Attack Chain Breakdown
+
+1. **Initial Access**  
+   Phishing emails deliver obfuscated **LNK** files. When opened, victims see a legitimate-looking PDF document while a malicious PowerShell script runs silently in the background.
+
+2. **Anti-Analysis & Evasion**  
+   The PowerShell script scans for virtual machines, debuggers, and forensic tools. If any are detected, the script immediately terminates.  
+
+3. **Persistence**  
+   If the environment is clean, the script extracts a Visual Basic Script (VBScript) and creates a scheduled task that runs the PowerShell payload every 30 minutes in a hidden window. This ensures execution after system reboots.
+
+4. **Data Collection & Exfiltration**  
+   The script gathers host information, saves results to a log file, and exfiltrates the data to GitHub repositories under attacker-controlled accounts, including:
+   - `motoralis`
+   - `God0808RAMA`
+   - `Pigresy80`
+   - `entire73`
+   - `pandora0009`
+   - `brandonleeodd93-blip`
+
+5. **C2 via GitHub**  
+   The same GitHub repositories are used to store additional modules and commands, allowing operators to maintain persistent control over compromised systems while blending into trusted platforms.
+
+### Connection to Previous Campaigns
+Fortinet notes that earlier iterations of this activity delivered the **Xeno RAT** malware family. Similar GitHub-based C2 usage for distributing Xeno RAT and its variant **MoonPeak** was previously reported by ENKI and Trellix, both attributing the activity to **Kimsuky**.
+
+This disclosure coincides with AhnLab’s report on a similar LNK-based infection chain by Kimsuky that ultimately deploys a **Python-based backdoor**. In that variant, the LNK executes PowerShell which creates a hidden folder `C:\windirr`, drops decoy documents, and uses Dropbox as an interim C2 before downloading ZIP fragments from `quickcon[.]store` to deploy an XML Scheduled Task and the final Python implant.
+
+The Python backdoor supports downloading additional payloads and executing commands such as running shell scripts, listing directories, uploading/downloading/deleting files, and executing BAT, VBScript, or EXE files.
+
+### Related TTP Evolution
+These findings also align with observations from ScarCruft (another DPRK-linked group), which has shifted from traditional LNK → BAT → shellcode chains to **HWP OLE-based droppers** for delivering **RokRAT** — a remote access trojan exclusively used by North Korean hacking groups.
+
+### Researcher Comments
+Security researcher **Cara Lin** from Fortinet stated:  
+> “Threat actors are moving away from complex custom malware and instead leveraging native Windows tools for deployment, evasion, and persistence. By minimizing the use of PE files and heavily relying on LOLBins, attackers can target a broad audience with significantly lower detection rates.”
+
+### Recommendations
+- Strengthen email security gateways with advanced LNK and PowerShell inspection
+- Monitor abnormal access to GitHub, Dropbox, and other cloud repositories from endpoints
+- Implement strict application whitelisting and behavioral monitoring for scheduled tasks
+- Enable enhanced logging for PowerShell execution (Script Block Logging, Module Logging)
+- Regularly hunt for suspicious GitHub accounts and repositories with high-frequency commits from compromised environments
+
+---
+
+**This campaign once again demonstrates how nation-state actors continue to innovate by abusing trusted platforms and living-off-the-land techniques to evade traditional security controls.**
+
+*Analysis based on reporting from FortiGuard Labs, AhnLab, and open-source intelligence as of April 2026.*
