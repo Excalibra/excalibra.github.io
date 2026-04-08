@@ -20,6 +20,12 @@ FortiGuard Labs has identified a sophisticated multi-stage attack campaign attri
 
 The attack chain starts with obfuscated Windows Shortcut (**LNK**) files delivered via phishing emails. These LNK files deploy decoy PDF documents while silently executing PowerShell scripts in the background. The scripts perform anti-analysis checks, establish persistence through scheduled tasks, and exfiltrate collected data to GitHub repositories using hardcoded access tokens. Additional modules and commands are also retrieved from the same GitHub repositories.
 
+<p align="center">
+  <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tqvo9z0wg2oj4bp47u6e.png" alt="Decoy PDF">
+  <br>
+  <em>Decoy PDF</em>
+</p>
+
 This campaign highlights the increasing trend of state-sponsored actors abusing legitimate cloud platforms and native Windows tools (LOLBins) to lower detection rates and maintain long-term access.
 
 ### Attack Chain Breakdown
@@ -45,8 +51,20 @@ This campaign highlights the increasing trend of state-sponsored actors abusing 
 5. **C2 via GitHub**  
    The same GitHub repositories are used to store additional modules and commands, allowing operators to maintain persistent control over compromised systems while blending into trusted platforms.
 
+<p align="center">
+  <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/td7m1tlt499rz70buwjp.png" alt="Attacker’s GitHub">
+  <br>
+  <em>Attacker’s GitHub</em>
+</p>
+
 ### Connection to Previous Campaigns
 Fortinet notes that earlier iterations of this activity delivered the **Xeno RAT** malware family. Similar GitHub-based C2 usage for distributing Xeno RAT and its variant **MoonPeak** was previously reported by ENKI and Trellix, both attributing the activity to **Kimsuky**.
+
+<p align="center">
+  <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yn5nnyajgo4fmvltjvp4.png" alt="Attack chain">
+  <br>
+  <em>Attack chain</em>
+</p>
 
 This disclosure coincides with AhnLab’s report on a similar LNK-based infection chain by Kimsuky that ultimately deploys a **Python-based backdoor**. In that variant, the LNK executes PowerShell which creates a hidden folder `C:\windirr`, drops decoy documents, and uses Dropbox as an interim C2 before downloading ZIP fragments from `quickcon[.]store` to deploy an XML Scheduled Task and the final Python implant.
 
@@ -54,6 +72,24 @@ The Python backdoor supports downloading additional payloads and executing comma
 
 ### Related TTP Evolution
 These findings also align with observations from ScarCruft (another DPRK-linked group), which has shifted from traditional LNK → BAT → shellcode chains to **HWP OLE-based droppers** for delivering **RokRAT** — a remote access trojan exclusively used by North Korean hacking groups.
+
+### URLs
+
+hxxps://raw[.]githubusercontent[.]com/motoralis/singled/main/kcca/paper[.]jim
+
+hxxps://api[.]github[.]com/repos/motoralis
+
+### SHA256
+
+af0309aa38d067373c54b2a7774a32f68ab72cb2dbf5aed74ac784b079830184 TRAMS WINBOT AI Strategic Proposal.pdf.lnk
+
+9c3f2bd300ad2ef8584cc48adc47aab61bf85fc653d923e106c73fc6ec3ea1dc 전략적 파트너십 상세 제안서.pdf.lnk
+
+f20fde3a9381c22034f7ecd4fef2396a85c05bfd54f7db3ad6bcd00c9e09d421 상세 제안서 — 미래에셋 X AYC Fund.pdf.lnk
+
+484a16d779d67c7339125ceac10b9abf1aa47f561f40058789bfe2acda548282 CONFIDENTIAL IOTRUST OFFER.pdf.lnk
+
+c0866bb72c7a12a0288f434e16ba14eeaa35d3c4cff4a86046c553c15679c0b5 (CONFIDENTIAL) AIN x Mine Korea 2026.pdf.lnk
 
 ### Researcher Comments
 Security researcher **Cara Lin** from Fortinet stated:  
