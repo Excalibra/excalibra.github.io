@@ -76,7 +76,7 @@ The recently distributed LNK files — “Resume (Park Seong-min).hwp.lnk” and
 **[Table 3] File Functions**
 
 **2-2. Intermediate Stage**  
-A scheduled task is created based on an XML file. The task name is set to **GoogleUpdateTaskMachineCGI__{56C6A980-91A1-4DB2-9812-5158E7E97388}**. Inside the XML, a task is defined that repeatedly runs the command `wscript.exe /b “C:\windirr\11.vbs”` every 17 minutes starting from 2025-08-26 15:17. When the VBS file executes via the scheduler, it launches `C:\windirr\pp.ps1`.
+A scheduled task is created based on an XML file. The task name is set to **`GoogleUpdateTaskMachineCGI__{56C6A980-91A1-4DB2-9812-5158E7E97388}`**. Inside the XML, a task is defined that repeatedly runs the command `wscript.exe /b “C:\windirr\11.vbs”` every 17 minutes starting from 2025-08-26 15:17. When the VBS file executes via the scheduler, it launches `C:\windirr\pp.ps1`.
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/g6b7fst77kxvaicnxpuo.png)
 
@@ -105,7 +105,7 @@ The `hh.bat` file downloads two split ZIP fragments from the URLs below, merges 
 
 **[Figure 6] Partial Code from hh.bat**
 
-The final Python backdoor is executed through the XML scheduled task. The `hh.bat` registers a new task named **GoogleExtension{02-2032121-098}** to run `C:\winii\beauty.py`.
+The final Python backdoor is executed through the XML scheduled task. The `hh.bat` registers a new task named **`GoogleExtension{02-2032121-098}`** to run `C:\winii\beauty.py`.
 
 <br/>
 
