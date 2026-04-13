@@ -15,6 +15,8 @@ description: "FortiGuard Labs has uncovered a new campaign by the North Korea-li
   />
 </p>
 
+<br />
+
 ### Executive Summary
 FortiGuard Labs has identified a sophisticated multi-stage attack campaign attributed to the North Korea-linked threat actor **Kimsuky**. The group is abusing **GitHub** as a living-off-the-land Command and Control (C2) infrastructure to target South Korean organizations.  
 
@@ -26,6 +28,7 @@ The attack chain starts with obfuscated Windows Shortcut (**LNK**) files deliver
   <em>Decoy PDF</em>
 </p>
 
+
 This campaign highlights the increasing trend of state-sponsored actors abusing legitimate cloud platforms and native Windows tools (LOLBins) to lower detection rates and maintain long-term access.
 
 ### Attack Chain Breakdown
@@ -33,13 +36,71 @@ This campaign highlights the increasing trend of state-sponsored actors abusing 
 1. **Initial Access**  
    Phishing emails deliver obfuscated **LNK** files. When opened, victims see a legitimate-looking PDF document while a malicious PowerShell script runs silently in the background.
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d3e694e9-f854-4c8a-87ce-4e8971e65a67" alt="LNK file with PowerShell script" />
+  <br />
+  <em>LNK file with PowerShell script</em>
+</p>
+
+
+<img width="979" height="368" alt="image" src="https://github.com/user-attachments/assets/384dc710-f46f-46f7-b5fd-4e7b0931af38" />
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b93feb56-9d1b-4d45-8d8e-f1ac7c9fe339" alt="LNK files with fixed metadata" />
+  <br />
+  <em>LNK files with fixed metadata</em>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a2f4f35b-6913-40e4-927b-97e6f76850b5" alt="LNK files with fixed metadata" />
+  <br />
+  <em>LNK file with encoded data</em>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/efa62799-4ec3-4a4a-a1fb-e9fa0fe37995" />
+  <br />
+  <em>Decoy PDF</em>
+</p>
+
+<br />
+
 2. **Anti-Analysis & Evasion**  
-   The PowerShell script scans for virtual machines, debuggers, and forensic tools. If any are detected, the script immediately terminates.  
+   The PowerShell script scans for virtual machines, debuggers, and forensic tools. If any are detected, the script immediately terminates.
+
+   It searches for a broad range of analysis software, including “vmxnet,” “vmusrvc,” “vmsrvc,” “vmtoolsd,” “vmwaretray,” “vboxservice,” “vboxtray,” “idaq,” “idaq64,” “autoruns,” “dumpcap,” “de4dot,” “hookexplorer,” “ilspy,” “lordpe,” “dnspy,” “petools,” “autorunsc,” “resourcehacker,” “filemon,” “regmon,” “procexp,” “procexp64,” “tcpview,” “tcpview64,” “Procmon,” “Procmon64,” “vmmap,” “vmmap64,” “portmon,” “processlasso,” “Wireshark,” “Fiddler Everywhere,” “Fiddler,” “ida,” “ida64,” “ImmunityDebugger,” “WinDump,” “x64dbg,” “x32dbg,” “OllyDbg,” and “ProcessHacker.” If any of these processes are detected, the script immediately terminates to prevent analysis by security researchers.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d16d8f0b-94e4-4934-917e-bc53dcdec43d" />
+  <br />
+  <em>Checks running process</em>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/28ca2d59-c5bf-455a-b3d3-74a8da360edc" />
+  <br />
+  <em>Dropped VBS script</em>
+</p>
+
+<br />
 
 3. **Persistence**  
    If the environment is clean, the script extracts a Visual Basic Script (VBScript) and creates a scheduled task that runs the PowerShell payload every 30 minutes in a hidden window. This ensures execution after system reboots.
 
-4. **Data Collection & Exfiltration**  
+```
+$action = New-ScheduledTaskAction -Execute 'wscript.exe' -Argument ('"' + $vbsFilePath + '"'); $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(5) -RepetitionInterval (New-TimeSpan -Minutes 30); $settings = New-ScheduledTaskSettingsSet -Hidden; Register-ScheduledTask -TaskName "Technical Paper for Creata Chain Task S-1-12-12-3-1231241245BVSKLERh-SD234GHSI56" -Action $action -Trigger $trigger -Settings $settings
+```
+
+<br />
+
+4. **Data Collection & Exfiltration**
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/92520d5d-3113-4057-b607-75db7110f10b" />
+  <br />
+  <em>Extracts system information and uploads to Github</em>
+</p>
+
    The script gathers host information, saves results to a log file, and exfiltrates the data to GitHub repositories under attacker-controlled accounts, including:
    - `motoralis`
    - `God0808RAMA`
@@ -48,14 +109,29 @@ This campaign highlights the increasing trend of state-sponsored actors abusing 
    - `pandora0009`
    - `brandonleeodd93-blip`
 
-5. **C2 via GitHub**  
-   The same GitHub repositories are used to store additional modules and commands, allowing operators to maintain persistent control over compromised systems while blending into trusted platforms.
 
 <p align="center">
   <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/td7m1tlt499rz70buwjp.png" alt="Attacker’s GitHub" />
   <br />
   <em>Attacker’s GitHub</em>
 </p>
+
+5. **C2 via GitHub**  
+   The same GitHub repositories are used to store additional modules and commands, allowing operators to maintain persistent control over compromised systems while blending into trusted platforms.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/053a6cf9-f147-467a-b3fa-bf3e5257d6c6" alt="Attacker’s GitHub" />
+  <br />
+  <em>PowerShell script for C2 communication</em>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2398e825-a09c-4e67-921c-45c1ad9888c2" alt="Attacker’s GitHub" />
+  <br />
+  <em>PowerShell script from GitHub C2</em>
+</p>
+
+<br />
 
 ### Connection to Previous Campaigns
 Fortinet notes that earlier iterations of this activity delivered the **Xeno RAT** malware family. Similar GitHub-based C2 usage for distributing Xeno RAT and its variant **MoonPeak** was previously reported by ENKI and Trellix, both attributing the activity to **Kimsuky**.
