@@ -44,7 +44,7 @@ Previous LNK files operated by executing a PowerShell script that downloaded a B
 **[Figure 1] Malicious BAT Script File**
 
 **1-2. Intermediate Stage**  
-The downloaded BAT file further downloads additional ZIP files and decoy files. It then downloads split ZIP fragments individually, merges them into a single archive, and extracts it. The resulting archive contains a Python script, Python interpreter, and an XML scheduled task file (`sch.db`). Based on the XML file, a scheduled task named **Microsoft_Upgrade{10-9903-09-821392134}** is registered. The Python script is then executed via the task scheduler, ultimately leading to the download and execution of the Python-based backdoor.
+The downloaded BAT file further downloads additional ZIP files and decoy files. It then downloads split ZIP fragments individually, merges them into a single archive, and extracts it. The resulting archive contains a Python script, Python interpreter, and an XML scheduled task file (`sch.db`). Based on the XML file, a scheduled task named **`Microsoft_Upgrade{10-9903-09-821392134}`** is registered. The Python script is then executed via the task scheduler, ultimately leading to the download and execution of the Python-based backdoor.
 
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b3tzu2x7ko202nfklhpz.png)
