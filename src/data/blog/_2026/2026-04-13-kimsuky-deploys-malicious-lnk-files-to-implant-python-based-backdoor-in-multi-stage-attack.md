@@ -1,0 +1,184 @@
+---
+title: "Kimsuky Deploys Malicious LNK Files to Implant Python-Based Backdoor in Multi-Stage Attack"
+categories: Threat Intelligence
+tags: ['kimsuky', 'lnk', 'multi-stage-attack', 'python-backdoor', 'scheduled-task', 'dropbox-c2', 'evasion', 'persistence', 'north-korea', 'malware-analysis']
+pubDatetime: 2026-04-13
+slug: "20260413204700"
+description: "Detailed technical analysis of Kimsuky's latest campaign using disguised LNK files that deploy a sophisticated multi-stage attack chain (LNK → XML → VBS → PS1 → BAT) leading to a Python backdoor (beauty.py). Covers persistence via scheduled tasks, data exfiltration through Dropbox, custom C2 protocol, and command set."
+---
+
+<img width="1280" height="545" alt="image" src="https://github.com/user-attachments/assets/70ee2771-d244-4cf7-bcf6-4bf16f83e228" />
+
+
+**Notable Changes Observed in Malicious LNK Files Distributed by Kimsuky Group**
+
+**Article Summary:** The North Korean Kimsuky hacker group recently used malicious LNK files disguised as HWP documents to launch multi-stage attacks. They extended the attack chain by adding intermediate stages such as XML, VBS, and PS1 files to evade detection. The attack creates hidden folders, registers scheduled tasks for persistence, and finally deploys a Python backdoor that supports remote command execution, file theft, and other capabilities. Data is exfiltrated through Dropbox to blend in with normal traffic.
+
+ 
+**Categories:** Malware, Threat Intelligence, Incident Response, Vulnerability Analysis, Red Team
+
+---
+
+Recently, a clear evolution has been detected in the malicious LNK files being distributed by the **Kimsuky** group. While the overall flow leading to the execution of a Python-based backdoor or downloader remains similar to previous campaigns, the actual execution process now employs a significantly more complex multi-layered structure. The group is also abusing legitimate cloud services and attempting to evade detection through Python-based malware. Because these files are difficult to identify by appearance alone, user vigilance has become even more critical. In this article, we examine the changed delivery method, key characteristics, and the full attack flow.
+
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pqfc3mksre1lmunjgrdc.png)
+
+
+**[Table 1] Comparison of Past and Recent Delivery Methods**
+
+**1. Past LNK Delivery Method**
+
+**1-1. Initial Execution**  
+Previous LNK files operated by executing a PowerShell script that downloaded a BAT file from an external URL.
+
+- URL: `hxxps://qugesr[.]online/m/bDw`
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/y96ysrnm02z2bbxdv96t.png)
+
+**[Figure 1] Malicious BAT Script File**
+
+**1-2. Intermediate Stage**  
+The downloaded BAT file further downloads additional ZIP files and decoy files. It then downloads split ZIP fragments individually, merges them into a single archive, and extracts it. The resulting archive contains a Python script, Python interpreter, and an XML scheduled task file (`sch.db`). Based on the XML file, a scheduled task named **Microsoft_Upgrade{10-9903-09-821392134}** is registered. The Python script is then executed via the task scheduler, ultimately leading to the download and execution of the Python-based backdoor.
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b3tzu2x7ko202nfklhpz.png)
+
+**[Table 2] Additional File Downloads**
+
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gsdgez5pf0aq1bv0t47d.png)
+
+
+**[Figure 2] Legitimate Decoy File**
+
+**2. Recent LNK Delivery Method**
+
+**2-1. Initial Execution**  
+The recently distributed LNK files — “Resume (Park Seong-min).hwp.lnk” and “Guidelines for Establishing Data Backup and Recovery Procedures (Reference).lnk” — execute a PowerShell script just like previous versions. They create a folder at `C:\windirr` with hidden and system attributes. This is presumed to be an anti-forensic measure to prevent the path from appearing in normal user file exploration. The LNK then drops and executes the files it contains into this folder. Among them is a legitimate decoy file, and an HWP document using the exact same filename as the LNK is created to fool the victim.
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/g6uktk7gel70nctvvcrk.png)
+
+**[Figure 3] Legitimate Decoy File**
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/lsc12nvyq4dlq0tye982.png)
+
+**[Table 3] File Functions**
+
+**2-2. Intermediate Stage**  
+A scheduled task is created based on an XML file. The task name is set to **GoogleUpdateTaskMachineCGI__{56C6A980-91A1-4DB2-9812-5158E7E97388}**. Inside the XML, a task is defined that repeatedly runs the command `wscript.exe /b “C:\windirr\11.vbs”` every 17 minutes starting from 2025-08-26 15:17. When the VBS file executes via the scheduler, it launches `C:\windirr\pp.ps1`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/g6b7fst77kxvaicnxpuo.png)
+
+
+
+
+**[Figure 4] Registered Scheduled Task**
+
+The `pp.ps1` script creates `C:\Users\Public\Documents\tmp.ini` and saves the information listed in [Table 4] into it. The attackers are using Dropbox as a C2 channel for data exfiltration. Stolen data is uploaded with filenames in the format `<userdomain>_<date>_info.ini`. Additionally, the file `zzz09_test.db_sent` from the attacker’s Dropbox is downloaded and saved as `C:\Users\Public\Music\hh.bat`, then executed with `cmd.exe /c C:\Users\Public\Music\hh.bat`.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/n9zqexldc38xz5qjviwb.png)
+
+**[Table 4] Exfiltrated Information**
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nlewoy4yzcvd7zvhrwkw.png)
+
+
+
+
+
+**[Figure 5] Partial Code from pp.ps1**
+
+The `hh.bat` file downloads two split ZIP fragments from the URLs below, merges them into a single ZIP at `%TEMP%\G9081234.zip`, and extracts it to `C:\winii`. Inside the archive are an XML scheduled task file (`norton.db`) and the Python backdoor (`beauty.py`).
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/907u7xyfqxmd45nb2cq3.png)
+
+**[Table 5] Additional File Downloads**
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/hpclecvqe35y3hfz6928.png)
+
+**[Figure 6] Partial Code from hh.bat**
+
+The final Python backdoor is executed through the XML scheduled task. The `hh.bat` registers a new task named **GoogleExtension{02-2032121-098}** to run `C:\winii\beauty.py`.
+
+**3. Python Malware**
+
+Two types of Python-based malicious code were identified: a downloader that fetches additional payloads from an external server, and a backdoor that remotely executes attacker commands.
+
+**3-1. Backdoor**  
+The backdoor sends a packet containing the string “**HAPPY**” to the C2 server at `45.95.186[.]232:8080` to signal successful infection. It then communicates using a custom protocol with fixed 4096-byte packets starting with magic bytes `0x99 0x0A 0xBD 0x99`. Depending on the command code, it performs the following functions:
+
+- Shell command execution  
+- Drive list enumeration  
+- File upload and download  
+- File deletion (with random data overwrite before deletion) and execution (.exe, .bat, .vbs)
+
+During analysis, actions such as collecting drive information, network configuration (via ipconfig), and running processes (via tasklist) were observed.
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/xar30ubnsoyjwmh6j828.png)
+
+**[Figure 7] Function Branching Based on Attacker Commands**
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/hz14s47eo82uj20nho59.png)
+
+**[Table 6] Functions by Command**
+
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/urpkvff0oqq19p29as62.png)
+
+**[Table 7] Commands Sent by Attacker**
+
+
+**3-2. Downloader**  
+The downloader connects to the attacker-controlled server, saves VBS and BAT files to the `%TEMP%` path, and executes them in the background using the `CREATE_NO_WINDOW (0x08000000)` flag without showing a console window. After 180 seconds, it deletes both files to erase traces.
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/h03kcijq9u9ozovn65w2.png)
+
+**[Figure 8] Partial Python Downloader Code**
+
+
+**4. Kimsuky Group Characteristics**
+
+**4-1. XML-Based Scheduled Task Registration**  
+The task names used in this backdoor campaign are similar to those previously used by Kimsuky when distributing RAT malware.
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0rd0aitaq1lgqap4yw5u.png)
+
+**[Table 8] Similarity in Scheduled Task Names**
+
+**4-2. Similar XML Filenames**  
+Kimsuky has historically used XML files in the `sch_*.db` format for scheduled task registration.
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4sbf4mbxjtr652715rfm.png)
+
+**[Table 9] Similarity in XML Filenames**
+
+**4-3. Reuse of Previously Used Decoy Files**  
+Decoy files used in past Kimsuky campaigns are being reused in these new LNK attacks.
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gk8fsrlmm7mj31vhhlxl.png)
+
+**[Figure 9] Legitimate Decoy File Used in Previous Kimsuky Campaigns**
+
+
+**5. Conclusion**  
+In this campaign, Kimsuky maintained a similar overall attack flow while introducing structural changes in the intermediate execution stages. The abuse of legitimate cloud services like Dropbox for both data exfiltration and file download, along with the use of Python to bypass detection, are notable features. These changes demonstrate the group’s tactic of keeping the broad attack framework intact while continuously modifying implementation details to evade detection.
+
+LNK files disguised as document files are extremely difficult to identify as malicious based on appearance alone. Therefore, users should always be cautious with files from unknown sources and never execute them recklessly.
+
+
+---
