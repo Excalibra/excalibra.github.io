@@ -9,8 +9,9 @@ description: "Detailed technical analysis of Kimsuky's latest campaign using dis
 
 <img width="1280" height="545" alt="image" src="https://github.com/user-attachments/assets/70ee2771-d244-4cf7-bcf6-4bf16f83e228" />
 
+<br/>
 
-**Notable Changes Observed in Malicious LNK Files Distributed by Kimsuky Group**
+## Notable Changes Observed in Malicious LNK Files Distributed by Kimsuky Group
 
 **Article Summary:** The North Korean Kimsuky hacker group recently used malicious LNK files disguised as HWP documents to launch multi-stage attacks. They extended the attack chain by adding intermediate stages such as XML, VBS, and PS1 files to evade detection. The attack creates hidden folders, registers scheduled tasks for persistence, and finally deploys a Python backdoor that supports remote command execution, file theft, and other capabilities. Data is exfiltrated through Dropbox to blend in with normal traffic.
 
@@ -28,7 +29,9 @@ Recently, a clear evolution has been detected in the malicious LNK files being d
 
 **[Table 1] Comparison of Past and Recent Delivery Methods**
 
-**1. Past LNK Delivery Method**
+<br/>
+
+### 1. Past LNK Delivery Method
 
 **1-1. Initial Execution**  
 Previous LNK files operated by executing a PowerShell script that downloaded a BAT file from an external URL.
@@ -55,7 +58,9 @@ The downloaded BAT file further downloads additional ZIP files and decoy files. 
 
 **[Figure 2] Legitimate Decoy File**
 
-**2. Recent LNK Delivery Method**
+<br/>
+
+### 2. Recent LNK Delivery Method
 
 **2-1. Initial Execution**  
 The recently distributed LNK files — “Resume (Park Seong-min).hwp.lnk” and “Guidelines for Establishing Data Backup and Recovery Procedures (Reference).lnk” — execute a PowerShell script just like previous versions. They create a folder at `C:\windirr` with hidden and system attributes. This is presumed to be an anti-forensic measure to prevent the path from appearing in normal user file exploration. The LNK then drops and executes the files it contains into this folder. Among them is a legitimate decoy file, and an HWP document using the exact same filename as the LNK is created to fool the victim.
@@ -75,9 +80,6 @@ A scheduled task is created based on an XML file. The task name is set to **Goog
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/g6b7fst77kxvaicnxpuo.png)
 
-
-
-
 **[Figure 4] Registered Scheduled Task**
 
 The `pp.ps1` script creates `C:\Users\Public\Documents\tmp.ini` and saves the information listed in [Table 4] into it. The attackers are using Dropbox as a C2 channel for data exfiltration. Stolen data is uploaded with filenames in the format `<userdomain>_<date>_info.ini`. Additionally, the file `zzz09_test.db_sent` from the attacker’s Dropbox is downloaded and saved as `C:\Users\Public\Music\hh.bat`, then executed with `cmd.exe /c C:\Users\Public\Music\hh.bat`.
@@ -86,11 +88,8 @@ The `pp.ps1` script creates `C:\Users\Public\Documents\tmp.ini` and saves the in
 
 **[Table 4] Exfiltrated Information**
 
+
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nlewoy4yzcvd7zvhrwkw.png)
-
-
-
-
 
 **[Figure 5] Partial Code from pp.ps1**
 
@@ -108,7 +107,9 @@ The `hh.bat` file downloads two split ZIP fragments from the URLs below, merges 
 
 The final Python backdoor is executed through the XML scheduled task. The `hh.bat` registers a new task named **GoogleExtension{02-2032121-098}** to run `C:\winii\beauty.py`.
 
-**3. Python Malware**
+<br/>
+
+### 3. Python Malware
 
 Two types of Python-based malicious code were identified: a downloader that fetches additional payloads from an external server, and a backdoor that remotely executes attacker commands.
 
@@ -147,8 +148,9 @@ The downloader connects to the attacker-controlled server, saves VBS and BAT fil
 
 **[Figure 8] Partial Python Downloader Code**
 
+<br/>
 
-**4. Kimsuky Group Characteristics**
+### 4. Kimsuky Group Characteristics
 
 **4-1. XML-Based Scheduled Task Registration**  
 The task names used in this backdoor campaign are similar to those previously used by Kimsuky when distributing RAT malware.
@@ -174,8 +176,9 @@ Decoy files used in past Kimsuky campaigns are being reused in these new LNK att
 
 **[Figure 9] Legitimate Decoy File Used in Previous Kimsuky Campaigns**
 
+<br/>
 
-**5. Conclusion**  
+### 5. Conclusion
 In this campaign, Kimsuky maintained a similar overall attack flow while introducing structural changes in the intermediate execution stages. The abuse of legitimate cloud services like Dropbox for both data exfiltration and file download, along with the use of Python to bypass detection, are notable features. These changes demonstrate the group’s tactic of keeping the broad attack framework intact while continuously modifying implementation details to evade detection.
 
 LNK files disguised as document files are extremely difficult to identify as malicious based on appearance alone. Therefore, users should always be cautious with files from unknown sources and never execute them recklessly.
