@@ -1,6 +1,6 @@
 ---
 title: "🔐 100+ Cybersecurity Interview Questions (Interactive Q&A)"
-date: "2026-01-15"
+date: "2024-01-15"
 author: "Security Expert"
 description: "Master your cybersecurity interview with 100+ real questions, interactive flashcards, and quiz mode"
 tags: ["cybersecurity", "interview", "career", "security"]
@@ -276,6 +276,11 @@ Found an error or want to add a question? This is an open resource - please reac
     color: white;
   }
   
+  .mode-tab:hover {
+    background: #cbd5e0;
+    transform: translateY(-1px);
+  }
+  
   .categories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -288,6 +293,12 @@ Found an error or want to add a question? This is an open resource - please reac
     padding: 1rem;
     border-radius: 8px;
     border-left: 4px solid #4299e1;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
   
   .category-card h3 {
@@ -357,7 +368,16 @@ Found an error or want to add a question? This is an open resource - please reac
     .categories-grid {
       grid-template-columns: 1fr;
     }
+    
+    .mode-tab {
+      flex: 1;
+      text-align: center;
+    }
   }
 `}</style>
 
 ---
+
+**Last Updated:** {new Date().toLocaleDateString()} | **Total Questions:** {interviewQuestions.length} | **Categories:** {categories.length}
+
+Happy studying! 🚀
