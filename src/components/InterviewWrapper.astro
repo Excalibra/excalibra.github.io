@@ -1,0 +1,7 @@
+---
+// src/components/InterviewWrapper.astro
+import { InterviewLayout } from './cybersec-qa/InterviewLayout';
+import { interviewQuestions } from '../data/interview-questions';
+---
+
+<InterviewLayout questions={interviewQuestions} client:load />
