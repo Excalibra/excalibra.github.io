@@ -1,0 +1,363 @@
+---
+title: "🔐 100+ Cybersecurity Interview Questions (Interactive Q&A)"
+date: "2026-01-15"
+author: "Security Expert"
+description: "Master your cybersecurity interview with 100+ real questions, interactive flashcards, and quiz mode"
+tags: ["cybersecurity", "interview", "career", "security"]
+---
+
+import { InterviewQA, FlashcardMode, QuizMode, ProgressTracker } from '../../components/cybersec-qa';
+import { interviewQuestions } from '../../data/interview-questions';
+import '../../components/cybersec-qa/styles.css';
+
+# 🔐 Cybersecurity Interview Questions
+
+> **100+ real interview questions** used by top tech companies (Google, Amazon, Microsoft, CrowdStrike)
+
+Welcome to the most comprehensive cybersecurity interview preparation resource. This interactive guide features questions across 10 categories with detailed answers, code examples, and pro tips from industry professionals.
+
+---
+
+## 📊 Quick Stats
+
+<div className="stats-banner">
+  <div className="stat-item">
+    <div className="stat-number">{interviewQuestions.length}+</div>
+    <div className="stat-label">Questions</div>
+  </div>
+  <div className="stat-item">
+    <div className="stat-number">10</div>
+    <div className="stat-label">Categories</div>
+  </div>
+  <div className="stat-item">
+    <div className="stat-number">3</div>
+    <div className="stat-label">Difficulty Levels</div>
+  </div>
+  <div className="stat-item">
+    <div className="stat-number">100%</div>
+    <div className="stat-label">Free</div>
+  </div>
+</div>
+
+---
+
+## 🎮 Choose Your Learning Mode
+
+<div className="mode-selector">
+  <button className="mode-tab active" data-mode="qa">📖 Q&A Explorer</button>
+  <button className="mode-tab" data-mode="flashcard">🎴 Flashcard Trainer</button>
+  <button className="mode-tab" data-mode="quiz">📝 Quiz Yourself</button>
+  <button className="mode-tab" data-mode="progress">📊 Track Progress</button>
+</div>
+
+<div className="mode-content active" id="qa-mode">
+  <InterviewQA questions={interviewQuestions} initialLimit={20} />
+</div>
+
+<div className="mode-content" id="flashcard-mode" style={{display: 'none'}}>
+  <FlashcardMode questions={interviewQuestions} />
+</div>
+
+<div className="mode-content" id="quiz-mode" style={{display: 'none'}}>
+  <QuizMode questions={interviewQuestions} quizSize={10} />
+</div>
+
+<div className="mode-content" id="progress-mode" style={{display: 'none'}}>
+  <ProgressTracker questions={interviewQuestions} />
+</div>
+
+<script dangerouslySetInnerHTML={{
+  __html: `
+    document.querySelectorAll('.mode-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const mode = tab.dataset.mode;
+        document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.mode-content').forEach(content => {
+          content.style.display = 'none';
+        });
+        document.getElementById(mode + '-mode').style.display = 'block';
+      });
+    });
+  `
+}} />
+
+---
+
+## 📚 Question Categories Breakdown
+
+<div className="categories-grid">
+  <div className="category-card">
+    <h3>🌐 Network Security</h3>
+    <p>DDoS, TCP/IP, firewalls, VPNs, IDS/IPS, network protocols, and attack vectors</p>
+    <span className="question-count">15 questions</span>
+  </div>
+  <div className="category-card">
+    <h3>💻 Web Security</h3>
+    <p>XSS, SQL injection, CSRF, SSRF, webshells, security headers, and OWASP Top 10</p>
+    <span className="question-count">20 questions</span>
+  </div>
+  <div className="category-card">
+    <h3>🔐 Cryptography</h3>
+    <p>Encryption algorithms, hashing, PKI, digital signatures, and cryptographic attacks</p>
+    <span className="question-count">10 questions</span>
+  </div>
+  <div className="category-card">
+    <h3>☁️ Cloud Security</h3>
+    <p>AWS/Azure/GCP security, IAM, container security, and shared responsibility model</p>
+    <span className="question-count">10 questions</span>
+  </div>
+  <div className="category-card">
+    <h3>🚨 Incident Response</h3>
+    <p>IR lifecycle, containment, forensics, IOCs, and ransomware response</p>
+    <span className="question-count">10 questions</span>
+  </div>
+  <div className="category-card">
+    <h3>🎯 Penetration Testing</h3>
+    <p>Tools, methodologies, privilege escalation, post-exploitation, and reporting</p>
+    <span className="question-count">15 questions</span>
+  </div>
+  <div className="category-card">
+    <h3>🦠 Malware Analysis</h3>
+    <p>Static/dynamic analysis, malware types, rootkits, and sandbox evasion</p>
+    <span className="question-count">8 questions</span>
+  </div>
+  <div className="category-card">
+    <h3>👤 Identity & Access</h3>
+    <p>MFA, SSO, OAuth, JWT, Zero Trust, RBAC, and PAM</p>
+    <span className="question-count">8 questions</span>
+  </div>
+  <div className="category-card">
+    <h3>⚖️ Compliance</h3>
+    <p>GDPR, HIPAA, PCI-DSS, SOC2, ISO 27001, and risk assessments</p>
+    <span className="question-count">7 questions</span>
+  </div>
+  <div className="category-card">
+    <h3>🛡️ SOC Operations</h3>
+    <p>SIEM, SOAR, threat hunting, MITRE ATT&CK, and alert triage</p>
+    <span className="question-count">10 questions</span>
+  </div>
+</div>
+
+---
+
+## 🎯 Interview Preparation Strategy
+
+### By Experience Level
+
+| Level | Focus Areas | Recommended Time |
+|-------|------------|------------------|
+| **Entry Level** | Networking basics, common vulnerabilities, security fundamentals | 2-3 weeks |
+| **Mid Level** | Attack techniques, defense strategies, SIEM, cloud security | 4-6 weeks |
+| **Senior Level** | Architecture security, exploit development, program management | 8-12 weeks |
+
+### Study Tips
+
+1. **🎤 Practice explaining aloud** - Interviewers want to hear your reasoning, not memorized answers
+2. **🔗 Connect concepts** - Show how different topics relate (e.g., how XSS relates to session hijacking)
+3. **💻 Hands-on practice** - Use TryHackMe or HackTheBox to reinforce concepts
+4. **📝 Mock interviews** - Practice with peers or use Pramp/CareerCup
+5. **📊 Track progress** - Use the progress tracker above to identify weak areas
+
+---
+
+## 🛠️ Recommended Hands-on Labs
+
+<div className="resources-grid">
+  <a href="https://tryhackme.com" className="resource-card">
+    <h4>TryHackMe</h4>
+    <p>Guided labs for beginners to advanced</p>
+  </a>
+  <a href="https://hackthebox.com" className="resource-card">
+    <h4>HackTheBox</h4>
+    <p>Realistic penetration testing challenges</p>
+  </a>
+  <a href="https://portswigger.net/web-security" className="resource-card">
+    <h4>PortSwigger Academy</h4>
+    <p>Free web security labs with solutions</p>
+  </a>
+  <a href="https://overthewire.org" className="resource-card">
+    <h4>OverTheWire</h4>
+    <p>Wargames for Linux and network skills</p>
+  </a>
+</div>
+
+---
+
+## 📖 Additional Resources
+
+- 📕 **Books**: "The Web Application Hacker's Handbook", "Penetration Testing: A Hands-On Guide"
+- 🎥 **YouTube**: The Cyber Mentor, IppSec, John Hammond
+- 📚 **Certifications**: Security+, CEH, OSCP, CISSP (by experience level)
+- 🔧 **Tools**: Maintain a Kali Linux VM for practice
+
+---
+
+## 💬 Common Interview Scenarios
+
+### Technical Screen (30 min)
+- Quick questions on networking, common vulnerabilities
+- May include simple coding or command-line tasks
+
+### Deep Technical (60 min)
+- In-depth attack explanations
+- Whiteboard security architecture
+- Incident response scenarios
+
+### Practical (60-120 min)
+- Live penetration testing challenge
+- Log analysis exercise
+- Security tool usage demonstration
+
+### Behavioral (30 min)
+- Past incident handling experience
+- Teamwork and communication scenarios
+- Ethical dilemma questions
+
+---
+
+## 🤝 Contributing
+
+Found an error or want to add a question? This is an open resource - please reach out via GitHub!
+
+---
+
+<div className="success-box">
+  <h3>🎉 Good Luck with Your Interview!</h3>
+  <p>Remember: Interviewers value problem-solving ability over perfect answers. Think aloud, ask clarifying questions, and show your passion for security.</p>
+</div>
+
+<style>{`
+  .stats-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  
+  .stat-item {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    color: white;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    opacity: 0.9;
+  }
+  
+  .mode-selector {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .mode-tab {
+    padding: 10px 20px;
+    background: #e2e8f0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+  
+  .mode-tab.active {
+    background: #4299e1;
+    color: white;
+  }
+  
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .category-card {
+    background: #f7fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #4299e1;
+  }
+  
+  .category-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .category-card p {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.85rem;
+    color: #4a5568;
+  }
+  
+  .question-count {
+    font-size: 0.75rem;
+    color: #4299e1;
+    font-weight: bold;
+  }
+  
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .resource-card {
+    display: block;
+    padding: 1rem;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .resource-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .resource-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: #2d3748;
+  }
+  
+  .resource-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #718096;
+  }
+  
+  .success-box {
+    background: #c6f6d5;
+    border: 1px solid #9ae6b4;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .stats-banner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+`}</style>
+
+---
