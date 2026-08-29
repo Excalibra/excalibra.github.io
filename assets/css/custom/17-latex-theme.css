@@ -1,0 +1,148 @@
+:is(html[data-palette="sakura"], html[data-palette="latex"]) body {
+  background-color: rgb(var(--color-neutral-100));
+  background-image:
+    radial-gradient(circle at 12% 18%, rgb(var(--color-primary-100) / 0.42), transparent 4.6rem),
+    radial-gradient(circle at 88% 28%, rgb(var(--color-primary-100) / 0.3), transparent 3.4rem),
+    radial-gradient(circle at 52% 9%, rgb(var(--color-primary-200) / 0.18), transparent 6rem),
+    linear-gradient(180deg, rgb(var(--color-neutral-50)), rgb(var(--color-neutral-100)) 20rem, rgb(var(--color-neutral-200)) 100%);
+  color: rgb(var(--color-neutral-800));
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]).dark body {
+  background-color: rgb(var(--color-neutral-900));
+  background-image: none;
+  color: rgb(var(--color-neutral));
+}
+
+html[data-palette="latex"] body {
+  background-color: rgb(var(--color-neutral));
+  background-image: none;
+}
+
+html[data-palette] {
+  --reading-font-serif: "STIX Two Text", "Times New Roman", "Noto Serif SC", "Songti SC", serif;
+  --reading-font-heading: "STIX Two Text", "Times New Roman", "Noto Serif SC", "Songti SC", serif;
+  --reading-font-ui: "Avenir Next", "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+  --reading-numeric-feature: "lnum" 1, "tnum" 1;
+}
+
+html[data-palette] :where(
+  #main-content,
+  #main-content *,
+  body > header,
+  body > header *,
+  #to-top,
+  #search-wrapper,
+  #search-modal,
+  #search-results
+) {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: var(--reading-numeric-feature);
+}
+
+html[data-palette] :where(code, kbd, samp, pre, .katex, .katex-display) {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+html[data-palette] :where(
+  body > header,
+  #main-content,
+  #main-content article,
+  #main-content section,
+  #main-content nav,
+  #main-content aside,
+  #main-content .toc,
+  #to-top,
+  #search-wrapper,
+  #search-modal,
+  #search-results
+) {
+  color: rgb(var(--color-neutral-800));
+  font-family: var(--reading-font-serif);
+  line-height: 1.88;
+  letter-spacing: 0.004em;
+  text-rendering: optimizeLegibility;
+}
+
+html[data-palette].dark :where(
+  body > header,
+  #main-content,
+  #main-content article,
+  #main-content section,
+  #main-content nav,
+  #main-content aside,
+  #main-content .toc,
+  #to-top,
+  #search-wrapper,
+  #search-modal,
+  #search-results
+) {
+  color: rgb(var(--color-neutral));
+}
+
+
+@media (min-width: 640px) {
+  html[data-palette]:has(#main-content :is(article, .taxonomy-tags, .taxonomy-categories, .taxonomy-terms)) body {
+    padding-inline: calc(3.5rem * var(--reading-scale));
+  }
+}
+
+@media (min-width: 768px) {
+  html[data-palette]:has(#main-content :is(article, .taxonomy-tags, .taxonomy-categories, .taxonomy-terms)) body {
+    padding-inline: calc(6rem * var(--reading-scale));
+  }
+}
+
+@media (min-width: 1024px) {
+  html[data-palette]:has(#main-content :is(article, .taxonomy-tags, .taxonomy-categories, .taxonomy-terms)) body {
+    width: min(100%, calc(80rem * var(--reading-scale)));
+    max-width: min(100%, calc(80rem * var(--reading-scale)));
+    padding-inline: calc(8rem * var(--reading-scale));
+  }
+}
+
+
+html[data-palette] #main-content > ul.mt-8.flex.flex-row > li {
+  margin-inline: 0;
+}
+
+html[data-palette] #main-content > ul.mt-8.flex.flex-row > li > :is(a, span) {
+  display: inline-flex;
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 0.2rem;
+  line-height: 1;
+}
+
+
+.article-meta__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  color: inherit;
+  opacity: 0.65;
+  position: relative;
+  top: -0.05em;
+}
+
+.article-meta__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.article-meta__date,
+.article-meta__date-updated {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.article-meta.flex {
+  align-items: baseline !important;
+}
