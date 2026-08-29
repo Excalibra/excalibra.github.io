@@ -1,0 +1,138 @@
+:where(
+  .page-about,
+  .page-ideas,
+  .site-header,
+  .site-footer-drawer,
+  .site-profile,
+  .home-intro,
+  .home-section-title,
+  .list-header,
+  .list-header h1,
+  .list-year,
+  section > h2.list-year,
+  section > h2.text-2xl.font-bold,
+  .author-card,
+  .article-meta,
+  .taxonomy-tags,
+  .taxonomy-categories,
+  .taxonomy-terms,
+  .taxonomy-chart,
+  .article-link,
+  .article-footer,
+  .article-comments,
+  .toc,
+  #main-content > ul.mt-8.flex.flex-row,
+  .site-banner,
+  .taxonomy-title,
+  nav.breadcrumbs
+),
+:where(
+  .page-about,
+  .page-ideas,
+  .site-header,
+  .site-footer-drawer,
+  .site-profile,
+  .home-intro,
+  .home-section-title,
+  .list-header,
+  .list-header h1,
+  .list-year,
+  section > h2.list-year,
+  section > h2.text-2xl.font-bold,
+  .author-card,
+  .article-meta,
+  .taxonomy-tags,
+  .taxonomy-categories,
+  .taxonomy-terms,
+  .taxonomy-chart,
+  .article-link,
+  .article-footer,
+  .article-comments,
+  .toc,
+  #main-content > ul.mt-8.flex.flex-row,
+  .site-banner,
+  .taxonomy-title,
+  nav.breadcrumbs
+) * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+header nav a[rel="me"],
+header .z-40 a {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+header nav ul,
+header nav ul li,
+header nav ul li a,
+header nav ul li button,
+header nav ul li span {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6) {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+
+article > header h1 {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+
+.page-about h1,
+.page-about article > header h1,
+.page-ideas h1,
+.page-ideas article > header h1 {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+.page-about .prose,
+.page-about .prose *,
+.page-ideas .prose,
+.page-ideas .prose * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+
+.article-meta__separator {
+  display: inline-block;
+  width: 0.42em;
+  flex: 0 0 0.42em;
+}
+
+:where(
+  .page-about,
+  .page-ideas,
+  .site-header,
+  .site-footer-drawer,
+  .site-profile,
+  .home-intro,
+  .home-section-title,
+  .list-header,
+  .list-header h1,
+  .list-year,
+  section > h2.list-year,
+  section > h2.text-2xl.font-bold,
+  .author-card,
+  .article-meta,
+  .taxonomy-tags,
+  .taxonomy-categories,
+  .taxonomy-terms,
+  .taxonomy-chart,
+  .article-link,
+  .article-footer,
+  .article-comments,
+  .toc,
+  #main-content > ul.mt-8.flex.flex-row,
+  .site-banner,
+  .taxonomy-title,
+  nav.breadcrumbs
+) :where(img, svg) {
+  -webkit-user-drag: none;
+}
