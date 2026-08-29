@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-  
+
 permissions:
   contents: read
   pages: write
@@ -16,10 +16,27 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          lockfile: false
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies (allow lockfile updates)
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build site
+        run: pnpm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
   deploy:
     needs: build
