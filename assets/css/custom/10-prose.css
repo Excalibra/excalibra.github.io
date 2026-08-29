@@ -1,0 +1,49 @@
+.prose .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+.prose :where(p, li, dd, figcaption, blockquote, a) {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.prose :where(p, li, dd, figcaption, blockquote) em {
+  margin-inline: 0.12em;
+}
+
+.prose :where(ul, ol) {
+  min-width: 0;
+}
+
+.prose {
+  min-width: 0;
+}
+
+.prose img.sc-image--square,
+.prose picture img.sc-image--square {
+  max-width: min(100%, 28rem);
+  max-height: min(52vh, 24rem);
+}
+
+.prose img,
+.prose picture img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(70vh, 36rem); 
+  margin-inline: auto;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.prose figure {
+  text-align: center;
+}
+
+.prose figure > * {
+  margin-inline: auto;
+}
