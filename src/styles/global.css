@@ -1,17 +1,18 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "./typography.css";
 @import "../assets/fonts/JetBrainsMono/result.css";
 @import "../assets/fonts/KesawanScript/result.css";
 @import "./grid.css";
 
-
 :root {
-    --font-mono: 'JetBrains Mono', 'JetBrainsMono', 'Fira Mono', 'Menlo', 'Consolas', monospace;
-    --font-cn: 'LXGW WenKai GB', 'Microsoft YaHei', 'PingFang SC', 'WenQuanYi Micro Hei', sans-serif;
+  --font-mono: 'JetBrains Mono', 'JetBrainsMono', 'Fira Mono', 'Menlo', 'Consolas', monospace;
+  --font-cn: 'LXGW WenKai GB', 'Microsoft YaHei', 'PingFang SC', 'WenQuanYi Micro Hei', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, span, figcaption, div, b {
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 h3 {
@@ -19,16 +20,13 @@ h3 {
 }
 
 li {
-    font-family: 'JetBrains Mono', sans-serif;
+  font-family: 'JetBrains Mono', sans-serif;
 }
 
 a.absolute {
-    font-size: 32px;
-    font-family: "Kesawan Script";
+  font-size: 32px;
+  font-family: "Kesawan Script";
 }
-
-
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root,
 html[data-theme="light"] {
@@ -47,14 +45,6 @@ html[data-theme="dark"] {
   --border: #ab4b08;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-}
-
 @layer base {
   * {
     @apply border-border outline-accent/75;
@@ -65,7 +55,7 @@ html[data-theme="dark"] {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-  @apply flex min-h-svh flex-col font-sans text-foreground selection:bg-accent/75 selection:text-background;
+    @apply flex min-h-svh flex-col font-sans text-foreground selection:bg-accent/75 selection:text-background;
   }
   a,
   button {
@@ -81,8 +71,10 @@ html[data-theme="dark"] {
   }
 }
 
-@utility max-w-app {
-  @apply max-w-3xl;
+@layer utilities {
+  .max-w-app {
+    max-width: 56rem;
+  }
 }
 
 .active-nav {
@@ -90,27 +82,25 @@ html[data-theme="dark"] {
 }
 
 /* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */
-/* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 1rem;
 }
 
 .video {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 75%; 
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%;
 }
 
 .video iframe {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    border: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border: 0;
 }
-
 
 li.my-6 > p {
   font-size: 16px;
