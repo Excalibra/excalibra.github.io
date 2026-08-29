@@ -1,0 +1,19 @@
+.home-intro {
+  max-width: min(42rem, calc(100vw - 2rem));
+  margin-top: 0.85rem;
+}
+
+.home-intro :where(p) {
+  margin: 0;
+  color: rgb(var(--color-neutral-700));
+  font-family: "Parisienne", "Liu Jian Mao Cao", "Long Cang", "Segoe Script", "Apple Chancery", cursive;
+  font-size: clamp(1.45rem, 2.2vw, 2.05rem);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.055em;
+  text-wrap: balance;
+}
+
+.dark .home-intro :where(p) {
+  color: rgb(var(--color-neutral-200));
+}
