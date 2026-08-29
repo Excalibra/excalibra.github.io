@@ -1,0 +1,122 @@
+html[data-palette="latex"] .prose :where(p, li, blockquote),
+html[data-palette="sakura"] .prose :where(p, li, blockquote) {
+  font-size: 1.04em;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) .prose :where(.footnotes, .footnotes ol, .footnotes li, .footnotes p) {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) .prose sup[id^="fnref"],
+:is(html[data-palette="sakura"], html[data-palette="latex"]) .prose a[role="doc-noteref"] {
+  font-size: 0.72em;
+  line-height: 0;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) .prose sup[id^="fnref"] {
+  vertical-align: 0.45em;
+}
+
+html[data-palette="latex"] article > header.max-w-prose > :is(.page-title-kicker, div),
+html[data-palette="sakura"] article > header.max-w-prose > :is(.page-title-kicker, div) {
+  font-family: var(--reading-font-serif);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: var(--reading-numeric-feature);
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) footer.py-10,
+:is(html[data-palette="sakura"], html[data-palette="latex"]) footer.py-10 :where(p, a, span, li, nav, button, div) {
+  font-family: var(--reading-font-ui);
+  letter-spacing: normal;
+  line-height: 1.6;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) article > header.max-w-prose > h1:not(.page-title-script) {
+  color: rgb(var(--color-neutral-900));
+  font-family: var(--reading-font-heading);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) article > header.max-w-prose > .page-title-kicker,
+:is(html[data-palette="sakura"], html[data-palette="latex"]) article > header.max-w-prose > div {
+  font-family: var(--reading-font-serif);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: var(--reading-numeric-feature);
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]).dark article > header.max-w-prose > h1:not(.page-title-script) {
+  color: rgb(var(--color-neutral));
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) :where(body > header, #main-content, #search-wrapper) :where(h1, h2, h3, h4):not(.author-name):not(.page-title-script) {
+  color: rgb(var(--color-neutral-900));
+  font-family: var(--reading-font-heading);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]).dark :where(body > header, #main-content, #search-wrapper) :where(h1, h2, h3, h4):not(.author-name):not(.page-title-script) {
+  color: rgb(var(--color-neutral));
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) .author-name--han {
+  font-family: "Liu Jian Mao Cao", "Long Cang", cursive, ui-sans-serif, system-ui, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) :is(.author-name--profile.author-name--script, .author-name--card.author-name--script) {
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) .page-title-script {
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) .prose p,
+:is(html[data-palette="sakura"], html[data-palette="latex"]) .prose li {
+  hanging-punctuation: first last;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) :where(#main-content, #search-wrapper) :where(a, a *, .toc a, .toc a *)::selection,
+:is(html[data-palette="sakura"], html[data-palette="latex"]) :where(#main-content, #search-wrapper) :where(a, a *, .toc a, .toc a *)::-moz-selection {
+  background: rgb(var(--color-primary-600));
+  color: rgb(255 255 255) !important;
+  -webkit-text-fill-color: rgb(255 255 255) !important;
+  text-decoration-color: transparent;
+  text-shadow: none;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) .prose h1 {
+  margin-bottom: 1.4rem;
+  color: rgb(var(--color-primary-600));
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  letter-spacing: 0.005em;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) .prose h2 {
+  display: block;
+  margin-top: 2.6rem;
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgb(var(--color-primary-200));
+  color: rgb(var(--color-primary-600));
+  font-family: var(--reading-font-heading);
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+:is(html[data-palette="sakura"], html[data-palette="latex"]) .prose h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.7rem;
+  color: rgb(var(--color-primary-700));
+  font-family: var(--reading-font-heading);
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
