@@ -1,0 +1,163 @@
+.sc-callout {
+  --sc-bg: color-mix(in srgb, var(--sc-accent) 8%, white 92%);
+  --sc-border: color-mix(in srgb, var(--sc-accent) 28%, white 72%);
+  --sc-accent: #0969da;
+  --sc-body: rgb(var(--color-neutral-700));
+  margin: 1.15rem 0;
+  border: 1px solid var(--sc-border);
+  border-left: 0.25rem solid var(--sc-accent);
+  border-radius: 0.375rem;
+  background: var(--sc-bg);
+  color: var(--sc-body);
+  overflow: hidden;
+}
+
+.dark .sc-callout {
+  --sc-bg: color-mix(in srgb, var(--sc-accent) 16%, rgb(var(--color-neutral-900)) 84%);
+  --sc-border: color-mix(in srgb, var(--sc-accent) 38%, rgb(var(--color-neutral-800)) 62%);
+  --sc-accent: #2f81f7;
+  --sc-body: rgb(var(--color-neutral-200));
+}
+
+.sc-callout--note {
+  --sc-accent: #0969da;
+}
+.dark .sc-callout--note {
+  --sc-accent: #2f81f7;
+}
+
+.sc-callout--tip,
+.sc-callout--success {
+  --sc-accent: #1a7f37;
+}
+.dark .sc-callout--tip,
+.dark .sc-callout--success {
+  --sc-accent: #3fb950;
+}
+
+.sc-callout--important {
+  --sc-accent: #8250df;
+}
+.dark .sc-callout--important {
+  --sc-accent: #a371f7;
+}
+
+.sc-callout--warning {
+  --sc-accent: #9a6700;
+}
+.dark .sc-callout--warning {
+  --sc-accent: #d29922;
+}
+
+.sc-callout--caution {
+  --sc-accent: #cf222e;
+}
+.dark .sc-callout--caution {
+  --sc-accent: #f85149;
+}
+
+.sc-callout--neutral {
+  --sc-accent: rgb(var(--color-neutral-500));
+}
+.dark .sc-callout--neutral {
+  --sc-accent: rgb(var(--color-neutral-400));
+}
+
+.sc-callout:not(.sc-callout--fold) {
+  padding: 0.85rem 1rem;
+}
+
+.sc-callout__content {
+  min-width: 0;
+}
+
+.sc-callout__label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.sc-callout__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--sc-accent);
+}
+
+.sc-callout__icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.sc-callout__title {
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--sc-accent);
+}
+
+.sc-callout__body {
+  min-width: 0;
+  width: 100%;
+  max-width: none;
+  color: var(--sc-body);
+}
+
+.sc-callout__body a {
+  color: var(--sc-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  font-weight: 500;
+}
+
+.sc-callout__body a:hover {
+  opacity: 0.85;
+}
+
+.sc-callout__body > :first-child {
+  margin-top: 0;
+}
+.sc-callout__body > :last-child {
+  margin-bottom: 0;
+}
+
+.sc-callout--fold > .sc-callout__summary {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  font-weight: 600;
+  color: var(--sc-accent);
+}
+
+.sc-callout--fold > .sc-callout__summary::-webkit-details-marker {
+  display: none;
+}
+
+.sc-callout--fold > .sc-callout__summary::after {
+  content: "";
+  margin-inline-start: auto;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-inline-end: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  opacity: 0.75;
+  transition: transform 0.15s ease;
+}
+
+.sc-callout--fold[open] > .sc-callout__summary::after {
+  transform: rotate(225deg);
+  translate: 0 0.15rem;
+}
+
+.sc-callout--fold > .sc-callout__body {
+  padding: 0 1rem 0.9rem;
+  border-top: 1px solid color-mix(in srgb, var(--sc-border) 70%, transparent);
+}
+
+.sc-callout--fold > .sc-callout__body > :first-child {
+  margin-top: 0.75rem;
+}
