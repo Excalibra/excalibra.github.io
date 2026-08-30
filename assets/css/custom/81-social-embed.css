@@ -1,0 +1,7 @@
+.prose .twitter-tweet,
+.prose .twitter-tweet-rendered,
+.twitter-tweet,
+.twitter-tweet-rendered {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
