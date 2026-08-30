@@ -1,0 +1,39 @@
+/* Internal stylesheet entry description
+ *
+ * Specific rules have been split by responsibility into assets/css/custom/:
+ *   03-banner.css          Sticky announcement banner
+ *   05-name.css            Blog author name (homepage / author card / footer)
+ *   06-page-title.css      Special title font for single pages
+ *   10-prose.css           Body formulas / illustrations
+ *   14-unselectable-ui.css Decorative UI and index information as unselectable
+ *   15-author-links.css    Author social links / WeChat QR code
+ *   16-palette-switcher.css Color scheme switcher panel
+ *   17-latex-theme.css     Sakura / LaTeX reading theme index
+ *   17a-reading-base.css   Background, font figures, page layout, and TOC constraints
+ *   17b-reading-typography.css Headings, footer fonts, heading font variants
+ *   17c-reading-prose.css  Links, selection, TOC, formula and code appearance
+ *   17d-reading-callout.css Callout base appearance and semantic colors
+ *   17e-reading-callout-labels.css Callout label prefixes and lightweight components
+ *   17f-reading-dark.css   Dark mode base levels
+ *   17g-reading-dark-mermaid.css Dark mode headings, selection, and Mermaid
+ *   17h-reading-actions.css Share buttons and author icon isolation
+ *   18-footer-drawer.css   Footer half-drawer interaction (desktop)
+ *   20-image-zoom.css      Image lightbox
+ *   30-video.css           Embedded videos
+ *   35-code.css            Code blocks / line numbers
+ *   40-callout.css         Callout / fold
+ *   50-outdated.css        Outdated notice
+ *   60-taxonomy-chart.css  Taxonomy tag charts
+ *   70-poem.css            Poem shortcode
+ *   71-classical.css       Classical Chinese shortcode
+ *   75-ruby.css            Ruby annotation (furigana) shortcode for body text
+ *   76-spoiler.css         Inline spoiler shortcode
+ *   77-ps.css              Inline parenthetical supplement shortcode
+ *   80-music.css           Streaming music shortcode
+ *   81-social-embed.css    Centered social platform embeds
+ *   82-tiktok.css          TikTok embed shortcode
+ *   85-phone-shots.css     Phone screenshot comparison shortcode
+ *
+ * layouts/_partials/head.html matches and bundles these into main.bundle.css in filename order.
+ * This file is intentionally left blank to avoid duplicate bundling with the modules.
+ */
