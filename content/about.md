@@ -3,7 +3,7 @@ title: "Excalibra"
 browserTitle: "About"
 description: "Learn more about me"
 summary: "Personal profile and contact information"
-birth: 1996-01-01
+birth: 0000-01-01
 birthLabel: "b. 0000.01.01"
 titleStyle: script
 titleSize: small
