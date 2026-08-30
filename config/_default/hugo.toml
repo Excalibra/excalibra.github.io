@@ -1,0 +1,29 @@
+baseURL = "https://excalibra.github.io/"
+defaultContentLanguage = "zh-cn"
+
+enableRobotsTXT = true
+summaryLength = 0
+
+[permalinks]
+  [permalinks.page]
+    posts = "/posts/:year/:slug/"
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[privacy]
+  [privacy.vimeo]
+    enableDNT = true
+  [privacy.x]
+    enableDNT = true
+  [privacy.youTube]
+    privacyEnhanced = true
+
+[services]
+  [services.googleAnalytics]
+    ID = "G-EFEVDFSN55"
+  [services.x]
+    disableInlineCSS = true
