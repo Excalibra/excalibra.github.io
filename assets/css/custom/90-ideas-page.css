@@ -1,0 +1,119 @@
+@font-face {
+  font-family: "JasonHandwriting1-Regular";
+  src: url(https://cdn.jsdelivr.net/gh/max32002/JasonHandWritingFonts@20240409/webfont/JasonHandwriting1-Regular.woff2) format("woff2");
+  font-display: swap;
+}
+
+.page-ideas {
+  font-family: 
+    "JasonHandwriting1-Regular", 
+    "LXGW WenKai Screen",  
+    "LXGW WenKai",         
+    "STKaiti",               
+    "KaiTi",              
+    var(--reading-font-serif),  
+    serif !important;
+  
+  line-height: 1.8 !important;
+}
+
+.page-ideas article > header h1 {
+  font-family: 
+    "JasonHandwriting1-Regular", 
+    "LXGW WenKai Screen",   
+    "LXGW WenKai",        
+    "STKaiti",              
+    "KaiTi",                 
+    var(--reading-font-heading),
+    serif !important;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.page-ideas .prose {
+  font-family: inherit !important;
+}
+
+.page-ideas *,
+.page-ideas .prose *,
+.page-ideas article > section * {
+  font-family: 
+    "JasonHandwriting1-Regular",
+    "LXGW WenKai Screen",
+    "LXGW WenKai",
+    "STKaiti",
+    "KaiTi",
+    var(--reading-font-serif),
+    serif !important;
+}
+    "Klee One",
+    "Long Cang",
+    "Ma Shan Zheng",
+    "STKaiti",
+    "KaiTi",
+    var(--reading-font-serif),
+    serif !important;
+}
+
+.page-ideas .prose ul {
+  list-style: none;
+  padding-left: 1.5em;
+}
+
+.page-ideas .prose ul li {
+  position: relative;
+  margin-bottom: 0.75em;
+}
+
+.page-ideas .prose ul li:has(input[type="checkbox"]:checked),
+.page-ideas .prose ul li input[type="checkbox"]:checked ~ * {
+  text-decoration: line-through !important;
+  opacity: 0.6 !important;
+  color: rgb(var(--color-neutral-500)) !important;
+}
+
+.page-ideas .prose ul li {
+  position: relative;
+}
+
+.page-ideas .prose ul li:has(> :first-child:is(input[type="checkbox"]:checked)),
+.page-ideas .prose ul li > input[type="checkbox"]:checked ~ * {
+  text-decoration: line-through !important;
+  opacity: 0.65 !important;
+}
+
+.page-ideas .prose blockquote {
+  font-style: italic;
+  border-left-width: 3px;
+  border-left-style: dashed;
+  padding-left: 1.5em;
+  opacity: 0.9;
+}
+
+.page-ideas .prose code,
+.page-ideas .prose pre {
+  font-family: 
+    "Monaco",
+    "Menlo", 
+    "Consolas",
+    "Courier New",
+    monospace;
+}
+
+.page-ideas .prose {
+  font-size: clamp(1.05rem, 1.8vw, 1.15rem);
+}
+
+.page-ideas .prose h2 {
+  font-size: clamp(1.35rem, 2.2vw, 1.55rem);
+  font-weight: 600;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.page-ideas .prose h3 {
+  font-size: clamp(1.18rem, 1.95vw, 1.32rem);
+  font-weight: 500;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
