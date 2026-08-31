@@ -1,0 +1,27 @@
+{{/*
+  Homepage featured articles
+  Data: front matter
+    featured: true
+    weight: 10  # optional; higher value appears first; if not set, articles without weight appear after those with weight, then by default date order
+  Configuration: homepage.showFeatured / featuredLimit
+*/}}
+{{ if .Site.Params.homepage.showFeatured | default false }}
+  {{ $sections := .Site.Params.mainSections }}
+  {{ $pages := where .Site.RegularPages "Type" "in" $sections }}
+  {{ $featured := where $pages "Params.featured" true }}
+  {{/* ByParam: sort by weight ascending; reverse to get higher weight first */}}
+  {{ $featured = $featured.ByParam "weight" | collections.Reverse }}
+  {{ $limit := .Site.Params.homepage.featuredLimit | default 5 }}
+  {{ if $featured }}
+    <h2 class="home-section-title mt-8 text-2xl font-extrabold">
+      {{ with i18n "shortcode.featured_articles" }}
+        {{ . | emojify }}
+      {{ else }}
+        Featured Articles
+      {{ end }}
+    </h2>
+    {{ range first $limit $featured }}
+      {{ partial "article-link.html" . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
