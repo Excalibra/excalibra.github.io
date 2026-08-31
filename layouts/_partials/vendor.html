@@ -1,0 +1,37 @@
+{{ $algorithm := .Site.Params.fingerprintAlgorithm | default "sha256" }}
+{{/* Mermaid */}}
+{{ if .Page.HasShortcode "mermaid" }}
+  {{ $mermaidLib := resources.Get "lib/mermaid/mermaid.min.js" }}
+  {{ $mermaidConfig := resources.Get "js/mermaid.js" }}
+  {{ $mermaidConfig := $mermaidConfig | resources.Minify }}
+  {{ $mermaidJS := slice $mermaidLib $mermaidConfig | resources.Concat "js/mermaid.bundle.js" | resources.Fingerprint $algorithm }}
+  <script
+    defer
+    type="text/javascript"
+    src="{{ $mermaidJS.RelPermalink }}"
+    integrity="{{ $mermaidJS.Data.Integrity }}"
+  ></script>
+{{ end }}
+{{/* Chart */}}
+{{ if .Page.HasShortcode "chart" }}
+  {{ $chartLib := resources.Get "lib/chart/chart.umd.min.js" }}
+  {{ $chartConfig := resources.Get "js/chart.js" }}
+  {{ $chartConfig := $chartConfig | resources.Minify }}
+  {{ $chartJS := slice $chartLib $chartConfig | resources.Concat "js/chart.bundle.js" | resources.Fingerprint $algorithm }}
+  <script
+    defer
+    type="text/javascript"
+    src="{{ $chartJS.RelPermalink }}"
+    integrity="{{ $chartJS.Data.Integrity }}"
+  ></script>
+{{ end }}
+{{/* Matplotlib toggle */}}
+{{ if .Page.HasShortcode "matplotlib" }}
+  {{ $matplotlibToggleJS := resources.Get "js/matplotlib-toggle.js" | resources.Minify | resources.Fingerprint $algorithm }}
+  <script
+    defer
+    type="text/javascript"
+    src="{{ $matplotlibToggleJS.RelPermalink }}"
+    integrity="{{ $matplotlibToggleJS.Data.Integrity }}"
+  ></script>
+{{ end }}
