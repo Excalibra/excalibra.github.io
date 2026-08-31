@@ -1,0 +1,34 @@
+{{/*
+  Character string + Pinyin string → ruby fragment (no outer block tag)
+  Parameters: dict "hanzi" string "pinyin" string
+  Pinyin is split by whitespace into syllables; punctuation / whitespace / Latin numerals in the Chinese side do not consume syllables.
+*/}}
+{{- $hanzi := .hanzi -}}
+{{- $pinyin := .pinyin -}}
+{{- $pyClean := replaceRE `[,.!?，。！？、；：·…—\-]` " " $pinyin -}}
+{{- $pyClean = replaceRE `\s+` " " (trim $pyClean " ") -}}
+{{- $syllables := split $pyClean " " -}}
+{{- $si := 0 -}}
+{{- $sylLen := len $syllables -}}
+
+{{- range split $hanzi "" -}}
+  {{- $ch := . -}}
+  {{- if ne $ch "" -}}
+    {{- if findRE `^[\s，。！？、；：""''“”‘’（）()【】《》〈〉…—·.,!?;:'\"\[\]{}「」『』〔〕]$` $ch -}}
+      <span class="sc-ruby__punct">{{ $ch }}</span>
+    {{- else if findRE `^[A-Za-z0-9]$` $ch -}}
+      <span class="sc-ruby__latn">{{ $ch }}</span>
+    {{- else -}}
+      {{- $rt := "" -}}
+      {{- if lt $si $sylLen -}}
+        {{- $rt = index $syllables $si -}}
+        {{- $si = add $si 1 -}}
+      {{- end -}}
+      {{- if $rt -}}
+        <ruby class="sc-ruby__ruby">{{ $ch }}<rp>(</rp><rt>{{ $rt }}</rt><rp>)</rp></ruby>
+      {{- else -}}
+        <span class="sc-ruby__char">{{ $ch }}</span>
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
