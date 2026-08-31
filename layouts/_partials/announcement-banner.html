@@ -1,0 +1,96 @@
+{{/* Sticky Announcement Banner
+ * Toggle:        [banner] enabled = true/false
+ * Message:       [banner] text = "..."
+ * Latest post:   [banner] showLatestPost = true   shows the latest post title, click to jump and dismiss the banner
+ * Link button:   [banner] url = "..."  /  linkText = "..."
+ * Dismissal is stored in sessionStorage, not shown again for the current session
+ */}}
+{{ if .Site.Params.banner.enabled }}
+  {{ $text     := .Site.Params.banner.text     | default "" }}
+  {{ $url      := .Site.Params.banner.url      | default "" }}
+  {{ $linkText := .Site.Params.banner.linkText | default "" }}
+  {{ $showLatest := .Site.Params.banner.showLatestPost | default false }}
+  {{ $showUpdateDate := .Site.Params.banner.showUpdateDate | default false }}
+
+  {{ if $text }}
+    {{/* Get the most recently updated article from the /posts section */}}
+    {{ $latestDate  := "" }}
+    {{ $latestTitle := "" }}
+    {{ $latestURL   := "" }}
+    {{ $postsSection := .Site.GetPage "/posts" }}
+    {{ if $postsSection }}
+      {{ $allPages := sort $postsSection.RegularPagesRecursive "Lastmod" "desc" }}
+      {{ if $allPages }}
+        {{ $latest      := index $allPages 0 }}
+        {{ $latestDate   = $latest.Lastmod.Format "2006-01-02" }}
+        {{ $latestTitle  = $latest.Title }}
+        {{ $latestURL    = $latest.RelPermalink }}
+      {{ end }}
+    {{ end }}
+
+    <div class="site-banner print:hidden" id="site-banner" role="banner" aria-label="Announcement">
+
+      {{/* Left: custom message */}}
+      <span class="site-banner__text">{{ $text | markdownify }}</span>
+
+      {{/* Center: latest post / date, displayed in the middle */}}
+      <div class="site-banner__middle">
+        {{ if and $showLatest $latestTitle }}
+          <a class="site-banner__latest" id="site-banner-latest" href="{{ $latestURL }}">
+            {{ if $showUpdateDate }}
+              <span class="site-banner__date-badge">Article updated: {{ $latestDate }}</span>
+            {{ end }}
+            <span class="site-banner__latest-title">{{ $latestTitle }}</span>
+          </a>
+        {{ else if and $showUpdateDate $latestDate }}
+          <span class="site-banner__date">Article updated: {{ $latestDate }}</span>
+        {{ end }}
+      </div>
+
+      {{/* Right: optional link button + close button */}}
+      <div class="site-banner__actions">
+        {{ if $url }}
+          <a class="site-banner__link" href="{{ $url }}">{{ $linkText | default "Learn more" }}</a>
+        {{ end }}
+        <button class="site-banner__close" id="site-banner-close" aria-label="Close announcement">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var banner = document.getElementById('site-banner');
+        var closeBtn = document.getElementById('site-banner-close');
+        var latestLink = document.getElementById('site-banner-latest');
+
+        function dismiss() {
+          banner.style.display = 'none';
+          sessionStorage.setItem('banner-dismissed', '1');
+        }
+
+        if (sessionStorage.getItem('banner-dismissed')) {
+          banner.style.display = 'none';
+        }
+
+        closeBtn.addEventListener('click', dismiss);
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' || e.key === 'Backspace') {
+            if (banner.style.display === 'none') return;
+            // Do not trigger Backspace inside input / contenteditable
+            var tag = document.activeElement && document.activeElement.tagName;
+            if (e.key === 'Backspace' && (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement.isContentEditable)) return;
+            dismiss();
+          }
+        });
+
+        if (latestLink) {
+          latestLink.addEventListener('click', dismiss);
+        }
+      })();
+    </script>
+  {{ end }}
+{{ end }}
