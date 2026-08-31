@@ -1,0 +1,46 @@
+{{/* Footer drawer: expand on hover/enter, collapse on clicking outside */}}
+{{ with resources.Get "js/footer-drawer.js" }}
+  {{ $js := . | resources.Minify | resources.Fingerprint }}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}
+
+{{/* Palette switcher: independent from light/dark mode, remembers local choice */}}
+{{ with resources.Get "js/palette-switcher.js" }}
+  {{ $js := . | resources.Minify | resources.Fingerprint }}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}
+
+{{/* Enlarge images on click */}}
+{{ with resources.Get "js/image-zoom.js" }}
+  {{ $js := . | resources.Minify | resources.Fingerprint }}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}
+
+{{/* Table of contents: collapsible tree + scroll tracking */}}
+{{ with resources.Get "js/toc.js" }}
+  {{ $js := . | resources.Minify | resources.Fingerprint }}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}
+
+{{/* Outdated notice: refreshes age and visibility based on visit time */}}
+{{ with resources.Get "js/outdated.js" }}
+  {{ $js := . | resources.Minify | resources.Fingerprint }}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}
+
+{{/* Taxonomy overview: load Chart.js from Congo (for taxonomy pages that don't have the chart shortcode) */}}
+{{ if and (eq .Kind "taxonomy") (.Site.Params.taxonomy.showChart | default true) }}
+  {{ $algorithm := .Site.Params.fingerprintAlgorithm | default "sha256" }}
+  {{ $chartLib := resources.Get "lib/chart/chart.umd.min.js" }}
+  {{ $chartConfig := resources.Get "js/chart.js" }}
+  {{ if and $chartLib $chartConfig }}
+    {{ $chartConfig = $chartConfig | resources.Minify }}
+    {{ $chartJS := slice $chartLib $chartConfig | resources.Concat "js/chart.bundle.js" | resources.Fingerprint $algorithm }}
+    <script
+      defer
+      type="text/javascript"
+      src="{{ $chartJS.RelPermalink }}"
+      integrity="{{ $chartJS.Data.Integrity }}"
+    ></script>
+  {{ end }}
+{{ end }}
