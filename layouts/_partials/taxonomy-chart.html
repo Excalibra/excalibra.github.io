@@ -1,0 +1,421 @@
+{{/*
+  Taxonomy overview page statistics chart
+  - categories → doughnut chart (center = total articles, outer ring = category proportions)
+  - tags       → Pareto chart (Top N, bars = article count, line = cumulative percentage)
+  - other taxonomies → vertical bar chart
+  Data source: .Data.Terms (static at build time)
+  Chart library is loaded by extend-footer when Kind = taxonomy
+*/}}
+{{ if .Data.Terms }}
+  {{ $plural := .Data.Plural }}
+  {{ $topN := .Site.Params.taxonomy.chartTagTopN | default 20 }}
+  {{ $labels := slice }}
+  {{ $counts := slice }}
+  {{ $limit := cond (eq $plural "tags") $topN 100000 }}
+  {{ $i := 0 }}
+  {{ range .Data.Terms.ByCount }}
+    {{ if lt $i $limit }}
+      {{ $labels = $labels | append .Page.Title }}
+      {{ $counts = $counts | append .Count }}
+      {{ $i = add $i 1 }}
+    {{ end }}
+  {{ end }}
+
+  {{ if $labels }}
+    {{ $chartType := "bar" }}
+    {{ $indexAxis := "x" }}
+    {{ if eq $plural "categories" }}
+      {{ $chartType = "doughnut" }}
+    {{ else if eq $plural "tags" }}
+      {{ $chartType = "pareto" }}
+    {{ end }}
+
+    {{ $canvasId := printf "taxonomy-chart-%s" $plural }}
+    {{ $totalShown := len $labels }}
+    {{ $totalAll := len .Data.Terms }}
+    {{ $heading := "Term Statistics" }}
+    {{ if eq $plural "categories" }}
+      {{ $heading = "Category Statistics" }}
+    {{ else if eq $plural "tags" }}
+      {{ $heading = "Tag Statistics" }}
+    {{ end }}
+
+    <section
+      class="taxonomy-chart taxonomy-chart--{{ $plural }}"
+      data-chart-type="{{ $chartType }}"
+      data-index-axis="{{ $indexAxis }}"
+      aria-labelledby="{{ $canvasId }}-title"
+    >
+      <div class="taxonomy-chart__inner">
+        {{/* Only for categories: a short centered rule; tags keep full‑width top separator (see CSS) */}}
+        {{ if eq $plural "categories" }}
+          <hr class="taxonomy-chart__rule" />
+        {{ end }}
+        <h2 id="{{ $canvasId }}-title" class="taxonomy-chart__title">
+          {{ $heading }}
+        </h2>
+        {{ if and (eq $plural "tags") (gt $totalAll $totalShown) }}
+          <p class="taxonomy-chart__caption">
+            Top {{ $totalShown }} of {{ $totalAll }} tags by article count
+          </p>
+        {{ else }}
+          <p class="taxonomy-chart__caption">
+            Articles per {{ if eq $plural "categories" }}category{{ else if eq $plural "tags" }}tag{{ else }}term{{ end }}
+          </p>
+        {{ end }}
+        <div class="taxonomy-chart__canvas-wrap">
+          <canvas id="{{ $canvasId }}" aria-label="{{ $heading }}" role="img"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript">
+      // Wait for Chart.js to load before initialising the chart
+      const initChart = () => {
+        const chartNode = document.getElementById({{ $canvasId | jsonify | safeJS }});
+        if (!chartNode) return;
+
+        // jsonify|safeJS: prevent html/template from wrapping JSON as a JS string
+        const labels = {{ $labels | jsonify | safeJS }};
+        const counts = {{ $counts | jsonify | safeJS }};
+        const chartType = {{ $chartType | jsonify | safeJS }};
+        const indexAxis = {{ $indexAxis | jsonify | safeJS }};
+        const isPie = chartType === "pie" || chartType === "doughnut";
+        const isDoughnut = chartType === "doughnut";
+        const isScatter = chartType === "scatter";
+        const isPareto = chartType === "pareto";
+        const totalCount = counts.reduce((sum, n) => sum + n, 0);
+        let runningCount = 0;
+        const cumulativePercentages = counts.map((n) => {
+          runningCount += n;
+          return totalCount ? Math.round((runningCount / totalCount) * 1000) / 10 : 0;
+        });
+        const scatterPoints = labels.map((_, i) => ({
+          x: counts[i],
+          y: labels.length - i,
+        }));
+
+        const cssVar = (name, fallback) => {
+          const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+          return raw ? "rgb(" + raw + ")" : fallback;
+        };
+
+        const getPalette = () => [
+          cssVar("--color-primary-200", "#93c5fd"),
+          cssVar("--color-primary-300", "#60a5fa"),
+          cssVar("--color-primary-400", "#3b82f6"),
+          cssVar("--color-primary-500", "#2563eb"),
+          cssVar("--color-primary-600", "#1d4ed8"),
+          cssVar("--color-neutral-300", "#d4d4d4"),
+          cssVar("--color-neutral-400", "#a3a3a3"),
+          cssVar("--color-primary-100", "#dbeafe"),
+        ];
+        let palette = getPalette();
+        let colors = labels.map((_, i) => palette[i % palette.length]);
+        let tick = cssVar("--color-neutral-500", "#737373");
+        let grid = cssVar("--color-neutral-200", "#e5e5e5");
+        let centerTextColor = cssVar("--color-neutral-700", "#404040");
+        const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+        const chartAnimationDuration = prefersReducedMotion ? 0 : 250;
+        const paretoAnimationDuration = prefersReducedMotion ? 0 : 820;
+        const paretoAnimationDelay = (ctx) => {
+          if (!isPareto || prefersReducedMotion || ctx.type !== "data") return 0;
+          return ctx.datasetIndex === 0 ? ctx.dataIndex * 18 : 420 + ctx.dataIndex * 24;
+        };
+
+        const wrap = chartNode.parentElement;
+        if (typeof Chart === "undefined") return;
+
+        if (isPareto) {
+          wrap.style.height = "360px";
+        } else if (isScatter) {
+          wrap.style.height = Math.max(320, labels.length * 38 + 56) + "px";
+        } else if (chartType === "bar" && indexAxis === "y") {
+          wrap.style.height = Math.max(360, labels.length * 34 + 56) + "px";
+        } else if (isPie) {
+          // legend at bottom center: height = pie + multi‑line legend
+          wrap.style.height = Math.max(420, 280 + Math.ceil(labels.length / 3) * 28) + "px";
+        } else {
+          wrap.style.height = "320px";
+        }
+
+        const centerTextPlugin = {
+          id: "taxonomyCenterText",
+          beforeDraw: (chart) => {
+            if (!isDoughnut) return;
+            const { ctx, chartArea } = chart;
+            const centerX = (chartArea.left + chartArea.right) / 2;
+            const centerY = (chartArea.top + chartArea.bottom) / 2;
+            ctx.save();
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillStyle = centerTextColor;
+            ctx.font = "700 15px system-ui, sans-serif";
+            ctx.fillText("Categories", centerX, centerY - 8);
+            ctx.fillStyle = tick;
+            ctx.font = "12px system-ui, sans-serif";
+            ctx.fillText(totalCount + " articles", centerX, centerY + 12);
+            ctx.restore();
+          },
+        };
+
+        const datasets = isPareto
+          ? [
+              {
+                type: "bar",
+                label: "Articles",
+                data: counts,
+                yAxisID: "count",
+                backgroundColor: cssVar("--color-primary-300", "#60a5fa"),
+                borderColor: cssVar("--color-primary-500", "#2563eb"),
+                borderWidth: 1,
+              },
+              {
+                type: "line",
+                label: "Cumulative %",
+                data: cumulativePercentages,
+                yAxisID: "percentage",
+                borderColor: cssVar("--color-primary-600", "#1d4ed8"),
+                backgroundColor: cssVar("--color-primary-600", "#1d4ed8"),
+                borderWidth: 2,
+                pointRadius: 3,
+                pointHoverRadius: 5,
+                tension: 0.25,
+              },
+            ]
+          : [
+              {
+                label: "Articles",
+                data: isScatter ? scatterPoints : counts,
+                backgroundColor: isPie
+                  ? colors
+                  : cssVar("--color-primary-300", "#60a5fa"),
+                borderColor: isPie
+                  ? colors.map(() => cssVar("--color-primary-500", "#2563eb"))
+                  : cssVar("--color-primary-500", "#2563eb"),
+                borderWidth: isScatter ? 2 : 1,
+                pointRadius: isScatter ? 5 : undefined,
+                pointHoverRadius: isScatter ? 7 : undefined,
+              },
+            ];
+
+        const taxonomyChart = new Chart(chartNode, {
+          type: isPareto ? "bar" : chartType,
+          data: {
+            labels,
+            datasets,
+          },
+          plugins: isDoughnut ? [centerTextPlugin] : [],
+          options: {
+            indexAxis,
+            responsive: true,
+            maintainAspectRatio: false,
+            // Animation config: shorten entry time to avoid stutter on normal browsers when expanded/state‑scaled
+            animation: {
+              duration: isPareto ? paretoAnimationDuration : chartAnimationDuration,
+              delay: paretoAnimationDelay,
+              easing: 'easeOutQuart',
+              animateRotate: !prefersReducedMotion,
+              animateScale: false,
+            },
+            animations: isPareto
+              ? {
+                  y: {
+                    easing: 'easeOutQuart',
+                    from: (ctx) => {
+                      if (ctx.type !== "data") return undefined;
+                      const scale = ctx.chart.scales[ctx.dataset.yAxisID];
+                      return scale ? scale.getPixelForValue(0) : undefined;
+                    },
+                  },
+                }
+              : {},
+            // Performance optimisation: reduce redraw overhead
+            interaction: {
+              mode: 'nearest',
+              intersect: true,
+            },
+            // Enable hardware acceleration hint
+            devicePixelRatio: window.devicePixelRatio || 1,
+            cutout: isDoughnut ? "62%" : undefined,
+            layout: { padding: isPie ? 8 : 4 },
+            plugins: {
+              legend: {
+                display: isPie || isPareto,
+                // bottom center: aligns with centre axis of the doughnut, avoids off‑centre text from right legend
+                position: "bottom",
+                align: "center",
+                labels: {
+                  color: tick,
+                  boxWidth: 12,
+                  padding: 10,
+                  font: { size: 13 },
+                },
+              },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => {
+                    if (isPareto && ctx.dataset.yAxisID === "percentage") {
+                      return " Cumulative: " + ctx.raw + "%";
+                    }
+                    if (isPareto) {
+                      return " " + labels[ctx.dataIndex] + ": " + ctx.raw + " articles";
+                    }
+                    if (isScatter) {
+                      return " " + labels[ctx.dataIndex] + ": " + ctx.raw.x + " articles";
+                    }
+                    const n = ctx.raw;
+                    return " " + n + " articles";
+                  },
+                },
+              },
+            },
+            scales: isPie
+              ? {}
+              : isPareto
+                ? {
+                    x: {
+                      ticks: {
+                        color: tick,
+                        maxRotation: 45,
+                        minRotation: 45,
+                        autoSkip: false,
+                        font: { size: 11 },
+                      },
+                      grid: { color: "transparent" },
+                    },
+                    count: {
+                      type: "linear",
+                      position: "left",
+                      beginAtZero: true,
+                      ticks: { color: tick, precision: 0 },
+                      grid: { color: grid },
+                      title: {
+                        display: true,
+                        text: "Articles",
+                        color: tick,
+                      },
+                    },
+                    percentage: {
+                      type: "linear",
+                      position: "right",
+                      beginAtZero: true,
+                      min: 0,
+                      max: 100,
+                      ticks: {
+                        color: tick,
+                        callback: (value) => value + "%",
+                      },
+                      grid: { drawOnChartArea: false },
+                      title: {
+                        display: true,
+                        text: "Cumulative %",
+                        color: tick,
+                      },
+                    },
+                  }
+                : isScatter
+                ? {
+                    x: {
+                      beginAtZero: true,
+                      ticks: { color: tick, precision: 0 },
+                      grid: { color: grid },
+                      title: {
+                        display: true,
+                        text: "Articles",
+                        color: tick,
+                      },
+                    },
+                    y: {
+                      min: 0,
+                      max: labels.length + 1,
+                      ticks: {
+                        stepSize: 1,
+                        color: tick,
+                        font: { size: 13 },
+                        callback: (value) => labels[labels.length - value] || "",
+                      },
+                      grid: { color: grid },
+                    },
+                  }
+                : {
+                  x: {
+                    beginAtZero: true,
+                    ticks: { color: tick, precision: 0 },
+                    grid: { color: grid },
+                  },
+                  y: {
+                    ticks: { color: tick, precision: 0, font: { size: 13 } },
+                    grid: {
+                      color: indexAxis === "y" ? grid : "transparent",
+                    },
+                  },
+                },
+          },
+        });
+
+        const refreshChartPalette = () => {
+          palette = getPalette();
+          colors = labels.map((_, i) => palette[i % palette.length]);
+          tick = cssVar("--color-neutral-500", "#737373");
+          grid = cssVar("--color-neutral-200", "#e5e5e5");
+          centerTextColor = cssVar("--color-neutral-700", "#404040");
+
+          if (isPareto) {
+            const [barDataset, lineDataset] = taxonomyChart.data.datasets;
+            barDataset.backgroundColor = cssVar("--color-primary-300", "#60a5fa");
+            barDataset.borderColor = cssVar("--color-primary-500", "#2563eb");
+            lineDataset.borderColor = cssVar("--color-primary-600", "#1d4ed8");
+            lineDataset.backgroundColor = cssVar("--color-primary-600", "#1d4ed8");
+          } else {
+            const dataset = taxonomyChart.data.datasets[0];
+            dataset.backgroundColor = isPie ? colors : cssVar("--color-primary-300", "#60a5fa");
+            dataset.borderColor = isPie
+              ? colors.map(() => cssVar("--color-primary-500", "#2563eb"))
+              : cssVar("--color-primary-500", "#2563eb");
+          }
+
+          const legend = taxonomyChart.options.plugins?.legend?.labels;
+          if (legend) legend.color = tick;
+
+          Object.values(taxonomyChart.options.scales || {}).forEach((scale) => {
+            if (scale.ticks) scale.ticks.color = tick;
+            if (scale.title) scale.title.color = tick;
+            if (scale.grid) {
+              scale.grid.color = scale.grid.color === "transparent" ? "transparent" : grid;
+            }
+          });
+
+          taxonomyChart.update("none");
+        };
+
+        const chartPaletteObserver = new MutationObserver(() => {
+          requestAnimationFrame(refreshChartPalette);
+        });
+        chartPaletteObserver.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["class", "data-palette"],
+        });
+      };
+
+      // Detect Chart.js load completion (compatible with defer loading)
+      if (typeof Chart !== 'undefined') {
+        initChart();
+      } else {
+        // Polling check, wait up to 3 seconds
+        let attempts = 0;
+        const maxAttempts = 30;
+        const checkChart = setInterval(() => {
+          attempts++;
+          if (typeof Chart !== 'undefined') {
+            clearInterval(checkChart);
+            initChart();
+          } else if (attempts >= maxAttempts) {
+            clearInterval(checkChart);
+            console.warn('Chart.js load timeout');
+          }
+        }, 100);
+      }
+    </script>
+  {{ end }}
+{{ end }}
