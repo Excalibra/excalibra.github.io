@@ -1,0 +1,13 @@
+{{/* Recent articles: independent toggle from featured; if both are enabled, exclude featured articles from recent list to avoid duplication */}}
+{{ if .Site.Params.homepage.showRecent | default false }}
+  <h2 class="mt-8 text-2xl font-extrabold">{{ i18n "shortcode.recent_articles" | emojify }}</h2>
+  {{ $sections := .Site.Params.mainSections }}
+  {{ $pages := where .Site.RegularPages "Type" "in" $sections }}
+  {{ if .Site.Params.homepage.showFeatured | default false }}
+    {{ $pages = where $pages "Params.featured" "!=" true }}
+  {{ end }}
+  {{ $limit := .Site.Params.homepage.recentLimit | default 5 }}
+  {{ range first $limit $pages }}
+    {{ partial "article-link.html" . }}
+  {{ end }}
+{{ end }}
