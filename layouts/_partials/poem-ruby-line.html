@@ -1,0 +1,7 @@
+{{/*
+  Character line + Pinyin line → <ruby> annotated line (for poetry container)
+  Parameters: dict "hanzi" string "pinyin" string
+*/}}
+<p class="sc-poem__line">
+  {{- partial "ruby-annotate.html" (dict "hanzi" .hanzi "pinyin" .pinyin) -}}
+</p>
