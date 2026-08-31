@@ -1,0 +1,18 @@
+{{- $index := slice -}}
+{{- range .Site.Pages -}}
+  {{- $section := .Site.GetPage "section" .Section -}}
+  {{- $showDate := .Params.showDate | default .Site.Params.article.showDate -}}
+  {{- /* RelPermalink: result link always follows the current access domain, not tied to baseURL */ -}}
+  {{- /* content truncation: including full text in the index makes index.json too large, causing timeout/failure on first load in production */ -}}
+  {{- $snippet := .Plain | plainify | truncate 400 -}}
+  {{- $index = $index | append (dict
+    "date" (cond (and .IsPage $showDate) (.Date | time.Format (site.Params.dateFormat | default ":date_long")) nil)
+    "title" (.Title | emojify | safeJS)
+    "section" ($section.Title | emojify | safeJS)
+    "summary" (.Summary | emojify | safeJS)
+    "content" ($snippet | emojify | safeJS)
+    "permalink" .RelPermalink
+    )
+  -}}
+{{- end -}}
+{{- $index | jsonify -}}
