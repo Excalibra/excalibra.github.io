@@ -1,0 +1,99 @@
+{{- $defaults := dict
+  "note" (dict "title" "Note" "icon" "circle-info" "tone" "note")
+  "tip" (dict "title" "Tip" "icon" "lightbulb" "tone" "tip")
+  "important" (dict "title" "Important" "icon" "comment" "tone" "important")
+  "warning" (dict "title" "Warning" "icon" "triangle-exclamation" "tone" "warning")
+  "caution" (dict "title" "Caution" "icon" "xmark" "tone" "caution")
+-}}
+
+<div style="background:lightblue;padding:10px;margin:10px 0;">
+  <strong>Blockquote Debug:</strong><br>
+  Type: "{{ .Type }}"<br>
+  AlertType: "{{ .AlertType }}"<br>
+  First 50 chars of Text: {{ .Text | plainify | truncate 50 }}<br>
+</div>
+
+{{- /* Debug: check if Hugo recognized it as alert */ -}}
+{{- if eq .Type "alert" -}}
+  {{- /* Hugo natively recognized alert */ -}}
+  {{- $alertType := .AlertType | default "note" -}}
+  {{- if not (isset $defaults $alertType) -}}{{- $alertType = "note" -}}{{- end -}}
+  {{- $meta := index $defaults $alertType -}}
+  {{- $alertTitle := $meta.title -}}
+  {{- with .AlertTitle -}}{{- $alertTitle = . -}}{{- end -}}
+  {{- $alertSign := .AlertSign -}}
+  {{- $class := printf "sc-callout sc-callout--%s not-prose" $meta.tone -}}
+  {{- if ne $alertSign "" -}}
+    <details class="{{ $class }} sc-callout--fold"{{ if eq $alertSign "+" }} open{{ end }}>
+      <summary class="sc-callout__summary">
+        <span class="sc-callout__icon" aria-hidden="true">{{- partial "icon.html" $meta.icon -}}</span>
+        <span class="sc-callout__title">{{ $alertTitle }}</span>
+      </summary>
+      <div class="sc-callout__body prose dark:prose-invert">
+        {{ .Text }}
+      </div>
+    </details>
+  {{- else -}}
+    <aside class="{{ $class }}" role="note">
+      <div class="sc-callout__content">
+        <div class="sc-callout__label">
+          <span class="sc-callout__icon" aria-hidden="true">{{- partial "icon.html" $meta.icon -}}</span>
+          <span class="sc-callout__title">{{ $alertTitle }}</span>
+        </div>
+        <div class="sc-callout__body prose dark:prose-invert">
+          {{ .Text }}
+        </div>
+      </div>
+    </aside>
+  {{- end -}}
+{{- else -}}
+  {{- /* Hugo did not recognize it as alert; try manual parsing */ -}}
+  {{- $text := .Text | plainify -}}
+  <div style="background:yellow;padding:10px;margin:10px 0;">
+    <strong>Debug Info:</strong><br>
+    Type: {{ .Type }}<br>
+    Raw Text length: {{ len .Text }}<br>
+    Plainify Text: {{ $text }}<br>
+    First 20 chars: {{ substr $text 0 20 }}
+  </div>
+  {{- $lines := split $text "\n" -}}
+  {{- $first := "" -}}
+  {{- if gt (len $lines) 0 -}}
+    {{- $first = trim (index $lines 0) " \t\r" -}}
+  {{- end -}}
+  {{- $marker := lower $first -}}
+  {{- if or (eq $marker "[!note]") (eq $marker "[!tip]") (eq $marker "[!important]") (eq $marker "[!warning]") (eq $marker "[!caution]") (eq $marker "[!success]") (eq $marker "[!info]") -}}
+    {{- $alertType := "note" -}}
+    {{- if eq $marker "[!tip]" -}}
+      {{- $alertType = "tip" -}}
+    {{- else if eq $marker "[!important]" -}}
+      {{- $alertType = "important" -}}
+    {{- else if eq $marker "[!warning]" -}}
+      {{- $alertType = "warning" -}}
+    {{- else if eq $marker "[!caution]" -}}
+      {{- $alertType = "caution" -}}
+    {{- else if eq $marker "[!success]" -}}
+      {{- $alertType = "tip" -}}
+    {{- else if eq $marker "[!info]" -}}
+      {{- $alertType = "important" -}}
+    {{- end -}}
+    {{- $meta := index $defaults $alertType -}}
+    {{- $alertTitle := $meta.title -}}
+    {{- $content := replaceRE `(?s)^\[![^\]]+\]\s*\n?` "" .Text -}}
+    <aside class="sc-callout sc-callout--{{ $meta.tone }} not-prose" role="note">
+      <div class="sc-callout__content">
+        <div class="sc-callout__label">
+          <span class="sc-callout__icon" aria-hidden="true">{{- partial "icon.html" $meta.icon -}}</span>
+          <span class="sc-callout__title">{{ $alertTitle }}</span>
+        </div>
+        <div class="sc-callout__body prose dark:prose-invert">
+          {{ $content }}
+        </div>
+      </div>
+    </aside>
+  {{- else -}}
+    <blockquote>
+      {{ .Text }}
+    </blockquote>
+  {{- end -}}
+{{- end -}}
