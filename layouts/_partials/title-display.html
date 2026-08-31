@@ -1,0 +1,14 @@
+{{- /* title-display.html: receives a string parameter, inserts forced line breaks using <wbr> tags
+   - If <wbr> is present: split by it, wrap each segment in whitespace-nowrap, insert <br> between segments
+   - If no <wbr>: output as‑is
+   - The caller is responsible for passing the final text to display (already retrieved from front matter) */ -}}
+{{- $text := . | emojify -}}
+{{- if in $text "<wbr>" -}}
+  {{- $parts := split $text "<wbr>" -}}
+  {{- $last := sub (len $parts) 1 -}}
+  {{- range $idx, $part := $parts -}}
+    <span class="whitespace-nowrap">{{- $part | safeHTML -}}</span>{{- if lt $idx $last -}}<br>{{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- $text | safeHTML -}}
+{{- end -}}
