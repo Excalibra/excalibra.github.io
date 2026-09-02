@@ -3,6 +3,8 @@ title: "Kimsuky Deploys Malicious LNK Files to Implant Python-Based Backdoor in 
 categories: Threat Intelligence
 tags: ['kimsuky', 'lnk', 'multi-stage-attack', 'python-backdoor', 'scheduled-task', 'dropbox-c2', 'evasion', 'persistence', 'north-korea', 'malware-analysis']
 date: 2026-04-13
+featured: true
+weight: 40
 slug: "20260413204700"
 description: "Detailed technical analysis of Kimsuky's latest campaign using disguised LNK files that deploy a sophisticated multi-stage attack chain (LNK → XML → VBS → PS1 → BAT) leading to a Python backdoor (beauty.py). Covers persistence via scheduled tasks, data exfiltration through Dropbox, custom C2 protocol, and command set."
 ---

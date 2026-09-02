@@ -3,6 +3,8 @@ title: "20 Penetration Testing Projects Worth Adding to Your Resume"
 categories: Penetration Testing
 tags: ['penetration-testing', 'projects', 'resume', 'cybersecurity', 'career', 'portfolio', 'hands-on', 'lab-setup', 'ctf', 'red-teaming']
 date: 2026-04-24
+featured: true
+weight: 10
 slug: "20260424113800"
 description: "A curated list of 20 practical penetration testing projects that demonstrate real-world skills—from network scanning and web app exploitation to red team simulations and CTF write-ups—to help you stand out in cybersecurity job applications."
 ---

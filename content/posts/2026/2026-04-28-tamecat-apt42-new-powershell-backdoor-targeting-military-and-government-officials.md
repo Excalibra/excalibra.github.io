@@ -3,6 +3,8 @@ title: "TAMECAT: APT42's New PowerShell Backdoor Targeting Military and Governme
 categories: Threat Intelligence
 tags: ['apt42', 'tamecat', 'powershell', 'lnk', 'malware-analysis', 'threat-intelligence', 'incident-response', 'fileless-malware', 'iran', 'espionage', 'telegram-c2', 'vbscript', 'phishing', 'nation-state', 'cyberwarfare']
 date: 2026-04-28
+featured: true
+weight: 50
 slug: "20260428220000"
 description: "Technical analysis of the Iranian APT42 group's TAMECAT PowerShell backdoor, featuring fileless execution, Telegram-based C2 channels, multi-layer AES encryption evasion, and VBScript phishing delivery mechanisms targeting high-value military and government personnel."
 ---

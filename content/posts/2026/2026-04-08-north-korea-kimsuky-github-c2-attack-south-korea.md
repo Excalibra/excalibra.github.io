@@ -3,6 +3,8 @@ title: "North Korea-Linked Hackers Use GitHub as C2 Infrastructure to Attack Sou
 categories: Threat Intelligence
 tags: ['kimsuky', 'north-korea', 'dprk', 'github-c2', 'lolbins', 'lnk', 'powershell', 'xeno-rat', 'rok-rat', 'apt', 'cyber-espionage']
 date: 2026-04-08
+featured: true
+weight: 30
 slug: "20260408190100"
 description: "FortiGuard Labs has uncovered a new campaign by the North Korea-linked Kimsuky group using GitHub as Command-and-Control infrastructure. The multi-stage attack begins with phishing LNK files, employs heavy anti-VM and anti-analysis techniques, establishes persistence via scheduled tasks, and exfiltrates data to attacker-controlled GitHub repositories."
 ---
