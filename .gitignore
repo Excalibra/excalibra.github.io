@@ -1,31 +1,33 @@
-# build output
-dist/
+# --- Hugo build artifacts (CI regenerates in Actions, do not commit) ---
+/public/
+/resources/
+.hugo_build.lock
 
-# generated types
-.astro/
-
-# dependencies
+# --- Dependencies / lock files (site core is Hugo; sharp is only for optional image optimization script, use pnpm) ---
 node_modules/
-
-# npm lockfile (we use pnpm)
+# Commit pnpm-lock.yaml for reproducible CI; do not mix with npm/yarn lock files
 package-lock.json
+yarn.lock
 
-# logs
+# --- Environment and secrets ---
+.env
+.env.*
+!.env.example
+
+# --- System / IDE ---
+.DS_Store
+Thumbs.db
+.idea/
+# .vscode/
+*.swp
+*~
+
+# --- Logs ---
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
-.DS_Store
-
-# jetbrains setting folder
-.idea/
-
-# pagefind
-
-public/pagefind
+# --- Local giscus theme preview (mkcert certificates, generated locally per user, do not commit) ---
+certs/
