@@ -133,7 +133,7 @@ fingerprintAlgorithm = "sha256"
   lang = "en"                                    # Changed from zh-CN to English
   loading = "lazy"
   # Custom Giscus theme must be served from a public HTTPS URL for both local preview and production iframe
-  themeBaseURL = "https://hoochanlon.github.io/giscus"   # Replace hoochanlon with your username or keep if it's a shared resource
+  themeBaseURL = "https://Excalibra.github.io/giscus"  
   # Theme base path used locally when themeBaseURL is not set
   themeBasePath = "giscus"
   # Fallback themes: used when custom theme is unavailable
