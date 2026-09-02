@@ -1,0 +1,3 @@
+# Main site config is in config/_default/.
+# This file is kept only as a Hugo root entry hint; do not write defaults like example.org here.
+# For baseURL / theme etc., edit config/_default/hugo.toml.
