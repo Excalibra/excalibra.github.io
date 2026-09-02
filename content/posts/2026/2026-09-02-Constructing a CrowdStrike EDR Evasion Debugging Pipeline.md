@@ -2,8 +2,8 @@
 title: "Constructing a CrowdStrike EDR Evasion Debugging Pipeline"
 categories: Cybersecurity, Red Teaming, Security Tools
 tags: ['edr-evasion', 'crowdstrike', 'detonator', 'debugging', 'red-teaming', 'reproducible-testing']
-date: 2026-08-06
-slug: "20260806-crowdstrike-edr-evasion-debugging-pipeline"
+date: 2026-09-02
+slug: "20260902-crowdstrike-edr-evasion-debugging-pipeline"
 description: "An analysis of building a reproducible EDR evasion testing pipeline, emphasising single-variable experimentation and the Detonator framework for CrowdStrike, without reliance on cloud consoles."
 ---
 
