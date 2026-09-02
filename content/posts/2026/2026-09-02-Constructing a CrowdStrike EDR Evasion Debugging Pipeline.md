@@ -84,14 +84,14 @@ Detonator is an open‑source framework designed to automate EDR testing. Its wo
 
 <p align="center">
   <img 
-    src="https://mmbiz.qpic.cn/mmbiz_png/GEVYW8ofHic05T8JrQdg2icec1MR2a071qJGehky3KVK9eyXVHvoewVico9icIcs9HI68RI4ibIibmxAZQibgQfa4b3ujWOj6MlsTnMkiaHuxEQJPts/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=2" 
+    src="https://github.com/user-attachments/assets/33b94a2c-71dd-40c3-9566-ed7357661888" 
     width="85%" 
   />
 </p>
 
 <p align="center">
   <img 
-    src="https://mmbiz.qpic.cn/sz_mmbiz_png/GEVYW8ofHic0tR7e1AxEgUrRarGq6Io81L1Xmnrte8cAJyicMsdia9icuCic7KE5bricFfq2jdBViaLfY07MN1pibnzoEjOljfQSnoHhQ1SzR6siaPWY/640?wx_fmt=png&from=appmsg&watermark=1#imgIndex=3" 
+    src="https://github.com/user-attachments/assets/434d6ca8-ef99-420a-9ffd-2aa6b3faeb80" 
     width="85%" 
   />
 </p>
@@ -106,3 +106,133 @@ Detonator supports Defender, Defender for Endpoint, Elastic Defend, **CrowdStrik
    uv venv
    source .venv/bin/activate
    uv pip install -r requirements.txt
+   ```
+
+2. **Prepare a test virtual machine**: install Windows, install the CrowdStrike Falcon sensor, and take a clean snapshot.
+
+3. **Install DetonatorAgent** inside the VM using the provided automation script `setup_detonator_windows.ps1`.
+
+### Step 2: Configure EDR Integration
+
+Edit `profiles_init.yaml` and add a CrowdStrike profile:
+
+```yaml
+crowdstrike-lab:
+  type: Crowdstrike
+  comment: My CrowdStrike test environment
+  port: 8080
+  vm_ip: 192.168.1.100
+```
+
+### Step 3: Execute a Test
+
+Submit a sample:
+
+```bash
+python -m detonatorcmd --profile crowdstrike-lab mimikatz.exe
+```
+
+The output will directly inform you of the detection result and the specific rule triggered. For more realistic scenarios, the AutoIt mode can simulate file‑manager navigation, paste operations, and keypresses—even Clickfix‑style attack chains can be evaluated.
+
+## So, Is the CrowdStrike Console Really Necessary?
+
+Returning to the original question: if you have a CrowdStrike endpoint without the cloud console, is testing still feasible?
+
+The console’s only function is to announce detection outcomes. That function is precisely the least critical part of a reproducible testing methodology. What you truly need is **the precise point of failure**, not the fact that failure occurred. That knowledge comes from:
+
+1. The sensor being online and enforcing blocks—the sample being killed is observable locally.
+2. Detonator ensuring a clean snapshot for each run.
+3. Iterative single‑variable changes—the moment the detection status flips reveals the exact trigger.
+
+The cloud console provides logs; reproducible testing identifies the point of failure. **The former is not essential.**
+
+If you require a CrowdStrike endpoint to set up such a testing pipeline, we offer authorised EDR endpoint tokens for a range of platforms including SentinelOne, Trend Micro, CrowdStrike, and others, enabling realistic attack‑defence simulation environments.
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/f186c7a5-9059-4b03-bc42-83fd635c1e64" 
+    width="85%" 
+  />
+</p>
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/93b8e991-fa05-4f06-9bf0-3f534d0c07df" 
+    width="85%" 
+  />
+</p>
+
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/54146862-05a7-4332-b70f-55085c121175" 
+    width="85%" 
+  />
+</p>
+
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/58cb0744-9800-4595-97f5-28e65b18e78a" 
+    width="85%" 
+  />
+</p>
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/c14fad70-a72b-4beb-a936-e6112570e1a6" 
+    width="85%" 
+  />
+</p>
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/b8cfdb76-4831-41f0-9fc5-e7226642aa73" 
+    width="85%" 
+  />
+</p>
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/026978ed-14b8-4604-9144-f37d904132e2" 
+    width="85%" 
+  />
+</p>
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/b8d20c5b-a987-4fb3-98fc-74106617327e" 
+    width="85%" 
+  />
+</p>
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/2213b5d8-5e66-4379-96ad-ddd04d825b1d" 
+    width="85%" 
+  />
+</p>
+
+
+
+## Concluding Remarks
+
+The absence of a cloud console does not equate to blind testing. What you lack is not logs, but **a reproducible, snapshot‑based, single‑variable testing discipline**. The console gives you the *outcome*; reproducible testing gives you the *root cause*. And discovering the root cause is the essence of effective EDR evasion debugging—anything less is mere conjecture.
+
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/30696f81-13d4-4cc8-a334-1fd70528540e" 
+    width="85%" 
+  />
+</p>
+
+
+
+- **Categories:** Cybersecurity, Red Teaming, Security Tools
+- **Tags:** edr-evasion, crowdstrike, detonator, debugging, red-teaming, reproducible-testing
+
+---
+
+**Disclaimer:**  
+The techniques and methods described herein are intended solely for legitimate security research and educational purposes, with the aim of improving cybersecurity defences. Any unauthorised use of this content for malicious purposes is strictly prohibited. The author and publisher assume no liability for any misuse. All content is shared for technical exchange.
