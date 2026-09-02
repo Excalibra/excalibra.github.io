@@ -8,13 +8,6 @@ weight: 10
 slug: "20260424113800"
 description: "A curated list of 20 practical penetration testing projects that demonstrate real-world skills—from network scanning and web app exploitation to red team simulations and CTF write-ups—to help you stand out in cybersecurity job applications."
 ---
-
-<p align="center">
-  <img width="85%" alt="image" src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7lzfg4spb5e2g4mbccu5.png" />
-</p>
-
-<br/>
-
 ## Article Summary
 
 This article addresses the needs of job seekers aiming for penetration testing positions by curating 20 real-world projects spanning entry‑level to expert‑level scenarios. It emphasises applying the **STAR method** (Situation, Task, Action, Result) and quantifying achievements to enhance resume competitiveness. Core points include: **Entry‑level** projects such as open‑source CMS penetration testing, SRC (Security Response Center) vulnerability mining, and internal network penetration labs; **Intermediate** projects like red‑team attack and defense exercises, cloud environment penetration testing, industrial control system security assessments, code auditing, and antivirus evasion techniques; and **Expert‑level** projects including national “hunt” drills, enterprise security architecture design, APT simulation, toolset development, and data security compliance testing. The article highlights the non‑negotiable prerequisite of legal authorisation, and provides differentiated project recommendations tailored to specific roles (SRC researcher, red‑team operator, compliance auditor). The overarching goal is to demonstrate, through complete and closed‑loop projects, the entire penetration testing workflow, vulnerability discovery capabilities, and experience in defensive remediation.

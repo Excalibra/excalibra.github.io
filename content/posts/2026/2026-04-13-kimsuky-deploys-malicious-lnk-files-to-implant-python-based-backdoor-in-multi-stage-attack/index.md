@@ -8,13 +8,6 @@ weight: 40
 slug: "20260413204700"
 description: "Detailed technical analysis of Kimsuky's latest campaign using disguised LNK files that deploy a sophisticated multi-stage attack chain (LNK → XML → VBS → PS1 → BAT) leading to a Python backdoor (beauty.py). Covers persistence via scheduled tasks, data exfiltration through Dropbox, custom C2 protocol, and command set."
 ---
-
-<p align="center">
-  <img width="85%" alt="image" src="https://github.com/user-attachments/assets/70ee2771-d244-4cf7-bcf6-4bf16f83e228" />
-</p>
-
-<br/>
-
 ## Notable Changes Observed in Malicious LNK Files Distributed by Kimsuky Group
 
 **Article Summary:** The North Korean Kimsuky hacker group recently used malicious LNK files disguised as HWP documents to launch multi-stage attacks. They extended the attack chain by adding intermediate stages such as XML, VBS, and PS1 files to evade detection. The attack creates hidden folders, registers scheduled tasks for persistence, and finally deploys a Python backdoor that supports remote command execution, file theft, and other capabilities. Data is exfiltrated through Dropbox to blend in with normal traffic.

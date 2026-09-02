@@ -8,11 +8,6 @@ weight: 20
 slug: "20260723220000"
 description: "In-depth technical analysis of the Popa/Neunative proxy SDK ecosystem that transforms consumer devices into residential proxy nodes. The infrastructure shows deep ties to NetNut under Israeli-listed Alarum Technologies, with millions of daily active IPs used for AI data scraping and other activities."
 ---
-<p align="center">
-  <img width="85%" alt="Popa Botnet Infrastructure" src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Ft8qaf5xksecwb4fxe9t5.png" />
-</p>
-<br/>
-
 **Article Summary:** A proxy software development kit (SDK) named Popa has been exposed, capable of transforming mobile phones, TV boxes, and other devices into residential proxy network nodes. The SDK is distributed through pirated applications, counterfeit boxes, and bundled installations across Android and Windows platforms. Its operations are highly stealthy, employing dynamic configuration to evade blocks and utilising proprietary protocols for communication with backend servers. Notably, this infrastructure shows deep connections with NetNut, a residential proxy provider under the Israeli listed company Alarum Technologies. The report indicates the network maintains millions of active IPs daily and is used for activities such as AI data scraping, posing risks to user device security and enterprise networks.  
  
 

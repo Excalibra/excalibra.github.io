@@ -6,15 +6,6 @@ date: 2026-04-08
 slug: "20260408210400"
 description: "In-depth analysis of the recent Russian expulsion of British diplomats Michael Skinner, Tabassum Parveen Rashid, and Albertus van Rensburg, revealing a major shift in the UK-Russia intelligence confrontation toward economic resilience and the systematic dismantling of Britain’s HUMINT network in Moscow."
 ---
-
-<p align="center">
-  <img 
-    src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b60l01pbgm4bipcba27m.jpg" 
-    alt="Analysis of Russia’s Expulsion of British Diplomats: The Shifting Battlefield of the UK-Russia Intelligence War" 
-    width="85%" 
-  />
-</p>
-
 **Article Summary:**  
 This in-depth analysis examines the recent Russian expulsions of British diplomats, exposing a core shift in the UK-Russia intelligence confrontation and its strategic implications. The piece focuses on three key figures — Michael Skinner, Tabassum Parveen Rashid, and Albertus Gerardus Janse van Rensburg — dissecting their roles within the British intelligence network. Skinner leveraged his spouse status for financial intelligence assessment, van Rensburg attempted to penetrate Russian economic expert circles, while Rashid served as the critical hub connecting the two. Behind the incidents lies Britain’s pivot toward targeting Russia’s economic resilience. Russia, through high-profile expulsions and the public release of evidence, aims to systematically cripple the UK’s intelligence network in Russia and sever its human intelligence (HUMINT) channels. In the future, the intelligence contest between the two sides is expected to drive even more covert technical surveillance and remote penetration methods.
 

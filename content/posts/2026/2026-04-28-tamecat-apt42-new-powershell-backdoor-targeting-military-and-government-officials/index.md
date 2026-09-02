@@ -8,13 +8,6 @@ weight: 50
 slug: "20260428220000"
 description: "Technical analysis of the Iranian APT42 group's TAMECAT PowerShell backdoor, featuring fileless execution, Telegram-based C2 channels, multi-layer AES encryption evasion, and VBScript phishing delivery mechanisms targeting high-value military and government personnel."
 ---
-
-<p align="center">
-  <img width="85%" alt="image" src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqiqsal90yq7giceox1id.jpg" />
-</p>
-
-<br/>
-
 In early 2026, Israel's National Cyber Directorate disclosed critical threat intelligence: the Iranian state-sponsored APT42 group is leveraging a PowerShell backdoor named **TAMECAT** to conduct precision espionage attacks against defense officials and core government personnel across multiple nations.
 
 This malicious software operates as an "invisible spy"—it writes nothing to disk, runs entirely in memory, and receives commands via Telegram to stealthily exfiltrate browser data, capture screenshots, and even evade mainstream antivirus solutions. More alarmingly, it has undergone multiple iterations with continuously evolving attack techniques, establishing itself as APT42's core weapon for transnational espionage operations.

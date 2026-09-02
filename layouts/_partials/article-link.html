@@ -2,6 +2,18 @@
   {{- $images := $.Resources.ByType "image" }}
   {{- $thumbnail := $images.GetMatch (.Params.thumbnail | default "*thumb*") }}
   {{- $feature := $images.GetMatch (.Params.feature | default "*feature*") | default $thumbnail }}
+  {{- /* Fallback: no bundled image -> hotlink the first image found in the content,
+         so every post gets a card thumbnail automatically. */}}
+  {{- $remote := "" }}
+  {{- if not $feature }}
+    {{- with findRESubmatch `<img[^>]*?src="(https?://[^"]+)"` $.RawContent }}
+      {{- $remote = index (index . 0) 1 }}
+    {{- else }}
+      {{- with findRESubmatch `!\[[^\]]*\]\((https?://[^)\s]+)[^)]*\)` $.RawContent }}
+        {{- $remote = index (index . 0) 1 }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
   {{- with $feature }}
     <div class="flex-none pe-4 sm:pe-6 ">
       <a
@@ -29,6 +41,29 @@
         />
       </a>
     </div>
+  {{- else }}
+    {{- with $remote }}
+      <div class="flex-none pe-4 sm:pe-6 ">
+        <a
+          href="{{ with $.Params.externalUrl }}
+            {{ . }}
+          {{ else }}
+            {{ $.RelPermalink }}
+          {{ end }}"
+          aria-label="{{ $.Title | emojify }}"
+        >
+          <img
+            alt=""
+            class="w-24 max-w-[6rem] max-h-[4.5rem] rounded-md object-cover sm:max-h-[7.5rem] sm:w-40
+            sm:max-w-[10rem]"
+            src="{{ . }}"
+            {{ if $.Site.Params.enableImageLazyLoading | default true }}
+              loading="lazy"
+            {{ end }}
+          />
+        </a>
+      </div>
+    {{- end }}
   {{- end }}
   <div class="min-w-0 grow">
     <h3 class="flex items-start text-xl font-semibold">
