@@ -2,7 +2,7 @@
 title: "In-depth Assessment: Japanese Police Disclosure of 'Chance Encounter' Recruitment of Industrial Espionage Informants – Risk Warning for Enterprises and Personnel in Japan"
 categories: Threat Intelligence
 tags: ['japan', 'industrial-espionage', 'counter-intelligence', 'humint', 'economic-security', 'risk-assessment', 'osint']
-pubDatetime: 2026-08-30
+date: 2026-08-30
 slug: "20260817230700"
 description: "Analysis of Japanese police disclosure of systematic 'chance encounter' methods to recruit industrial spies, highlighting risks to businesses and personnel in Japan, with recommendations for counter‑intelligence protection."
 ---

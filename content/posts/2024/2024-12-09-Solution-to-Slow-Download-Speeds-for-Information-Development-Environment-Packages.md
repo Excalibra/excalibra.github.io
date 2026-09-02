@@ -2,7 +2,7 @@
 title: "Solution to Slow Download Speeds for Information Development Environment Packages"
 categories: chip
 tags: ['chip', 'github', 'download', 'proxy', 'dns', 'pip', 'npm']
-pubDatetime: 2024-12-09
+date: 2024-12-09
 slug: "20241209010143"
 description: "Solutions for slow GitHub downloads, Git clone speeds, and environment package managers including pip, gem, and npm with mirror configurations."
 ---

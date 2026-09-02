@@ -2,7 +2,7 @@
 title: "Analysis of Russia’s Expulsion of British Diplomats: The Shifting Battlefield of the UK-Russia Intelligence War"
 categories: Threat Intelligence
 tags: ['russia', 'uk', 'expulsion', 'diplomats', 'intelligence-war', 'fsb', 'humin', 'economic-espionage', 'osint']
-pubDatetime: 2026-04-08
+date: 2026-04-08
 slug: "20260408210400"
 description: "In-depth analysis of the recent Russian expulsion of British diplomats Michael Skinner, Tabassum Parveen Rashid, and Albertus van Rensburg, revealing a major shift in the UK-Russia intelligence confrontation toward economic resilience and the systematic dismantling of Britain’s HUMINT network in Moscow."
 ---

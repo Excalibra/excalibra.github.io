@@ -2,7 +2,7 @@
 title: "The Right Approach to Managing Apple Devices in Enterprises — ABM"
 categories: Apple
 tags: ['apple', 'abm', 'mdm', 'enterprise', 'device-management']
-pubDatetime: 2025-01-22
+date: 2025-01-22
 slug: "20250122180600"
 description: "Overview of Apple Business Manager (ABM) for enterprise device management, including Managed Apple IDs, DEP, VPP, and MDM integration for centralized control of corporate Apple devices."
 ---

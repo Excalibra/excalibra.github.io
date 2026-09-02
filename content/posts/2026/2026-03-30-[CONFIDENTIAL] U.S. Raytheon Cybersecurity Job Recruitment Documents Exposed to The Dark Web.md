@@ -2,7 +2,7 @@
 title: "[CONFIDENTIAL] Exposure of Raytheon Cybersecurity Executive Position Recruitment Document on the Dark Web, Involving Foundational Cooperation on Classified Projects within the U.S. Intelligence Apparatus"
 categories: Dark Web
 tags: ['dark-web', 'raytheon', 'defense-contractor', 'data-breach', 'threat-intelligence']
-pubDatetime: 2026-03-30
+date: 2026-03-30
 slug: "20260330214900"
 description: "A threat actor leaked a confidential PDF document concerning the Vice President of Cybersecurity position at defense contractor Raytheon, exposing organizational structure, security priorities, and potential attack vectors for targeted espionage."
 ---

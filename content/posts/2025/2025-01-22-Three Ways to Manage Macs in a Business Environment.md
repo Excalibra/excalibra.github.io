@@ -2,7 +2,7 @@
 title: "Three Ways to Manage Macs in a Business Environment"
 categories: Apple
 tags: ['apple', 'mac', 'enterprise', 'mdm', 'active-directory', 'jamf']
-pubDatetime: 2025-01-22
+date: 2025-01-22
 slug: "20250122183900"
 description: "Three approaches to managing Macs in enterprise IT environments: integrating with Active Directory, using third-party tools like Centrify or JAMF Casper Suite, and treating Macs as mobile devices with MDM."
 ---

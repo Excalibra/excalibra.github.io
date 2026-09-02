@@ -2,7 +2,7 @@
 title: "The Difference Between Computer Sleep and Hibernate Modes, and How to Set Up Hibernate"
 categories: windows
 tags: ['windows', 'sleep', 'hibernate', 'power-management']
-pubDatetime: 2025-01-20
+date: 2025-01-20
 slug: "20250120072500"
 description: "Explanation of the differences between computer sleep and hibernate modes, including data storage locations, wake-up methods, speeds, and step-by-step instructions for enabling hibernate in Windows 7 and Windows 10."
 ---

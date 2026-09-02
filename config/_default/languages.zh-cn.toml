@@ -1,1 +1,45 @@
+locale = "en"
+label = "English"
+direction = "ltr"
+weight = 1
 
+title = "Excalibra"
+# No copyright set here: footer uses params.footer.copyrightSince + current year + site title
+
+[params]
+  dateFormat = "January 2, 2006"
+  mainSections = ["posts"]
+  description = "A digital garden documenting cybersecurity, humanities and social sciences analysis, as well as daily life."
+
+[params.author]
+  name = "Excalibra"
+  displayName = "Excalibra"
+  displayNameCard = "Excalibra"
+  image = "img/avatar.png"
+  headline = ""
+  bio = "Cybersecurity researcher"
+  links = [
+    { github = "https://github.com/excalibra" },
+  # { email = "mailto:you@example.com" },
+  # { twitter = "https://twitter.com/yourhandle" },
+  ]
+
+  [params.author.verified]
+    # Verified badge icon at the bottom-right of the article author card avatar
+    # icon = "icons/da-v.svg"
+
+    [params.author.verified.label]
+      # text = "Your badge label"
+      # icon = "icons/china.svg"
+
+  [params.author.status]
+    # To use a custom SVG, uncomment and fill in a path under assets/
+    # icon = "icons/to-the-moon.svg"
+    # icon = "icons/wechat-1.svg"
+    # text = "🍏"
+    # label = "Status label"
+    # image = "img/your-image.jpg"
+    # Hide the icon's circular background: true = transparent, false = original circle
+    transparent = false
+    # Delay (seconds) before the tooltip appears when hovering the status badge
+    tooltipDelay = 0.6

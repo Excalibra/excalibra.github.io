@@ -1,8 +1,8 @@
-# 站点 i18n 增量（与主题合并；defaultContentLanguage = zh-cn）
+# Site i18n additions (merged with the theme; defaultContentLanguage = zh-cn)
 shortcode:
-  featured_articles: "精选文章"
+  featured_articles: "Featured Articles"
 
 article:
-  date: "发稿于 {{ .Date }}"
-  date_updated: "更新于 {{ .Date }}"
-  table_of_contents: "目录"
+  date: "Published on {{ .Date }}"
+  date_updated: "Updated on {{ .Date }}"
+  table_of_contents: "Table of Contents"

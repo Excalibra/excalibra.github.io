@@ -2,7 +2,7 @@
 title: "Comprehensive Analysis of GitHub RST and Git SSL_ERR_SYSCALL"
 categories: chip
 tags: ['chip', 'github', 'ssl', 'network']
-pubDatetime: 2024-12-09
+date: 2024-12-09
 slug: "20241209195800"
 description: "Analysis of GitHub RST and Git SSL_ERR_SYSCALL issues, including network resets, proxy configuration problems, and ICMP filtering."
 ---

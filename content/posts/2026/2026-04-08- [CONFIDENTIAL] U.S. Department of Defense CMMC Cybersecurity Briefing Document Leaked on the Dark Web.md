@@ -2,7 +2,7 @@
 title: "[Confidential] U.S. Department of Defense CMMC Cybersecurity Briefing Document Leaked on the Dark Web"
 categories: Dark Web
 tags: ['dark-web', 'department-of-defense', 'cybersecurity', 'data-breach', 'threat-intelligence', 'leaked']
-pubDatetime: 2026-04-08
+date: 2026-04-08
 slug: "20260408171400"
 description: "A threat actor has claimed to be selling a U.S. Department of Defense (DoD) **CMMC** cybersecurity briefing document. The document focuses on the core elements of the **CMMC 2.0** framework, including its implementation processes, compliance requirements, and supporting systems. It serves as a standardized cybersecurity compliance guidance document targeted at Defense Industrial Base (DIB) contractors."
 ---

@@ -2,7 +2,7 @@
 title: "Exposure of a Botnet Linked to an Israeli Listed Company"
 categories: Threat Intelligence
 tags: ['popa', 'neunative', 'residential-proxy', 'botnet', 'sdk', 'alarum-technologies', 'netnut', 'android-malware', 'windows-sdk', 'vo1d-botnet', 'ai-scraping', 'proxy-network', 'malware-analysis', 'threat-intelligence']
-pubDatetime: 2026-07-23
+date: 2026-07-23
 slug: "20260723220000"
 description: "In-depth technical analysis of the Popa/Neunative proxy SDK ecosystem that transforms consumer devices into residential proxy nodes. The infrastructure shows deep ties to NetNut under Israeli-listed Alarum Technologies, with millions of daily active IPs used for AI data scraping and other activities."
 ---

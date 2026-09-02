@@ -2,7 +2,7 @@
 title: "[CONFIDENTIAL] Leak of RFID and Wireless Application Documents from Sanctioned U.S. Arms Manufacturer Lockheed Martin on the Dark Web"
 categories: Dark Web
 tags: ['dark-web', 'lockheed-martin', 'rfid', 'data-breach', 'confidential']
-pubDatetime: 2026-03-30
+date: 2026-03-30
 slug: "20260330223100"
 description: "A threat actor claims to be selling leaked confidential documents from defense contractor Lockheed Martin, detailing RFID edge software solutions and deployment outcomes for the U.S. Department of Defense."
 ---
