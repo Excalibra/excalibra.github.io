@@ -51,8 +51,9 @@ Our government networks, defence-industrial supporting enterprises, and critical
 More concretely, a case disclosed in our country in 2026 showed that an outsourced operations employee at a research institute was lured by a foreign intelligence agency because of lax permission controls. The employee remotely downloaded core research data and provided it across borders. "Recruitment-channel penetration" is not a hypothesis; it is a path that has already been taken.
 
 <p align="center">
-  <img src="" width="85%" />
+  <img src="https://github.com/user-attachments/assets/90b3e974-7e94-4b92-9c41-f753742e5eff" width="85%" />
 </p>
+
 
 ## The System Administrator as the Optimal Attack Lever
 
