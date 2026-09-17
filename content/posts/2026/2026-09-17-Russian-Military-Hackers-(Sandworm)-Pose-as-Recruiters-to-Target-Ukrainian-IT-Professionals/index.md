@@ -2,8 +2,8 @@
 title: "Russian Military Hackers (Sandworm) Pose as Recruiters to Target Ukrainian IT Professionals — Implications of Their Social-Engineering Recruitment Tactics for the Security of Our IT Talent and Supply Chains"
 categories: Cyber Intelligence, Supply Chain Security, Social Engineering, State-Sponsored Threats, Mobile Security
 tags: ['sandworm', 'uac-0145', 'social-engineering', 'recruitment', 'supply-chain-security', 'wireguard', 'sopravpn', 'ukraine', 'russia', 'apt', 'cyber-espionage']
-date: 2026-08-24
-slug: "20260824-sandworm-recruitment-social-engineering-ukraine-it-supply-chain-risk"
+date: 2026-09-17
+slug: "20260917-sandworm-recruitment-social-engineering-ukraine-it-supply-chain-risk"
 description: "An in-depth assessment of Sandworm/UAC-0145's fake recruitment campaign targeting Ukrainian IT administrators, its abuse of WireGuard and SopraVPN, and the implications for IT talent and supply-chain security."
 ---
 
