@@ -27,10 +27,8 @@ The case is significant because it transforms a normal IT recruitment process in
 After the interview, the attackers send a WireGuard configuration file on the pretext that the technical assessment requires connection to a corporate VPN. The file is designed to fail. The attackers then "helpfully" suggest downloading a custom client, SopraVPN, hosted on SourceForge and accompanied by a spoofed domain. The sophistication of this process lies in the fact that each step corresponds to a normal stage of IT recruitment, systematically eroding the victim's vigilance.
 
 <p align="center">
-  <img src="" width="85%" />
+  <img src="https://github.com/user-attachments/assets/65b3a039-c4e8-4896-a069-aa9cbd99239e" width="85%" />
 </p>
-
-*Figure 1: Recruitment-to-malware attack chain. (Credit: Original assessment)*
 
 ## From CV Screening to Custom Malware: Real Zoom Interviews and the Continuous Attrition of Psychological Defences
 
@@ -56,8 +54,6 @@ More concretely, a case disclosed in our country in 2026 showed that an outsourc
   <img src="" width="85%" />
 </p>
 
-*Figure 2: SopraVPN configuration abuse and payload execution. (Credit: Original assessment)*
-
 ## The System Administrator as the Optimal Attack Lever
 
 System administrators are an optimal attack lever because they possess cross-system privileged accounts and knowledge of network architecture. The cost of compromising them is far lower than that of a frontal breach of perimeter defences.
@@ -69,8 +65,6 @@ Once a malicious client with command-execution capability is implanted on an ope
 <p align="center">
   <img src="" width="85%" />
 </p>
-
-*Figure 3: Trusted-tool abuse and supply-chain exposure. (Credit: Original assessment)*
 
 ## The North Korean IT Worker Model: Shell Companies, Cross-Border Employment and Identity Fraud
 
@@ -89,8 +83,6 @@ Any approach that simply classifies such risks as "foreign cases" and fails to i
 <p align="center">
   <img src="" width="85%" />
 </p>
-
-*Figure 4: Cross-border identity fraud and shell-company intermediary risk.
 
 ## Implications for Supply-Chain and Talent Security
 
