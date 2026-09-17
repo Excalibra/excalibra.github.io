@@ -64,8 +64,9 @@ Our telecommunications operators, cloud service providers, and energy and financ
 Once a malicious client with command-execution capability is implanted on an operations terminal, the risk spreads along the service relationship chain to all customers of that service provider. This is precisely the historical lesson of NotPetya, which achieved global propagation via the Ukrainian accounting software M.E.Doc.
 
 <p align="center">
-  <img src="" width="85%" />
+  <img src="https://github.com/user-attachments/assets/eb4b645d-2e49-4f9f-8819-ec2f9350b511" width="85%" />
 </p>
+
 
 ## The North Korean IT Worker Model: Shell Companies, Cross-Border Employment and Identity Fraud
 
@@ -82,7 +83,7 @@ The truly alarming aspect of this case is not that it provides a defensible temp
 Any approach that simply classifies such risks as "foreign cases" and fails to incorporate them into domestic supply-chain security review systems will leave a genuine opening before the next comparable attack arrives.
 
 <p align="center">
-  <img src="" width="85%" />
+  <img src="https://github.com/user-attachments/assets/cf96a416-92dd-4c9a-a8c0-823acb1983bb" width="85%" />
 </p>
 
 ## Implications for Supply-Chain and Talent Security
