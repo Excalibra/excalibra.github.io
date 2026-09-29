@@ -1,5 +1,5 @@
 ---
-title: "Critical APT Warning: No Longer Relying Solely on Cloud LLMs — Kimsuky Deploys Offline Local LLMs for Full-Chain AI-Enabled Espionage and Data Theft"
+title: "APT No Longer Relying Solely on Cloud LLMs — Kimsuky Deploys Offline Local LLMs for Full-Chain AI-Enabled Espionage and Data Theft"
 categories: Threat Intelligence, Malware, Red Team, Security Operations, Data Security
 tags: ['apt', 'kimsuky', 'apt43', 'north-korea', 'llm', 'ollama', 'gpt4all', 'rag', 'cursor', 'whisper', 'asyncrat', 'github-c2', 'threat-intelligence', 'ai-enabled-attacks']
 date: 2026-09-23
