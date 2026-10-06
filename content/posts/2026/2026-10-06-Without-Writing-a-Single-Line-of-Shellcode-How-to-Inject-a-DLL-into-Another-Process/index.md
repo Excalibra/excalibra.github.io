@@ -45,7 +45,7 @@ The Windows user-mode thread pool is precisely the answer to this question.
 ## 2. The Thread Pool: An Underestimated Execution Primitive Factory
 
 <p align="center">
-  <img src="" width="85%" alt="Figure 1: Windows thread pool architecture" />
+  <img src="https://github.com/user-attachments/assets/4b8c22c2-6e9e-4f00-bb3d-46a37388a037" width="85%" alt="Figure 1: Windows thread pool architecture" />
 </p>
 
 *Figure 1: Windows thread pool architecture. (Credit: Original source)*
