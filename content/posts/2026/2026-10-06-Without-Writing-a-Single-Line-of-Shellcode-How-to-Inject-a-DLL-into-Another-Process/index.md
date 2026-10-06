@@ -119,7 +119,7 @@ In that year's testing, this technique achieved complete bypass against five mai
 ## 4. Where "No Shellcode" Is Actually Difficult: Callback Signatures and Argument Position Mismatch
 
 <p align="center">
-  <img src="" width="85%" alt="Figure 3: Callback signature and argument mismatch" />
+  <img src="https://github.com/user-attachments/assets/63e469c3-17e5-485a-8772-a6c98e5f4368" width="85%" alt="Figure 3: Callback signature and argument mismatch" />
 </p>
 
 
