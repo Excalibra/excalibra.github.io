@@ -91,7 +91,7 @@ Two points are worth noting:
 ## 3. The Three-Step Primitive of PoolParty
 
 <p align="center">
-  <img src="" width="85%" alt="Figure 2: PoolParty three-step primitive" />
+  <img src="https://github.com/user-attachments/assets/b6fc6f2a-9ae2-429e-b505-f51bbbcafa7e" width="85%" alt="Figure 2: PoolParty three-step primitive" />
 </p>
 
 
