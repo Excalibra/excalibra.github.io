@@ -48,8 +48,6 @@ The Windows user-mode thread pool is precisely the answer to this question.
   <img src="https://github.com/user-attachments/assets/4b8c22c2-6e9e-4f00-bb3d-46a37388a037" width="85%" alt="Figure 1: Windows thread pool architecture" />
 </p>
 
-*Figure 1: Windows thread pool architecture. (Credit: Original source)*
-
 Modern Windows user-mode processes can all access the thread pool implementation in ntdll. Most GUI, service, and shell processes (notepad.exe, explorer.exe, and various svchost instances) will have usable default thread pool state within the process once a thread pool API or a dependent subsystem triggers initialisation. Once the pool is active, it is a **three-layer collaborative structure**:
 
 | Layer and Key Object | Role |
@@ -96,7 +94,6 @@ Two points are worth noting:
   <img src="" width="85%" alt="Figure 2: PoolParty three-step primitive" />
 </p>
 
-*Figure 2: PoolParty three-step primitive. (Credit: Original source)*
 
 All PoolParty variants converge on the same three-step shape. **The difference lies only in the third step:**
 
@@ -125,7 +122,6 @@ In that year's testing, this technique achieved complete bypass against five mai
   <img src="" width="85%" alt="Figure 3: Callback signature and argument mismatch" />
 </p>
 
-*Figure 3: Callback signature and argument mismatch. (Credit: Original source)*
 
 This is the **true technical core** of the entire matter, and also the most easily glossed-over point.
 
@@ -219,7 +215,6 @@ This class of technique is not universally applicable, and there are numerous pr
   <img src="" width="85%" alt="Figure 4: Detection and defence considerations" />
 </p>
 
-*Figure 4: Detection and defence considerations. (Credit: Original source)*
 
 The good news for defenders is that **although the internal structures of the thread pool are opaque, their "normal form" is highly consistent, which makes anomalies stand out.**
 
