@@ -212,7 +212,7 @@ This class of technique is not universally applicable, and there are numerous pr
 ## 7. Detection and Defence
 
 <p align="center">
-  <img src="" width="85%" alt="Figure 4: Detection and defence considerations" />
+  <img src="https://github.com/user-attachments/assets/c60567a4-66d0-481b-afba-a3a2f41e989f" width="85%" alt="Figure 4: Detection and defence considerations" />
 </p>
 
 
