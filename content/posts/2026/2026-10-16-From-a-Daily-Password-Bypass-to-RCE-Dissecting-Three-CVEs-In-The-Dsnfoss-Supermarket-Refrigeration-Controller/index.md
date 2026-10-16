@@ -54,6 +54,11 @@ Extracting the firmware and examining the file system revealed that this web ser
 
 The outermost layer is a publicly reachable Nginx, performing pure reverse proxying. Its `nginx.conf` specifies that requests with a `.cgi` suffix are forwarded to the CGI instance `sm_fcgi_app`.
 
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/03e9295f-acea-4f80-a8ab-f2acd504da4e" width="85%" />
+</p>
+
 The `sm_fcgi_app` performs initial processing according to its own configuration, `sm_fcgi_app.conf`, and then uses `forward_xml_request` to forward the request to the **inner Nginx**.
 
 The inner Nginx listens only on the local loopback and continues to forward `.cgi` requests to a task within `sm_app` called `Task_Web`—this is the true core that parses, processes, and dispatches requests for the web application. The layering appears convoluted, but clarifying this chain is precisely the starting point for each of the vulnerabilities that follow.
