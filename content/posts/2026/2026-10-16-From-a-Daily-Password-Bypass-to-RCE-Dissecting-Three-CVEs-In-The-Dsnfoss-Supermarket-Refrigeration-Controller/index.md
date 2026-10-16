@@ -40,6 +40,10 @@ Because maintenance engineers frequently manage these devices remotely, the devi
 
 Industrial control systems are often assumed by default to be "safely hidden inside an isolated network," but reality is frequently otherwise. The first step in the research is not to dig through firmware, but to confirm whether attackers can actually reach these devices. Team82 searched Shodan and Censys using the fingerprint of the management interface and quickly found results—a large number of controllers were directly exposed to the public internet.
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d105ed32-df0d-4226-8c3a-714efe229ca6" width="85%" />
+</p>
+
 The Censys result was approximately **2,765 devices**, many still carrying the signature HTTP title of the Danfoss StoreView management interface, indicating that administrators had deliberately exposed the web console to the external network for remote operations. For attackers, the barrier is immediately lowered: there is no need to first compromise the corporate network, nor to physically access the store to reach the machine. Simply scan, select those running older firmware, and attack directly.
 
 This also determined the direction of the research. Although the device supports multiple industrial communication protocols, for a remote attacker this internet-facing web interface is the most realistic entry point, and the focus was therefore placed here first.
