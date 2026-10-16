@@ -22,6 +22,12 @@ It must be stated clearly at the outset: the **specific attack method in this in
 
 This article therefore does not chase conclusions. It dissects one confirmed matter: the **Danfoss AK-SM 800A** attack surface disclosed by Claroty Team82 in August 2026 and presented at DEF CON. The researcher is Amir Zaltzman. News is news, and technology is technology; the two should not be conflated.
 
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4430a186-790f-4492-bd9d-0680ff7a1ef5" width="85%" />
+</p>
+
+
 ## The Controller Governs the Entire Store's Cold Chain
 
 Danfoss is one of the world's major manufacturers of refrigeration and HVAC equipment, with products deployed in supermarkets, cold stores, warehouses, and commercial buildings. The AK-SM 800A is one of its **central refrigeration managers**: a single unit governs the refrigeration circuits across an entire store.
