@@ -63,6 +63,11 @@ The `sm_fcgi_app` performs initial processing according to its own configuration
 
 The inner Nginx listens only on the local loopback and continues to forward `.cgi` requests to a task within `sm_app` called `Task_Web`—this is the true core that parses, processes, and dispatches requests for the web application. The layering appears convoluted, but clarifying this chain is precisely the starting point for each of the vulnerabilities that follow.
 
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4dbc5dc7-c6bc-40ca-a0c8-5f7e578ecb71" width="85%" />
+</p>
+
 ## CVE-2025-41450: The "Daily Password" Hidden in the Date
 
 Authentication logic is often the most sensitive part of a management platform. Team82 focused on authentication requests sent to `xml.cgi` with `action="getauth"`.
